@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+
+    <ion-list id="login-list2">
+      <ion-item id="login-input1">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="email"  placeholder=""></ion-input>
+      </ion-item>
+      <ion-item id="login-input2">
+        <ion-label>
+          Password
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="password"  placeholder=""></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="spacer" style="height:15px; text-align:center" id="login-spacer1"></div>
+    <ion-row>
+    <ion-col style="text-align:center">
+    <button  ion-button round outline (click)="login(email, password)">
+      Log in
+    </button>
+  </ion-col>
+  </ion-row>
+    <button  ion-button clear color="assertive" block on-click="goToResetPassword()">
+      Forgot Password
+    </button>
+    <button  ion-button clear color="positive" block on-click="goToSignup()">
+      Or create an account
+    </button>
+
+</ion-content>

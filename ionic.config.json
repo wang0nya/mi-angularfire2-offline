@@ -1,8 +1,8 @@
 {
-  "name": "mi-auth2-offline",
+  "name": "myApp",
   "app_id": "",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular"
 }
