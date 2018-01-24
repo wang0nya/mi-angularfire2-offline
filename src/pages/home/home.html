@@ -1,20 +1,150 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
-      Playlist
+      Home
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addSong()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let item of items | async">
-      {{ item.songName }}
-    </ion-item>
-  </ion-list>
+<ion-content padding id="page1">
+  <ion-card id="home-card21">
+    <ion-list>
+      <ion-item color="positive" id="home-list-item12">
+        <ion-icon name="pricetags" item-left></ion-icon>
+        My Stocks
+      </ion-item>
+      <img src="assets/img/zjzNX4fRILM5VrtcT4HQ_boxes.png" />
+      <ion-item id="home-list-item-container2">
+        <div id="home-markdown2" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="assertive" on-click="goToStock()" id="home-list-item13">
+        <ion-icon name="add" item-left></ion-icon>
+        Add
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="home-card22">
+    <ion-list>
+      <ion-item color="positive" id="home-list-item15">
+        <ion-icon name="briefcase" item-left></ion-icon>
+        Registered Suppliers
+      </ion-item>
+      <img src="assets/img/XOisaLJtTsGdiol7ZjPX_purchase1.png" />
+      <ion-item id="home-list-item-container3">
+        <div id="home-markdown3" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="assertive" on-click="goToSuppliers()" id="home-list-item16">
+        <ion-icon name="add" item-left></ion-icon>
+        Register
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="home-card23">
+    <ion-list>
+      <ion-item color="positive" id="home-list-item17">
+        <ion-icon name="arrow-round-down" item-left></ion-icon>
+        Purchases
+      </ion-item>
+      <img src="assets/img/iMGryr1NQI2FPyknP2Ew_png-300x300.png" />
+      <ion-item id="home-list-item-container4">
+        <div id="home-markdown4" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="assertive" on-click="goToPurchases()" id="home-list-item18">
+        <ion-icon name="checkmark-circle-outline" item-left></ion-icon>
+        Review
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="home-card24">
+    <ion-list>
+      <ion-item color="positive" id="home-list-item19">
+        <ion-icon name="arrow-round-up" item-left></ion-icon>
+        Sales
+      </ion-item>
+      <img src="assets/img/6kWzyEB9RkqupptHq5md_cash-register.png" />
+      <ion-item id="home-list-item-container5">
+        <div id="home-markdown5" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="assertive" on-click="goToSales()" id="home-list-item20">
+        <ion-icon name="checkmark-circle-outline" item-left></ion-icon>
+        Review
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="home-card25">
+    <ion-list>
+      <ion-item color="positive" id="home-list-item21">
+        <ion-icon name="return-left" item-left></ion-icon>
+        Goods Returned
+      </ion-item>
+      <img src="assets/img/0VKZblV9RVaG25v8fGTH_13-512.png" />
+      <ion-item id="home-list-item-container6">
+        <div id="home-markdown6" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="assertive" on-click="goToGoodsReturned()" id="home-list-item22">
+        <ion-icon name="checkmark-circle-outline" item-left></ion-icon>
+        Review
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="home-card26">
+    <ion-list>
+      <ion-item color="positive" id="home-list-item23">
+        <ion-icon name="stats" item-left></ion-icon>
+        Reports
+      </ion-item>
+      <img src="assets/img/ytjMGW1lS6eHqRZrb6hs_Graph-Magnifier-icon.png" />
+      <ion-item id="home-list-item-container7">
+        <div id="home-markdown7" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="assertive" on-click="goToReports()" id="home-list-item24">
+        <ion-icon name="checkmark-circle-outline" item-left></ion-icon>
+        Review
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

@@ -1,36 +1,37 @@
 <ion-header>
   <ion-navbar>
-
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       Signup
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page5">
-
+<ion-content padding id="page11">
+  <form id="signup-form2">
     <ion-list id="signup-list3">
+      <ion-item id="signup-input3">
+        <ion-label floating>
+          Name
+        </ion-label>
+        <ion-input type="text" placeholder=""></ion-input>
+      </ion-item>
       <ion-item id="signup-input4">
-        <ion-label>
+        <ion-label floating>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="" [(ngModel)]="email"></ion-input>
+        <ion-input type="email" placeholder=""></ion-input>
       </ion-item>
       <ion-item id="signup-input5">
-        <ion-label>
+        <ion-label floating>
           Password
         </ion-label>
-        <ion-input type="password" placeholder="" [(ngModel)]="password"></ion-input>
+        <ion-input type="text" placeholder=""></ion-input>
       </ion-item>
     </ion-list>
-    <ion-row>
-    <ion-col style="text-align:center">
-    <button  ion-button round outline
-    (click)="register(email, password)">
+    <button id="signup-button5" ion-button color="stable" block>
       Sign up
     </button>
-  </ion-col>
-  </ion-row>
-  <button  ion-button clear color="positive" block on-click="goToLogin()">
-    Log In
-  </button>
+  </form>
 </ion-content>

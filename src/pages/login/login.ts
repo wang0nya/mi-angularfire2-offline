@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
-import { SignupPage } from '../signup/signup';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { HomePage} from '../home/home';
+import { NavController } from 'ionic-angular';
 import { ResetPasswordPage } from '../reset-password/reset-password';
-
+import { SignupPage } from '../signup/signup';
 
 @Component({
   selector: 'page-login',
@@ -12,38 +9,13 @@ import { ResetPasswordPage } from '../reset-password/reset-password';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController,
-    loadingController:LoadingController,
-  public angularFireAuth: AngularFireAuth,
-private alertCtrl: AlertController) {
-  }
-
-
-  login(username, password) {
-
-    this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
-      .then((user) => {
-        if(user.emailVerified) {
-
-          // Redirect the user here
-          this.navCtrl.push(HomePage);
-          console.log('Welcome!');
-
-        } else {
-          // Tell the user to have a look at its mailbox
-          this.navCtrl.push(SignupPage)
-          console.log('error');
-        }
-      });
-
-  }
-
-  goToSignup(params){
-    if (!params) params = {};
-    this.navCtrl.push(SignupPage);
+  constructor(public navCtrl: NavController) {
   }
   goToResetPassword(params){
     if (!params) params = {};
     this.navCtrl.push(ResetPasswordPage);
+  }goToSignup(params){
+    if (!params) params = {};
+    this.navCtrl.push(SignupPage);
   }
 }
