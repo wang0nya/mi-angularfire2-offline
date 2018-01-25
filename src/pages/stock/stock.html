@@ -19,13 +19,13 @@
       <ion-item>
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>
-      <p>Quantity: {{product.quantity}} {{product.unit}}</p>
+      <p>Quantity: {{product.quantity-product.greturn}} {{product.unit}}</p>
       <!-- <p></p> -->
       <p>Price per unit: {{product.price}}</p>
       <p>Supplier: {{product.supplier}}</p>
 
       <h3 item-end>
-        Total Price: Ksh. {{product.quantity*product.price}}
+        Ksh. {{product.quantity*product.price}}
       </h3>
     </ion-item>
       <ion-item-options side="right">

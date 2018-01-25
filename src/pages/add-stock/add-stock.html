@@ -40,14 +40,29 @@
   </ion-item>
     <ion-item>
       <ion-label>Supplier</ion-label>
-      <ion-select [(ngModel)]="product.supplier" required="">
-        <ion-option value="1" >option 1</ion-option>
-        <ion-option value="2" >option 2</ion-option>
-        <ion-option value="3" >option 3</ion-option>
+      <ion-select [(ngModel)]="product.supplier" required="" *ngFor="let supplier of suppliers | async">
+        <ion-option value="{{ supplier.name }}" >{{ supplier.name }}</ion-option>
       </ion-select>
     </ion-item>
+    <br>
+    <div class="GRN" *ngIf="product.id">
+      <ion-item-divider color="light">Returning Goods</ion-item-divider>
+      <ion-item>
+      <ion-label>Returning</ion-label>
+      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="product.greturn" required="" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>GRN</ion-label>
+        <ion-input type="number" placeholder="5433543" [(ngModel)]="product.grn" required="" ></ion-input>
+      </ion-item>
+      <ion-item >
+        <ion-label>GR Status</ion-label>
+        <ion-toggle [(ngModel)]="product.gr" color="secondary"></ion-toggle>
+      </ion-item>
+    </div>
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.type,product.name,product.quantity,product.unit,product.price,product.supplier)">
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.type,product.name,product.quantity,
+    product.unit,product.price,product.supplier,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

@@ -15,7 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class ReportsPage {
   userId: any;
-
+date: any;
     public products: AfoListObservable<any[]>;
     constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
       public alertCtrl: AlertController, public afAuth: AngularFireAuth,

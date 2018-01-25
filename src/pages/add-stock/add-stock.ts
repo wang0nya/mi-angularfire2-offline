@@ -12,6 +12,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AddStockPage {
 userId: any;
 public products: AfoListObservable<any[]>;
+public suppliers: AfoListObservable<any[]>;
+
 product={id:'',
 date: '',
 type: '',
@@ -19,13 +21,18 @@ name: '',
 quantity: '',
 unit: '',
 price: '',
-supplier: ''};
+supplier: '',
+greturn: '',
+grn: '',
+gr: ''};
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth, public navCtrl: NavController,
    public params: NavParams) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
+    this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
+
     this.product.id = this.params.get('key');
     this.product.date = this.params.get('date');
     this.product.type = this.params.get('type');
@@ -34,11 +41,14 @@ supplier: ''};
     this.product.unit = this.params.get('unit');
     this.product.price = this.params.get('price');
     this.product.supplier = this.params.get('supplier');
+    this.product.greturn = this.params.get('greturn');
+    this.product.grn = this.params.get('grn');
+    this.product.gr = this.params.get('gr');
 
   });
   }
 
-addProduct(id,date,type,name,quantity,unit,price,supplier) {
+addProduct(id,date,type,name,quantity,unit,price,supplier,greturn,grn,gr) {
   if(id) {
     this.products.update(id, {
       date: date,
@@ -47,7 +57,11 @@ addProduct(id,date,type,name,quantity,unit,price,supplier) {
       quantity: quantity,
       unit: unit,
       price: price,
-      supplier: supplier
+      supplier: supplier,
+      greturn: greturn,
+      grn: grn,
+      gr: gr,
+
     }).then( newProduct => {
       this.navCtrl.pop();
     }, error => {
@@ -61,7 +75,10 @@ addProduct(id,date,type,name,quantity,unit,price,supplier) {
     quantity: quantity,
     unit: unit,
     price: price,
-    supplier: supplier
+    supplier: supplier,
+    greturn: '0',
+    grn: '0',
+    gr: 'false',
 
       }).then( newProduct => {
         this.navCtrl.pop();

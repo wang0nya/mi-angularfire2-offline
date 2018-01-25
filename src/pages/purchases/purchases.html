@@ -20,16 +20,14 @@
       <p>Supplier: {{product.supplier}}</p>
 
       <h3 item-end>
-        Total Price: Ksh. {{product.quantity*product.price}}
+        Ksh. {{product.quantity*product.price}}
       </h3>
     </ion-item>
       <ion-item-options side="right">
               <button ion-button color="primary" clear (click)="editProduct(product)">
                 <ion-icon name="create"></ion-icon>
               </button>
-              <button ion-button color="primary" clear (click)="grnProduct()">
-                <ion-icon name="log-out"></ion-icon>
-              </button>
+
               <button ion-button color="danger" clear (click)="removeProduct(product.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>
