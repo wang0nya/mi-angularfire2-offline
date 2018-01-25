@@ -25,11 +25,11 @@
 
     </ion-item>
       <ion-item-options side="right">
-              <button ion-button color="primary" clear (click)="editSupplier(supplierId)">
+              <button ion-button color="primary" clear (click)="editSupplier(supplier)">
                 <ion-icon name="create"></ion-icon>
               </button>
 
-              <button ion-button color="danger" clear (click)="removeSupplier(supplier)">
+              <button ion-button color="danger" clear (click)="removeS(supplier.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>

@@ -9,11 +9,11 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page6">
-  <div class = "row header">
-    <strong><div class = "col">Date</div></strong>
-    <strong><div class = "col">Type</div></strong>
-    <strong><div class = "col">Product</div></strong>
-    <strong><div class = "col">Price</div></strong>
+  <div class = "row">
+    <strong><div class = "col ">Date</div></strong>
+    <strong><div class = "col ">Type</div></strong>
+    <strong><div class = "col ">Product</div></strong>
+    <strong><div class = "col ">Price</div></strong>
 </div>
 <div class = "row" *ngFor="let product of products | async">
 <div class = "col">{{product.date}}</div>

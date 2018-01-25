@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the ResetPasswordPage page.
@@ -17,7 +18,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class ResetPasswordPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public angularFireAuth: AngularFireAuth) {
+  public angularFireAuth: AngularFireAuth, private toast: Toast) {
   }
 
   ionViewDidLoad() {
@@ -27,7 +28,20 @@ export class ResetPasswordPage {
 this.angularFireAuth.auth.sendPasswordResetEmail(email)
 .then(() => {
 console.log('email sent');
+this.toast.show(`Password reset link will be sent to your email.`, '5000', 'center').subscribe(
+  toast => {
+  console.log(toast);
+});
+this.navCtrl.pop();
 })
+.catch(e => {
+          console.log(e);
+          this.toast.show(e, '5000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
+        });
 }
 
 }

@@ -4,6 +4,7 @@ import { SignupPage } from '../signup/signup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage} from '../home/home';
 import { ResetPasswordPage } from '../reset-password/reset-password';
+import { Toast } from '@ionic-native/toast';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     loadingController:LoadingController,
   public angularFireAuth: AngularFireAuth,
-private alertCtrl: AlertController) {
+private alertCtrl: AlertController,private toast: Toast) {
   }
 
 
@@ -28,11 +29,20 @@ private alertCtrl: AlertController) {
           // Redirect the user here
           this.navCtrl.push(HomePage);
           console.log('Welcome!');
-
+          this.toast.show(`Welcome!`, '5000', 'center').subscribe(
+            toast => {
+            console.log(toast);
+          });
         } else {
           // Tell the user to have a look at its mailbox
-          this.navCtrl.push(SignupPage)
-          console.log('error');
+          .catch(e => {
+            console.log(e);
+            this.toast.show(e, '5000', 'center').subscribe(
+              toast => {
+                console.log(toast);
+              }
+            );
+          });
         }
       });
 

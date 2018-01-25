@@ -18,6 +18,7 @@ import { AddStockPage } from '../pages/add-stock/add-stock';
 import { EditProductPage } from '../pages/edit-product/edit-product';
 import { ReturnGoodsPage } from '../pages/return-goods/return-goods';
 import { RegisterSupplierPage } from '../pages/register-supplier/register-supplier';
+import { Toast } from '@ionic-native/toast';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -51,7 +52,7 @@ import { environment } from '../environments/environment';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage
-  ],
+      ],
   imports: [
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -83,7 +84,7 @@ import { environment } from '../environments/environment';
     StatusBar,
     SplashScreen,
     AngularFireAuth,
-
+Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
