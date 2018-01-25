@@ -23,6 +23,15 @@ import { RegisterSupplierPage } from '../pages/register-supplier/register-suppli
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireOfflineModule } from 'angularfire2-offline';
+
+import { environment } from '../environments/environment';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -44,6 +53,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterSupplierPage
   ],
   imports: [
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireOfflineModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -70,6 +82,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireAuth,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

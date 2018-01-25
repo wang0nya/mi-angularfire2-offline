@@ -16,6 +16,7 @@ import { MyDetailsPage } from '../pages/my-details/my-details';
 
 import { LoginPage } from '../pages/login/login';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -25,14 +26,22 @@ export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
     rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-  }
+    constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+      afAuth: AngularFireAuth) {
+        afAuth.authState.subscribe( user => {
+            if (user){
+              this.rootPage = HomePage;
+            } else {
+              this.rootPage = LoginPage;
+            }
+          });
+        platform.ready().then(() => {
+          // Okay, so the platform is ready and our plugins are available.
+          // Here you can do any higher level native things you might need.
+          statusBar.styleDefault();
+          splashScreen.hide();
+        });
+      }
   goToHome(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);

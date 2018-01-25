@@ -1,13 +1,50 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController,
+  ActionSheetController } from 'ionic-angular';
+import { AddStockPage } from '../add-stock/add-stock';
+import { EditProductPage } from '../edit-product/edit-product'
+import {
+  AfoListObservable,
+  AngularFireOfflineDatabase} from 'angularfire2-offline/database';
+
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-stock',
   templateUrl: 'stock.html'
 })
 export class StockPage {
+  userId: any;
 
-  constructor(public navCtrl: NavController) {
+    public products: AfoListObservable<any[]>;
+    constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
+      public alertCtrl: AlertController, public afAuth: AngularFireAuth,
+    public actionSheetCtrl: ActionSheetController) {
+        afAuth.authState.subscribe( user => {
+      if (user) { this.userId = user.uid }
+      this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
+    });
+    }
+
+    addProductPage() {
+    this.navCtrl.push(AddStockPage);
   }
-  
+
+  editProduct(product){
+    console.log(product);
+    this.navCtrl.push(AddStockPage, {
+      key: product.$key,
+      date: product.date,
+      type: product.type,
+      name: product.name,
+      quantity: product.quantity,
+      unit: product.unit,
+      price: product.price,
+      supplier: product.supplier
+    });
+  }
+
+  removeProduct(key: string) {
+    this.products.remove(key);
+  }
 }

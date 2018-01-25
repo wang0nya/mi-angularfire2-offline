@@ -1,38 +1,40 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
     <ion-title>
       Login
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page10">
-  <form id="login-form1">
+<ion-content padding id="page4">
+
     <ion-list id="login-list2">
       <ion-item id="login-input1">
-        <ion-label floating>
+        <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input type="email" [(ngModel)]="email"  placeholder=""></ion-input>
       </ion-item>
       <ion-item id="login-input2">
-        <ion-label floating>
+        <ion-label>
           Password
         </ion-label>
-        <ion-input type="password" placeholder="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="password"  placeholder=""></ion-input>
       </ion-item>
     </ion-list>
-    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-    <button id="login-button2" ion-button outline color="positive" block>
+    <div class="spacer" style="height:15px; text-align:center" id="login-spacer1"></div>
+    <ion-row>
+    <ion-col style="text-align:center">
+    <button  ion-button round outline (click)="login(email, password)">
       Log in
     </button>
-    <button id="login-button3" ion-button clear color="positive" block on-click="goToSignup()">
-      Or create an account
-    </button>
-    <button id="login-button4" ion-button clear color="positive" block on-click="goToResetPassword()">
+  </ion-col>
+  </ion-row>
+    <button  ion-button clear color="assertive" block on-click="goToResetPassword()">
       Forgot Password
     </button>
-  </form>
+    <button  ion-button clear color="positive" block on-click="goToSignup()">
+      Or create an account
+    </button>
+
 </ion-content>

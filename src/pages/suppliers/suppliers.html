@@ -7,10 +7,32 @@
       Suppliers
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="register()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page3"></ion-content>
+<ion-content padding id="page3">
+  <ion-list>
+    <ion-item-sliding *ngFor="let supplier of suppliers | async">
+      <ion-item>
+      <strong><h2>{{ supplier.name }}</h2></strong>
+      <p>Address: {{supplier.address}}</p>
+      <!-- <p></p> -->
+      <p>Phone: {{supplier.phone}}</p>
+      <p>Email: {{supplier.email}}</p>
+
+    </ion-item>
+      <ion-item-options side="right">
+              <button ion-button color="primary" clear (click)="editSupplier(supplierId)">
+                <ion-icon name="create"></ion-icon>
+              </button>
+
+              <button ion-button color="danger" clear (click)="removeSupplier(supplier)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+</ion-content>

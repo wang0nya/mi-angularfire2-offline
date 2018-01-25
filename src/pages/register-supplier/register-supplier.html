@@ -10,29 +10,24 @@
 </ion-header>
 <ion-content padding id="page14">
   <img src="assets/img/RIzOxZldR86JtX4CEB3N_purchase1.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;" />
-  <form id="registerSupplier-form4">
-    <ion-item id="registerSupplier-input13">
-      <ion-label></ion-label>
-      <ion-input type="date" placeholder="Date"></ion-input>
+
+    <ion-item>
+      <ion-label>Supplier Name</ion-label>
+      <ion-input type="text" placeholder="Supplier Name" [(ngModel)]="name" required="" ></ion-input>
     </ion-item>
-    <ion-item id="registerSupplier-input14">
-      <ion-label></ion-label>
-      <ion-input type="text" placeholder="Name"></ion-input>
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input type="text" placeholder="Address" [(ngModel)]="address" required="" ></ion-input>
     </ion-item>
-    <ion-item id="registerSupplier-input18">
-      <ion-label></ion-label>
-      <ion-input type="text" placeholder="Adddress"></ion-input>
+    <ion-item>
+      <ion-label>Phone #</ion-label>
+      <ion-input type="number" placeholder="Phone #" [(ngModel)]="phone" required="" ></ion-input>
     </ion-item>
-    <ion-item id="registerSupplier-input15">
-      <ion-label></ion-label>
-      <ion-input type="tel" placeholder="Phone #"></ion-input>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="email" required="" ></ion-input>
     </ion-item>
-    <ion-item id="registerSupplier-input16">
-      <ion-label></ion-label>
-      <ion-input type="email" placeholder="Email"></ion-input>
-    </ion-item>
-    <button id="registerSupplier-button7" ion-button clear color="balanced" block large>
+    <button id="registerSupplier-button7" ion-button clear color="balanced" block large (click)="addSupplier(name, address, phone, email)">
       <ion-icon name="add-circle"></ion-icon>
     </button>
-  </form>
 </ion-content>
