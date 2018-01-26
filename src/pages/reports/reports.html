@@ -9,7 +9,19 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page6">
-  <div class = "row">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let product of productList">
+      <h2> {{ product.name }} </h2>
+    </ion-item>
+  </ion-list>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let product of productList">
+      <h2> {{ product.date }} </h2>
+    </ion-item>
+  </ion-list>
+  <!-- <div class = "row">
     <strong><div class = "col ">Date</div></strong>
     <strong><div class = "col ">Type</div></strong>
     <strong><div class = "col ">Product</div></strong>
@@ -20,5 +32,5 @@
 <div class = "col">{{product.type}}</div>
 <div class = "col">{{ product.name }}</div>
 <div class = "col">{{product.quantity*product.price}}</div>
-</div>
+</div> -->
 </ion-content>
