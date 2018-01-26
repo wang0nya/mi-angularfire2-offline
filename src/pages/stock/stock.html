@@ -10,6 +10,9 @@
       <button ion-button icon-only on-click="addProductPage()">
         <ion-icon name="add"></ion-icon>
       </button>
+      <button ion-button icon-only on-click="filter()">
+        <ion-icon name="search"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -32,7 +35,7 @@
               <button ion-button color="primary" clear (click)="editProduct(product)">
                 <ion-icon name="create"></ion-icon>
               </button>
-            
+
               <button ion-button color="danger" clear (click)="presentConfirm(product.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>

@@ -69,6 +69,12 @@ public productRef:firebase.database.Reference;
           }
           return false;
         }
+        if(v.date && q) {
+          if (v.date.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
       });
 
       console.log(q, this.productList.length);
