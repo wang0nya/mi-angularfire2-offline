@@ -10,9 +10,9 @@
 </ion-header>
 <ion-content padding id="page5">
   <ion-list>
-    <ion-item-sliding *ngFor="let product of filteredGRs | async">
-      <ion-item>
-      <strong><h2>{{ product.name }}</h2></strong>
+    <ion-item-sliding *ngFor="let product of filteredGRs | async" class="item item-trns text-center">
+      <ion-item class="item item-trns text-center">
+      <strong><p>{{ product.name }}</p></strong>
       <p>Date: {{product.date}}</p>
       <p>Quantity: {{product.quantity}} {{product.unit}}</p>
       <!-- <p></p> -->

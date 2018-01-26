@@ -44,7 +44,34 @@ export class StockPage {
     });
   }
 
-  removeProduct(key: string) {
-    this.products.remove(key);
-  }
+  presentConfirm(key: string) {
+  let alert = this.alertCtrl.create({
+    title: 'Confirm delete',
+    message: 'Are you sure?',
+    cssClass: 'alertcss',
+
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Delete',
+        cssClass: 'buttoncss',
+
+        handler: () => {
+
+            this.products.remove(key);
+
+          console.log('Buy clicked');
+        }
+      }
+    ]
+  });
+  alert.present();
+}
 }

@@ -15,7 +15,7 @@
 </ion-header>
 <ion-content padding id="page3">
   <ion-list>
-    <ion-item-sliding *ngFor="let supplier of suppliers | async">
+    <ion-item-sliding *ngFor="let supplier of suppliers | async" class="item item-trns text-center">
       <ion-item>
       <strong><h2>{{ supplier.name }}</h2></strong>
       <p>Address: {{supplier.address}}</p>
@@ -29,7 +29,7 @@
                 <ion-icon name="create"></ion-icon>
               </button>
 
-              <button ion-button color="danger" clear (click)="removeS(supplier.$key)">
+              <button ion-button color="danger" clear (click)="presentConfirm(supplier.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>

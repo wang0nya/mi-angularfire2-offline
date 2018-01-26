@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,AlertController } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
@@ -15,7 +15,8 @@ export class SuppliersPage {
   public suppliers: AfoListObservable<any[]>;
 
     constructor(private afoDatabase: AngularFireOfflineDatabase,
-       public afAuth: AngularFireAuth, public navCtrl: NavController) {
+       public afAuth: AngularFireAuth, public navCtrl: NavController,
+     public alertCtrl: AlertController) {
          afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
       this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
@@ -37,7 +38,34 @@ editSupplier(supplier){
 
   });
 }
-removeS(key: string){
-  this.suppliers.remove(key);
+presentConfirm(key: string) {
+let alert = this.alertCtrl.create({
+  title: 'Confirm delete',
+  message: 'Are you sure?',
+  cssClass: 'alertcss',
+
+  buttons: [
+    {
+      text: 'Cancel',
+      role: 'cancel',
+
+      handler: () => {
+        console.log('Cancel clicked');
+      }
+    },
+    {
+      text: 'Delete',
+      cssClass: 'buttoncss',
+
+      handler: () => {
+
+          this.suppliers.remove(key);
+
+        console.log('Buy clicked');
+      }
+    }
+  ]
+});
+alert.present();
 }
 }

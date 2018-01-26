@@ -19,14 +19,14 @@ private toast: Toast) {
     .then((res) => {
       this.sendEmailVerification()
     })
-    .catch(e => {
-            console.log(e);
-            this.toast.show(e, '5000', 'center').subscribe(
-              toast => {
-                console.log(toast);
-              }
-            );
-          });
+    // .catch(e => {
+    //         console.log(e);
+    //         this.toast.show(e, '5000', 'center').subscribe(
+    //           toast => {
+    //             console.log(toast);
+    //           }
+    //         );
+    //       });
   }
   sendEmailVerification() {
     this.angularFireAuth.authState.subscribe(user => {

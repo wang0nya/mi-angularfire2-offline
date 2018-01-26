@@ -35,14 +35,14 @@ private alertCtrl: AlertController,private toast: Toast) {
           });
         } else {
           // Tell the user to have a look at its mailbox
-          .catch(e => {
-            console.log(e);
-            this.toast.show(e, '5000', 'center').subscribe(
-              toast => {
-                console.log(toast);
-              }
-            );
-          });
+          // catch(e => {
+          //   console.log(e);
+          //   this.toast.show(e, '5000', 'center').subscribe(
+          //     toast => {
+          //       console.log(toast);
+          //     }
+          //   );
+          // });
         }
       });
 

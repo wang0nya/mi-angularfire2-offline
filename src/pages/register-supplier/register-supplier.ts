@@ -5,6 +5,8 @@ import {
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Toast } from '@ionic-native/toast';
+
 @Component({
   selector: 'page-register-supplier',
   templateUrl: 'register-supplier.html'
@@ -19,7 +21,7 @@ export class RegisterSupplierPage {
   email: ''};
     constructor(private afoDatabase: AngularFireOfflineDatabase,
        public afAuth: AngularFireAuth, public navCtrl: NavController,
-     public params: NavParams) {
+     public params: NavParams,private toast: Toast) {
          afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
       this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
@@ -41,9 +43,19 @@ export class RegisterSupplierPage {
         email: email,
 
       }).then( newSupplier => {
-        this.navCtrl.pop();
-      }, error => {
-        console.log(error);
+        this.toast.show('Supplier updated', '5000', 'center').subscribe(
+          toast => {
+            this.navCtrl.pop();
+          }
+        );
+      })
+      .catch(e => {
+        console.log(e);
+        this.toast.show(e, '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
       });
     } else {
     this.suppliers.push({
@@ -54,9 +66,19 @@ export class RegisterSupplierPage {
       email: email,
 
         }).then( newSupplier => {
-          this.navCtrl.pop();
-        }, error => {
-          console.log(error);
+          this.toast.show('Supplier registered', '5000', 'center').subscribe(
+            toast => {
+              this.navCtrl.pop();
+            }
+          );
+        })
+        .catch(e => {
+          console.log(e);
+          this.toast.show(e, '5000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
         });
       }
 }

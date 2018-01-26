@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content padding id="page9">
   <ion-list>
-    <ion-item-sliding *ngFor="let product of filteredSales | async">
+    <ion-item-sliding *ngFor="let product of filteredSales | async" class="item item-trns text-center">
       <ion-item>
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>
@@ -27,10 +27,8 @@
               <button ion-button color="primary" clear (click)="editProduct(product)">
                 <ion-icon name="create"></ion-icon>
               </button>
-              <button ion-button color="primary" clear (click)="grnProduct()">
-                <ion-icon name="log-out"></ion-icon>
-              </button>
-              <button ion-button color="danger" clear (click)="removeProduct(product.$key)">
+
+              <button ion-button color="danger" clear (click)="presentConfirm(product.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>

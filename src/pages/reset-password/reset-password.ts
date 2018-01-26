@@ -34,14 +34,14 @@ this.toast.show(`Password reset link will be sent to your email.`, '5000', 'cent
 });
 this.navCtrl.pop();
 })
-.catch(e => {
-          console.log(e);
-          this.toast.show(e, '5000', 'center').subscribe(
-            toast => {
-              console.log(toast);
-            }
-          );
-        });
+// .catch(e => {
+//           console.log(e);
+//           this.toast.show(e, '5000', 'center').subscribe(
+//             toast => {
+//               console.log(toast);
+//             }
+//           );
+//         });
 }
 
 }
