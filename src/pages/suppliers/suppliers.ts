@@ -6,6 +6,8 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterSupplierPage} from '../register-supplier/register-supplier'
+import {BrowseSuppliersPage} from '../browse-suppliers/browse-suppliers'
+
 @Component({
   selector: 'page-suppliers',
   templateUrl: 'suppliers.html'
@@ -67,5 +69,8 @@ let alert = this.alertCtrl.create({
   ]
 });
 alert.present();
+}
+browse(){
+  this.navCtrl.push(BrowseSuppliersPage)
 }
 }

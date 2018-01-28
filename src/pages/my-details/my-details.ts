@@ -9,5 +9,5 @@ export class MyDetailsPage {
 
   constructor(public navCtrl: NavController) {
   }
-  
+
 }

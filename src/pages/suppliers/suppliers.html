@@ -14,6 +14,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page3">
+  <button ion-button (click)="browse()">Browse Suppliers
+  </button>
   <ion-list>
     <ion-item-sliding *ngFor="let supplier of suppliers | async" class="item item-trns text-center">
       <ion-item>

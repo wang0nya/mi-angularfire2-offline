@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, LoadingController } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { StockPage } from '../pages/stock/stock';
@@ -19,6 +19,7 @@ import { EditProductPage } from '../pages/edit-product/edit-product';
 import { ReturnGoodsPage } from '../pages/return-goods/return-goods';
 import { RegisterSupplierPage } from '../pages/register-supplier/register-supplier';
 import { Toast } from '@ionic-native/toast';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,9 +30,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
-
+import {BrowseSuppliersPage} from '../pages/browse-suppliers/browse-suppliers'
 import { environment } from '../environments/environment';
-
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { environment } from '../environments/environment';
     AddStockPage,
     EditProductPage,
     ReturnGoodsPage,
-    RegisterSupplierPage
+    RegisterSupplierPage,
+    BrowseSuppliersPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -78,13 +79,16 @@ import { environment } from '../environments/environment';
     AddStockPage,
     EditProductPage,
     ReturnGoodsPage,
-    RegisterSupplierPage
+    RegisterSupplierPage,
+    BrowseSuppliersPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireAuth,
-Toast,
+    EmailComposer,
+    Toast,
+    LoadingController,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
