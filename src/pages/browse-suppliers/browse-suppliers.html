@@ -24,15 +24,21 @@
             <img src="{{supplier.img}}" />
             <ion-item id="home-list-item-container2" class="item item-trns text-center">
               <div id="home-markdown2" class="show-list-numbers-and-dots">
-                <p style="margin-top:0px;color:#000000;">
-                  Your Inventory.
-
+                <p style="margin-top:0px;color:white;">
+                  {{supplier.desc}}
                 </p>
               </div>
             </ion-item>
-            <ion-item  on-click="goToStock()" id="home-list-item13" class="item item-trns text-center">
+<div class="">
+  <ion-select [(ngModel)]="name" required="">
+    <ion-option value="null" >Not Registered</ion-option>
+    <ion-option value="{{supplier.name}}" >Register</ion-option>
+  </ion-select>
+</div>
+            <ion-item  on-click="register(name)" id="home-list-item13" class="item item-trns text-center">
               <ion-icon name="add" item-left color="danger"></ion-icon>
               Add
+
             </ion-item>
           </ion-list>
         </ion-card>

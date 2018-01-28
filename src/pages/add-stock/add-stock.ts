@@ -18,7 +18,6 @@ public suppliers: AfoListObservable<any[]>;
 
 product={id:'',
 date: '',
-type: '',
 name: '',
 quantity: '',
 unit: '',
@@ -37,7 +36,6 @@ gr: ''};
 
     this.product.id = this.params.get('key');
     this.product.date = this.params.get('date');
-    this.product.type = this.params.get('type');
     this.product.name = this.params.get('name');
     this.product.quantity = this.params.get('quantity');
     this.product.unit = this.params.get('unit');
@@ -50,11 +48,10 @@ gr: ''};
   });
   }
 
-addProduct(id,date,type,name,quantity,unit,price,supplier,greturn,grn,gr) {
+addProduct(id,date,name,quantity,unit,price,supplier,greturn,grn,gr) {
   if(id) {
     this.products.update(id, {
       date: date,
-      type: type,
       name: name,
       quantity: quantity,
       unit: unit,
@@ -83,7 +80,6 @@ addProduct(id,date,type,name,quantity,unit,price,supplier,greturn,grn,gr) {
   } else {
   this.products.push({
     date: date,
-    type: type,
     name: name,
     quantity: quantity,
     unit: unit,

@@ -20,7 +20,7 @@ import { ReturnGoodsPage } from '../pages/return-goods/return-goods';
 import { RegisterSupplierPage } from '../pages/register-supplier/register-supplier';
 import { Toast } from '@ionic-native/toast';
 import { EmailComposer } from '@ionic-native/email-composer';
-
+import { CategoryPage} from '../pages/category/category';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,6 +32,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import {BrowseSuppliersPage} from '../pages/browse-suppliers/browse-suppliers'
 import { environment } from '../environments/environment';
+
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { environment } from '../environments/environment';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage,
-    BrowseSuppliersPage
+    BrowseSuppliersPage,
+    CategoryPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -80,7 +83,8 @@ import { environment } from '../environments/environment';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage,
-    BrowseSuppliersPage
+    BrowseSuppliersPage,
+    CategoryPage
   ],
   providers: [
     StatusBar,
@@ -89,6 +93,7 @@ import { environment } from '../environments/environment';
     EmailComposer,
     Toast,
     LoadingController,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

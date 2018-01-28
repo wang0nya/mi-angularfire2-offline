@@ -9,9 +9,6 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-// email
-import { EmailComposer } from '@ionic-native/email-composer';
-
 @Component({
   selector: 'page-stock',
   templateUrl: 'stock.html'
@@ -22,7 +19,7 @@ export class StockPage {
     public products: AfoListObservable<any[]>;
     constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
       public alertCtrl: AlertController, public afAuth: AngularFireAuth,
-    public actionSheetCtrl: ActionSheetController,private emailComposer: EmailComposer) {
+    public actionSheetCtrl: ActionSheetController) {
         afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
       this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
@@ -81,23 +78,4 @@ export class StockPage {
   });
   alert.present();
 }
-
-// email
-send(){
-let email = {
-  to: 'kwangonya@gmail.com',
-  cc: 'erika@mustermann.de',
-  bcc: ['john@doe.com', 'jane@doe.com'],
-  // attachments: [
-  //   'file://img/logo.png',
-  //   'res://icon.png',
-  //   'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
-  //   'file://README.pdf'
-  // ],
-  subject: 'Cordova Icons',
-  body: 'How are you? Nice greetings from Leipzig',
-  isHtml: true
-};
-this.emailComposer.open(email);
-  }
 }

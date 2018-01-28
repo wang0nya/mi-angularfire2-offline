@@ -15,13 +15,13 @@
       <ion-label>Date</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.date" required=""></ion-datetime>
     </ion-item>
-      <ion-item>
+      <!-- <ion-item>
       <ion-label>Type</ion-label>
       <ion-select [(ngModel)]="product.type" required="">
         <ion-option value="purchase">Purchase</ion-option>
         <ion-option value="sale">Sale</ion-option>
       </ion-select>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
       <ion-label>Product Name</ion-label>
       <ion-input type="text" placeholder="Product Name" [(ngModel)]="product.name" required="" ></ion-input>
@@ -61,7 +61,7 @@
       </ion-item>
     </div>
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.type,product.name,product.quantity,
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,product.quantity,
     product.unit,product.price,product.supplier,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>

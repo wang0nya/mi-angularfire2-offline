@@ -10,59 +10,53 @@
 </ion-header>
 <ion-content padding id="page13">
   <img src="assets/img/oqLzzWYmSOWOFa66UxpI_boxes.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;" />
-  <input type="hidden" [(ngModel)]="product.id" />
+  <input type="hidden" [(ngModel)]="purchase.id" />
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.date" required=""></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="purchase.date" required=""></ion-datetime>
     </ion-item>
-      <ion-item>
-      <ion-label>Type</ion-label>
-      <ion-select [(ngModel)]="product.type" required="">
-        <ion-option value="purchase">Purchase</ion-option>
-        <ion-option value="sale">Sale</ion-option>
-      </ion-select>
-    </ion-item>
+
     <ion-item>
       <ion-label>Product Name</ion-label>
-      <ion-input type="text" placeholder="Product Name" [(ngModel)]="product.name" required="" ></ion-input>
+      <ion-input type="text" placeholder="Product Name" [(ngModel)]="purchase.name" required="" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Quantity Bought</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="product.quantity" required="" ></ion-input>
+      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="purchase.quantity" required="" ></ion-input>
     </ion-item>
     <ion-item>
     <ion-label>Unit of Measure</ion-label>
-    <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="product.unit" required="" ></ion-input>
+    <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="purchase.unit" required="" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Price per unit</ion-label>
-    <ion-input type="number" placeholder="Unit Price" [(ngModel)]="product.price" required="" ></ion-input>
+    <ion-input type="number" placeholder="Unit Price" [(ngModel)]="purchase.price" required="" ></ion-input>
   </ion-item>
     <ion-item >
       <ion-label>Supplier</ion-label>
-      <ion-select [(ngModel)]="product.supplier" required="" >
+      <ion-select [(ngModel)]="purchase.supplier" required="" >
         <ion-option value="{{ supplier.name }} " *ngFor="let supplier of suppliers | async" >{{ supplier.name }}</ion-option>
       </ion-select>
     </ion-item>
     <br>
-    <div class="GRN" *ngIf="product.id">
+    <div class="GRN" *ngIf="purchase.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label>Returning</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="product.greturn" required="" ></ion-input>
+      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="purchase.greturn" required="" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>GRN</ion-label>
-        <ion-input type="number" placeholder="5433543" [(ngModel)]="product.grn" required="" ></ion-input>
+        <ion-input type="number" placeholder="5433543" [(ngModel)]="purchase.grn" required="" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-label>GR Status</ion-label>
-        <ion-toggle [(ngModel)]="product.gr" color="secondary"></ion-toggle>
+        <ion-toggle [(ngModel)]="purchase.gr" color="secondary"></ion-toggle>
       </ion-item>
     </div>
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.type,product.name,product.quantity,
-    product.unit,product.price,product.supplier,product.greturn,product.grn,product.gr)">
-      <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addPurchase(purchase.id,purchase.date,purchase.name,purchase.quantity,
+    purchase.unit,purchase.price,purchase.supplier,purchase.greturn,purchase.grn,purchase.gr)">
+      <span *ngIf="purchase.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!purchase.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

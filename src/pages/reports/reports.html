@@ -4,12 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Reports
-    </ion-title>
+Filter    </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page6">
-  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter by date"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let product of productList">
       <strong><h2>{{ product.name }}</h2></strong>

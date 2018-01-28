@@ -14,8 +14,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page3">
-  <button ion-button (click)="browse()">Browse Suppliers
-  </button>
+  <!-- <button ion-button (click)="browse()">Browse Suppliers
+  </button> -->
   <ion-list>
     <ion-item-sliding *ngFor="let supplier of suppliers | async" class="item item-trns text-center">
       <ion-item>
@@ -30,7 +30,12 @@
               <button ion-button color="primary" clear (click)="editSupplier(supplier)">
                 <ion-icon name="create"></ion-icon>
               </button>
-
+              <button ion-button color="light" clear (click)="send(supplier)">
+                <ion-icon name="mail"></ion-icon>
+              </button>
+              <button ion-button color="light" clear (click)="launchDialer(supplier)">
+                <ion-icon name="call"></ion-icon>
+              </button>
               <button ion-button color="danger" clear (click)="presentConfirm(supplier.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>

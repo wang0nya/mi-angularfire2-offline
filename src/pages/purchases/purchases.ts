@@ -7,6 +7,7 @@ import {
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { EditProductPage } from '../edit-product/edit-product';
 
 @Component({
   selector: 'page-purchases',
@@ -15,35 +16,35 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class PurchasesPage {
   userId: any;
 
-  public products: AfoListObservable<any[]>;
-  filteredPurchases: AfoListObservable<any[]>;
+  public purchases: AfoListObservable<any[]>;
+  // filteredPurchases: AfoListObservable<any[]>;
   constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
     public alertCtrl: AlertController, public afAuth: AngularFireAuth,
   public actionSheetCtrl: ActionSheetController) {
       afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
-    this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
+    this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
 
-    this.filteredPurchases = this.afoDatabase.list(`/userProfile/${this.userId}/products`, {
-      query: {
-        orderByChild: 'type',
-        equalTo: 'purchase'
-      }
-    });
+    // this.filteredPurchases = this.afoDatabase.list(`/userProfile/${this.userId}/products`, {
+    //   query: {
+    //     orderByChild: 'type',
+    //     equalTo: 'purchase'
+    //   }
+    // });
 
   });
   }
-  editProduct(product){
-    console.log(product);
-    this.navCtrl.push(AddStockPage, {
-      key: product.$key,
-      date: product.date,
-      type: product.type,
-      name: product.name,
-      quantity: product.quantity,
-      unit: product.unit,
-      price: product.price,
-      supplier: product.supplier
+  editProduct(purchase){
+    console.log(purchase);
+    this.navCtrl.push(EditProductPage, {
+      key: purchase.$key,
+      date: purchase.date,
+      type: purchase.type,
+      name: purchase.name,
+      quantity: purchase.quantity,
+      unit: purchase.unit,
+      price: purchase.price,
+      supplier: purchase.supplier
     });
   }
 
@@ -68,7 +69,7 @@ export class PurchasesPage {
 
         handler: () => {
 
-            this.products.remove(key);
+            this.purchases.remove(key);
 
           console.log('Buy clicked');
         }
@@ -76,5 +77,8 @@ export class PurchasesPage {
     ]
   });
   alert.present();
+}
+addPurchase(){
+  this.navCtrl.push(EditProductPage);
 }
 }

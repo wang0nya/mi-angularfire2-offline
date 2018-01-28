@@ -11,16 +11,13 @@
         <ion-icon name="add"></ion-icon>
       </button>
       <button ion-button icon-only on-click="filter()">
-        <ion-icon name="search"></ion-icon>
+        <ion-icon name="funnel"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page2">
   <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center"></ion-searchbar>
-  <div text-center style="margin-top: 5cm">
-                        <button ion-button (click)="send()">Send-Email</button>
-                   </div>
   <ion-list>
     <ion-item-sliding *ngFor="let product of products | async" class="item item-trns text-center">
       <ion-item>

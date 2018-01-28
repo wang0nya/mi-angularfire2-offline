@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {BrowseSuppliersPage} from '../browse-suppliers/browse-suppliers'
 
 /**
  * Generated class for the CategoryPage page.
@@ -20,5 +21,7 @@ export class CategoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoryPage');
   }
-
+  all(){
+    this.navCtrl.push(BrowseSuppliersPage)
+  }
 }

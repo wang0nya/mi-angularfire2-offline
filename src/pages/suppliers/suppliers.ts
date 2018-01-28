@@ -6,7 +6,12 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterSupplierPage} from '../register-supplier/register-supplier'
-import {BrowseSuppliersPage} from '../browse-suppliers/browse-suppliers'
+
+// email
+import { EmailComposer } from '@ionic-native/email-composer';
+
+// Phone
+import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-suppliers',
@@ -18,7 +23,8 @@ export class SuppliersPage {
 
     constructor(private afoDatabase: AngularFireOfflineDatabase,
        public afAuth: AngularFireAuth, public navCtrl: NavController,
-     public alertCtrl: AlertController) {
+     public alertCtrl: AlertController,private emailComposer: EmailComposer,
+   private callNumber: CallNumber) {
          afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
       this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
@@ -70,7 +76,33 @@ let alert = this.alertCtrl.create({
 });
 alert.present();
 }
-browse(){
-  this.navCtrl.push(BrowseSuppliersPage)
+// browse(){
+//   this.navCtrl.push(CategoryPage)
+// }
+
+// email
+send(supplier){
+let email = {
+  to: supplier.email,
+  // cc: 'erika@mustermann.de',
+  // bcc: ['john@doe.com', 'jane@doe.com'],
+  // attachments: [
+  //   'file://img/logo.png',
+  //   'res://icon.png',
+  //   'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+  //   'file://README.pdf'
+  // ],
+  subject: 'Supply Request',
+  body: 'How are you? Kindly requesting the following goods:',
+  isHtml: true
+};
+this.emailComposer.open(email);
+  }
+
+  // Phone
+  launchDialer(supplier){
+        this.callNumber.callNumber(supplier.phone, true)
+        .then(() => console.log('Launched dialer!'))
+        .catch(() => console.log('Error launching dialer'));
 }
 }

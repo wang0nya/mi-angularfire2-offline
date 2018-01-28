@@ -63,12 +63,6 @@ public productRef:firebase.database.Reference;
       }
 
       this.productList = this.productList.filter((v) => {
-        if(v.name && q) {
-          if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-            return true;
-          }
-          return false;
-        }
         if(v.date && q) {
           if (v.date.toLowerCase().indexOf(q.toLowerCase()) > -1) {
             return true;
