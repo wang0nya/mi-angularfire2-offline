@@ -15,6 +15,8 @@ export class EditProductPage {
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
+  public products: AfoListObservable<any[]>;
+
   purchase={id:'',
   date: '',
   name: '',
@@ -32,6 +34,8 @@ export class EditProductPage {
     if (user) { this.userId = user.uid }
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
     this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
+    this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
+
     this.purchase.id = this.params.get('key');
     this.purchase.date = this.params.get('date');
     this.purchase.name = this.params.get('name');

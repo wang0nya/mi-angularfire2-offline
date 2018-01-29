@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController,
   ActionSheetController } from 'ionic-angular';
 import { AddStockPage } from '../add-stock/add-stock';
-import { EditProductPage } from '../edit-product/edit-product'
+import { ReturnGoodsPage } from '../return-goods/return-goods';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
@@ -17,20 +17,14 @@ export class SalesPage {
   userId: any;
 
   public products: AfoListObservable<any[]>;
-  filteredSales: AfoListObservable<any[]>;
+  public sales: AfoListObservable<any[]>;
   constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
     public alertCtrl: AlertController, public afAuth: AngularFireAuth,
   public actionSheetCtrl: ActionSheetController) {
       afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
-
-    this.filteredSales = this.afoDatabase.list(`/userProfile/${this.userId}/products`, {
-      query: {
-        orderByChild: 'type',
-        equalTo: 'sale'
-      }
-    });
+    this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
 
   });
   }
@@ -39,7 +33,6 @@ export class SalesPage {
     this.navCtrl.push(AddStockPage, {
       key: product.$key,
       date: product.date,
-      type: product.type,
       name: product.name,
       quantity: product.quantity,
       unit: product.unit,
@@ -68,7 +61,7 @@ export class SalesPage {
 
         handler: () => {
 
-            this.products.remove(key);
+            this.sales.remove(key);
 
           console.log('Buy clicked');
         }
@@ -76,5 +69,8 @@ export class SalesPage {
     ]
   });
   alert.present();
+}
+addSale(){
+  this.navCtrl.push(ReturnGoodsPage);
 }
 }

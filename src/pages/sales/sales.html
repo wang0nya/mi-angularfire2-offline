@@ -6,29 +6,34 @@
     <ion-title>
       Sales
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only on-click="addSale()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page9">
   <ion-list>
-    <ion-item-sliding *ngFor="let product of filteredSales | async" class="item item-trns text-center">
+    <ion-item-sliding *ngFor="let sale of sales | async" class="item item-trns text-center">
       <ion-item>
-      <strong><h2>{{ product.name }}</h2></strong>
-      <p>Date: {{product.date}}</p>
-      <p>Quantity: {{product.quantity}} {{product.unit}}</p>
+      <strong><h2>{{ sale.name }}</h2></strong>
+      <p>Date: {{sale.date}}</p>
+      <p>Quantity: {{sale.quantity}} {{sale.unit}}</p>
       <!-- <p></p> -->
-      <p>Price per unit: {{product.price}}</p>
-      <p>Supplier: {{product.supplier}}</p>
+      <p>Price per unit: {{sale.price}}</p>
+      <p>Supplier: {{sale.supplier}}</p>
 
       <h3 item-end>
-        Total Price: Ksh. {{product.quantity*product.price}}
+        Total Price: Ksh. {{sale.quantity*sale.price}}
       </h3>
     </ion-item>
       <ion-item-options side="right">
-              <button ion-button color="primary" clear (click)="editProduct(product)">
+              <button ion-button color="primary" clear (click)="editProduct(sale)">
                 <ion-icon name="create"></ion-icon>
               </button>
 
-              <button ion-button color="danger" clear (click)="presentConfirm(product.$key)">
+              <button ion-button color="danger" clear (click)="presentConfirm(sale.$key)">
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>

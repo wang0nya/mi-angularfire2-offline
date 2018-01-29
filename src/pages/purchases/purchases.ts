@@ -39,7 +39,6 @@ export class PurchasesPage {
     this.navCtrl.push(EditProductPage, {
       key: purchase.$key,
       date: purchase.date,
-      type: purchase.type,
       name: purchase.name,
       quantity: purchase.quantity,
       unit: purchase.unit,
