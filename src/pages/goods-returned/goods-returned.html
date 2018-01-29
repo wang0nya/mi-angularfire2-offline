@@ -12,7 +12,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let product of filteredGRs | async" class="item item-trns text-center">
       <ion-item >
-      <strong><p>{{ product.name }}</p></strong>
+      <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
       <p>Date: {{product.date}}</p>
       <p>Quantity: {{product.quantity}} {{product.unit}}</p>
       <!-- <p></p> -->

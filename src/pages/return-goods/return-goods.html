@@ -45,16 +45,18 @@
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label>Returning</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="sale.greturn" required="" ></ion-input>
+      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="sale.greturn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>GRN</ion-label>
-        <ion-input type="number" placeholder="5433543" [(ngModel)]="sale.grn" required="" ></ion-input>
+        <ion-input type="number" placeholder="5433543" [(ngModel)]="sale.grn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-label>GR Status</ion-label>
-        <ion-toggle [(ngModel)]="sale.gr" color="secondary"></ion-toggle>
-      </ion-item>
+        <ion-select [(ngModel)]="sale.gr" interface="popover">
+          <ion-option value="true">true</ion-option>
+          <ion-option value="false">false</ion-option>
+        </ion-select>      </ion-item>
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(sale.id,sale.date,sale.name,sale.quantity,

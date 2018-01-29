@@ -24,10 +24,10 @@ export class GoodsReturnedPage {
     if (user) { this.userId = user.uid }
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
-    this.filteredGRs = this.afoDatabase.list(`/userProfile/${this.userId}/products`, {
+    this.filteredGRs = this.afoDatabase.list(`/userProfile/${this.userId}/purchases`, {
       query: {
         orderByChild: 'gr',
-        equalTo: true
+        equalTo: "true"
       }
     });
 

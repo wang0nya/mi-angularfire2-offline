@@ -45,15 +45,18 @@
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label>Returning</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="purchase.greturn" required="false"></ion-input>
+      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="purchase.greturn" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>GRN</ion-label>
-        <ion-input type="number" placeholder="5433543" [(ngModel)]="purchase.grn" required="false"></ion-input>
+        <ion-input type="number" placeholder="5433543" [(ngModel)]="purchase.grn" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-label>GR Status</ion-label>
-        <ion-toggle [(ngModel)]="purchase.gr" color="secondary" required="false"></ion-toggle>
+        <ion-select [(ngModel)]="purchase.gr" interface="popover">
+          <ion-option value="true">true</ion-option>
+          <ion-option value="false">false</ion-option>
+        </ion-select>
       </ion-item>
     </div>
 

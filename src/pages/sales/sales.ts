@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController,
   ActionSheetController } from 'ionic-angular';
-import { AddStockPage } from '../add-stock/add-stock';
 import { ReturnGoodsPage } from '../return-goods/return-goods';
 import {
   AfoListObservable,
@@ -16,28 +15,26 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class SalesPage {
   userId: any;
 
-  public products: AfoListObservable<any[]>;
   public sales: AfoListObservable<any[]>;
   constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
     public alertCtrl: AlertController, public afAuth: AngularFireAuth,
   public actionSheetCtrl: ActionSheetController) {
       afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
-    this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
     this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
 
   });
   }
-  editProduct(product){
-    console.log(product);
-    this.navCtrl.push(AddStockPage, {
-      key: product.$key,
-      date: product.date,
-      name: product.name,
-      quantity: product.quantity,
-      unit: product.unit,
-      price: product.price,
-      supplier: product.supplier
+  editProduct(sale){
+    console.log(sale);
+    this.navCtrl.push(ReturnGoodsPage, {
+      key: sale.$key,
+      date: sale.date,
+      name: sale.name,
+      quantity: sale.quantity,
+      unit: sale.unit,
+      price: sale.price,
+      supplier: sale.supplier
     });
   }
   presentConfirm(key: string) {

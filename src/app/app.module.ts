@@ -20,7 +20,6 @@ import { ReturnGoodsPage } from '../pages/return-goods/return-goods';
 import { RegisterSupplierPage } from '../pages/register-supplier/register-supplier';
 import { Toast } from '@ionic-native/toast';
 import { EmailComposer } from '@ionic-native/email-composer';
-import { CategoryPage} from '../pages/category/category';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +33,6 @@ import {BrowseSuppliersPage} from '../pages/browse-suppliers/browse-suppliers'
 import { environment } from '../environments/environment';
 
 import { CallNumber } from '@ionic-native/call-number';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -54,8 +52,7 @@ import { CallNumber } from '@ionic-native/call-number';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage,
-    BrowseSuppliersPage,
-    CategoryPage
+    BrowseSuppliersPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -83,8 +80,7 @@ import { CallNumber } from '@ionic-native/call-number';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage,
-    BrowseSuppliersPage,
-    CategoryPage
+    BrowseSuppliersPage
   ],
   providers: [
     StatusBar,
