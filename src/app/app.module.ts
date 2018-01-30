@@ -9,7 +9,6 @@ import { PurchasesPage } from '../pages/purchases/purchases';
 import { SalesPage } from '../pages/sales/sales';
 import { GoodsReturnedPage } from '../pages/goods-returned/goods-returned';
 import { ReportsPage } from '../pages/reports/reports';
-import { MyDetailsPage } from '../pages/my-details/my-details';
 import { HelpPage } from '../pages/help/help';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -43,7 +42,6 @@ import { CallNumber } from '@ionic-native/call-number';
     SalesPage,
     GoodsReturnedPage,
     ReportsPage,
-    MyDetailsPage,
     HelpPage,
     LoginPage,
     SignupPage,
@@ -71,7 +69,6 @@ import { CallNumber } from '@ionic-native/call-number';
     SalesPage,
     GoodsReturnedPage,
     ReportsPage,
-    MyDetailsPage,
     HelpPage,
     LoginPage,
     SignupPage,
@@ -91,6 +88,6 @@ import { CallNumber } from '@ionic-native/call-number';
     LoadingController,
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    ]
 })
 export class AppModule {}

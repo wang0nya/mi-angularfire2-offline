@@ -11,7 +11,6 @@ import { SalesPage } from '../pages/sales/sales';
 import { PurchasesPage } from '../pages/purchases/purchases';
 import { SuppliersPage } from '../pages/suppliers/suppliers';
 import { HelpPage } from '../pages/help/help';
-import { MyDetailsPage } from '../pages/my-details/my-details';
 
 
 import { LoginPage } from '../pages/login/login';
@@ -65,9 +64,6 @@ export class MyApp {
     this.navCtrl.setRoot(SuppliersPage);
   }goToHelp(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(HelpPage);
-  }goToMyDetails(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(MyDetailsPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 }

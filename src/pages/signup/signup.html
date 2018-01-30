@@ -1,4 +1,4 @@
-<ion-header>
+userPass<ion-header>
   <ion-navbar>
 
     <ion-title>
@@ -7,25 +7,34 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page5">
+  <form [formGroup]="addUserForm" (submit)="register(email, password)" novalidate>
+  <ion-list>
 
-    <ion-list id="signup-list3">
       <ion-item id="signup-input4" class="item item-trns text-center">
-        <ion-label style="margin-top:0px;color:white;">
+        <ion-label floating style="margin-top:0px;color:white;">
           Email
         </ion-label>
-        <ion-input type="email" placeholder="" [(ngModel)]="email"></ion-input>
+        <ion-input type="email" placeholder="" [(ngModel)]="email"
+        formControlName="userEmail"
+        [class.invalid]="!addUserForm.controls.userEmail.valid && addUserForm.controls.userEmail.dirty"
+        name="email">    <p style="margin-top:0px;color:white;">
+        Can't contain numbers    </p></ion-input>
       </ion-item>
       <ion-item id="signup-input5" class="item item-trns text-center">
-        <ion-label style="margin-top:0px;color:white;">
+        <ion-label floating style="margin-top:0px;color:white;">
           Password
         </ion-label>
-        <ion-input type="password" placeholder="" [(ngModel)]="password"></ion-input>
+        <ion-input type="password" placeholder="" [(ngModel)]="password"
+        formControlName="userPass"
+        [class.invalid]="!addUserForm.controls.userPass.valid && addUserForm.controls.userPass.dirty"
+        name="pass"><p style="margin-top:0px;color:white;">
+        Too short   </p></ion-input>
       </ion-item>
     </ion-list>
     <ion-row>
     <ion-col style="text-align:center">
-    <button  ion-button round outline
-    (click)="register(email, password)">
+    <button  ion-button round outline [disabled]="!addUserForm.valid"
+    type="submit">
       Sign up
     </button>
   </ion-col>
@@ -33,4 +42,6 @@
   <button  ion-button clear color="positive" block on-click="goToLogin()">
     Log In
   </button>
+</form>
+
 </ion-content>

@@ -3,16 +3,25 @@ import { NavController, IonicPageModule } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { Toast } from '@ionic-native/toast';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 export class SignupPage {
+  public addUserForm:FormGroup;
 
   constructor(public navCtrl: NavController,
   public angularFireAuth: AngularFireAuth,
-private toast: Toast) {
+private toast: Toast, public formBuilder: FormBuilder) {
+  this.addUserForm = formBuilder.group({
+userEmail: ['', Validators.compose([Validators.required,
+  Validators.pattern('[A-Za-z0-9_@.]*'),
+Validators.minLength(8)])],
+userPass: ['', Validators.compose([Validators.required,
+Validators.minLength(8)])],
+});
   }
   register(email, password) {
     this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
