@@ -9,8 +9,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page5">
+  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter by gr#"></ion-searchbar>
+
   <ion-list>
-    <ion-item-sliding *ngFor="let product of filteredGRs | async" class="item item-trns text-center">
+    <ion-item-sliding *ngFor="let product of productList" class="item item-trns text-center">
       <ion-item >
       <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
       <p>Date: {{product.date}}</p>

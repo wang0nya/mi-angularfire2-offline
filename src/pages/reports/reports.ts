@@ -16,21 +16,20 @@ import firebase from 'firebase';
 })
 export class ReportsPage {
   userId: any;
-date: any;
-public productList:Array<any>;
-public loadedProductList:Array<any>;
-public productRef:firebase.database.Reference;
+  public sales: AfoListObservable<any[]>;
+  public productList:Array<any>;
+  public loadedProductList:Array<any>;
+  public productRef:firebase.database.Reference;
 
-    public products: AfoListObservable<any[]>;
     constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
       public alertCtrl: AlertController, public afAuth: AngularFireAuth,
     public actionSheetCtrl: ActionSheetController) {
         afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
-      this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
+      this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
 
       // searchbar
-      this.productRef = firebase.database().ref(`/userProfile/${this.userId}/products`);
+      this.productRef = firebase.database().ref(`/userProfile/${this.userId}/sales`);
 
       this.productRef.on('value', productList => {
         let products = [];
@@ -63,8 +62,8 @@ public productRef:firebase.database.Reference;
       }
 
       this.productList = this.productList.filter((v) => {
-        if(v.date && q) {
-          if (v.date.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        if(v.grn && q) {
+          if (v.grn.toLowerCase().indexOf(q.toLowerCase()) > -1) {
             return true;
           }
           return false;
@@ -73,5 +72,8 @@ public productRef:firebase.database.Reference;
 
       console.log(q, this.productList.length);
 
+    }
+    removeProduct(key: string) {
+      this.sales.remove(key);
     }
 }

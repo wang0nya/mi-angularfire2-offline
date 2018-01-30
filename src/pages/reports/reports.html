@@ -4,14 +4,17 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-Filter    </ion-title>
+      Goods Returned In
+    </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page6">
-  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter by date"></ion-searchbar>
+<ion-content padding id="page5">
+  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter by gr#"></ion-searchbar>
+
   <ion-list>
-    <ion-item *ngFor="let product of productList">
-      <strong><h2>{{ product.name }}</h2></strong>
+    <ion-item-sliding *ngFor="let product of productList" class="item item-trns text-center">
+      <ion-item >
+      <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
       <p>Date: {{product.date}}</p>
       <p>Quantity: {{product.quantity}} {{product.unit}}</p>
       <!-- <p></p> -->
@@ -20,18 +23,18 @@ Filter    </ion-title>
 
       <h3 item-end>
         Ksh. {{product.quantity*product.price}}
-      </h3>    </ion-item>
-  </ion-list>
-  <!-- <div class = "row">
-    <strong><div class = "col ">Date</div></strong>
-    <strong><div class = "col ">Type</div></strong>
-    <strong><div class = "col ">Product</div></strong>
-    <strong><div class = "col ">Price</div></strong>
-</div>
-<div class = "row" *ngFor="let product of products | async">
-<div class = "col">{{product.date}}</div>
-<div class = "col">{{product.type}}</div>
-<div class = "col">{{ product.name }}</div>
-<div class = "col">{{product.quantity*product.price}}</div>
-</div> -->
+      </h3>
+    </ion-item>
+      <ion-item-options side="right">
+              <button ion-button color="primary" clear (click)="editProduct(product)">
+                <ion-icon name="create"></ion-icon>
+              </button>
+
+              <button ion-button color="danger" clear (click)="removeProduct(product.$key)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
 </ion-content>
