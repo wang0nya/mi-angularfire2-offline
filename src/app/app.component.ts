@@ -17,6 +17,7 @@ import { LoginPage } from '../pages/login/login';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { FCM } from '@ionic-native/fcm';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
     rootPage:any = LoginPage;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-      afAuth: AngularFireAuth) {
+      afAuth: AngularFireAuth, private fcm: FCM) {
         afAuth.authState.subscribe( user => {
             if (user){
               this.rootPage = HomePage;
@@ -35,6 +36,21 @@ export class MyApp {
             }
           });
         platform.ready().then(() => {
+          this.fcm.subscribeToTopic('all');
+this.fcm.getToken().then(token => {
+  // backend.registerToken(token);
+});
+this.fcm.onNotification().subscribe(data => {
+  alert('message received')
+  if(data.wasTapped) {
+   console.info("Received in background");
+  } else {
+   console.info("Received in foreground");
+  };
+});
+this.fcm.onTokenRefresh().subscribe(token => {
+  // backend.registerToken(token);
+});
           // Okay, so the platform is ready and our plugins are available.
           // Here you can do any higher level native things you might need.
           statusBar.styleDefault();

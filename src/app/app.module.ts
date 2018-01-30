@@ -32,6 +32,9 @@ import {BrowseSuppliersPage} from '../pages/browse-suppliers/browse-suppliers'
 import { environment } from '../environments/environment';
 
 import { CallNumber } from '@ionic-native/call-number';
+
+import { FCM } from '@ionic-native/fcm';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -87,6 +90,7 @@ import { CallNumber } from '@ionic-native/call-number';
     Toast,
     LoadingController,
     CallNumber,
+    FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
