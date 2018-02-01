@@ -86,7 +86,7 @@ export class StockPage {
       date: product.date,
       type: product.type,
       name: product.name,
-      quantity: product.quantity,
+      // quantity: product.quantity,
       unit: product.unit,
       price: product.price,
       supplier: product.supplier

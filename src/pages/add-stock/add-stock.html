@@ -26,10 +26,10 @@
       <ion-label>Product Name</ion-label>
       <ion-input type="text" placeholder="Product Name" [(ngModel)]="product.name" required="" ></ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Quantity Bought</ion-label>
       <ion-input type="number" placeholder="e.g 100" [(ngModel)]="product.quantity" required="" ></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
     <ion-label>Unit of Measure</ion-label>
     <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="product.unit" required="" ></ion-input>
@@ -61,7 +61,7 @@
       </ion-item>
     </div>
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,product.quantity,
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,
     product.unit,product.price,product.supplier,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>

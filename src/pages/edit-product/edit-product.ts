@@ -21,8 +21,8 @@ export class EditProductPage {
   date: '',
   name: '',
   quantity: '',
-  unit: '',
-  price: '',
+  // unit: '',
+  // price: '',
   supplier: '',
   greturn: '',
   grn: '',
@@ -40,22 +40,22 @@ export class EditProductPage {
     this.purchase.date = this.params.get('date');
     this.purchase.name = this.params.get('name');
     this.purchase.quantity = this.params.get('quantity');
-    this.purchase.unit = this.params.get('unit');
-    this.purchase.price = this.params.get('price');
+    // this.purchase.unit = this.params.get('unit');
+    // this.purchase.price = this.params.get('price');
     this.purchase.supplier = this.params.get('supplier');
     this.purchase.greturn = this.params.get('greturn');
     this.purchase.grn = this.params.get('grn');
     this.purchase.gr = this.params.get('gr');
   });
   }
-  addPurchase(id,date,name,quantity,unit,price,supplier,greturn,grn,gr) {
+  addPurchase(id,date,name,quantity,supplier,greturn,grn,gr) {
     if(id) {
       this.purchases.update(id, {
         date: date,
         name: name,
         quantity: quantity,
-        unit: unit,
-        price: price,
+        // unit: unit,
+        // price: price,
         supplier: supplier,
         greturn: greturn,
         grn: grn,
@@ -82,8 +82,8 @@ export class EditProductPage {
       date: date,
       name: name,
       quantity: quantity,
-      unit: unit,
-      price: price,
+      // unit: unit,
+      // price: price,
       supplier: supplier,
       greturn: '0',
       grn: '0',

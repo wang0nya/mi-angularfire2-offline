@@ -33,8 +33,8 @@ export class SalesPage {
       name: sale.name,
       quantity: sale.quantity,
       unit: sale.unit,
-      price: sale.price,
-      supplier: sale.supplier
+      price: sale.price
+      // supplier: sale.supplier
     });
   }
   presentConfirm(key: string) {

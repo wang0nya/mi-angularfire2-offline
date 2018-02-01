@@ -22,7 +22,7 @@
       <p>Quantity: {{sale.quantity}} {{sale.unit}}</p>
       <!-- <p></p> -->
       <p>Price per unit: {{sale.price}}</p>
-      <p>Supplier: {{sale.supplier}}</p>
+      <!-- <p>Supplier: {{sale.supplier}}</p> -->
 
       <h3 item-end>
         Total Price: Ksh. {{sale.quantity*sale.price}}
@@ -40,3 +40,9 @@
           </ion-item-sliding>
         </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Total Sales: Ksh: </ion-title>
+  </ion-toolbar>
+</ion-footer>
