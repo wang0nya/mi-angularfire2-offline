@@ -6,11 +6,6 @@
     <ion-title>
       Purchases
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only on-click="addPurchase()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page4">
@@ -25,7 +20,7 @@
       <p>Supplier: {{purchase.supplier}}</p>
 
       <h3 item-end>
-        Ksh. {{purchase.quantity*purchase.price}}
+        Ksh. {{purchase.total}}
       </h3>
     </ion-item>
       <ion-item-options side="right">

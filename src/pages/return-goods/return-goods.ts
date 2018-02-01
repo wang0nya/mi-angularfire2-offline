@@ -17,16 +17,18 @@ export class ReturnGoodsPage {
   public suppliers: AfoListObservable<any[]>;
   public products: AfoListObservable<any[]>;
 
-  sale={id:'',
+  product={id:'',
   date: '',
   name: '',
   quantity: '',
-  // unit: '',
-  // price: '',
-  // supplier: '',
+  unit: '',
+  price: '',
+  supplier: '',
   greturn: '',
   grn: '',
-  gr: ''};
+  gr: '',
+  total: ''
+};
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
    public params: NavParams,private toast: Toast) {
@@ -36,30 +38,31 @@ export class ReturnGoodsPage {
     this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
-    this.sale.id = this.params.get('key');
-    this.sale.date = this.params.get('date');
-    this.sale.name = this.params.get('name');
-    this.sale.quantity = this.params.get('quantity');
-    // this.sale.unit = this.params.get('unit');
-    // this.sale.price = this.params.get('price');
-    // this.sale.supplier = this.params.get('supplier');
-    this.sale.greturn = this.params.get('greturn');
-    this.sale.grn = this.params.get('grn');
-    this.sale.gr = this.params.get('gr');
+    this.product.id = this.params.get('key');
+    this.product.date = this.params.get('date');
+    this.product.name = this.params.get('name');
+    this.product.quantity = this.params.get('quantity');
+    this.product.unit = this.params.get('unit');
+    this.product.price = this.params.get('price');
+    this.product.supplier = this.params.get('supplier');
+    this.product.greturn = this.params.get('greturn');
+    this.product.grn = this.params.get('grn');
+    this.product.gr = this.params.get('gr');
   });
   }
-  addSale(id,date,name,quantity,supplier,greturn,grn,gr) {
+  addSale(id,date,name,quantity,unit,price,supplier,greturn,grn,gr,total) {
     if(id) {
       this.sales.update(id, {
         date: date,
         name: name,
         quantity: quantity,
-        // unit: unit,
-        // price: price,
-        // supplier: supplier,
+        unit: unit,
+        price: price,
+        supplier: supplier,
         greturn: greturn,
         grn: grn,
         gr: gr,
+        total: (quantity*price),
 
       }).then( newSale => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -82,12 +85,13 @@ export class ReturnGoodsPage {
       date: date,
       name: name,
       quantity: quantity,
-      // unit: unit,
-      // price: price,
-      // supplier: supplier,
+      unit: unit,
+      price: price,
+      supplier: supplier,
       greturn: '0',
       grn: '0',
       gr: 'false',
+      total: (quantity*price),
 
     }).then( newSale => {
               this.toast.show('Data saved', '5000', 'center').subscribe(

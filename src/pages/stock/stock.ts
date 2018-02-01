@@ -10,6 +10,9 @@ import {
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
+import { EditProductPage } from '../edit-product/edit-product';
+import { ReturnGoodsPage } from '../return-goods/return-goods';
+
 @Component({
   selector: 'page-stock',
   templateUrl: 'stock.html'
@@ -122,5 +125,48 @@ export class StockPage {
     ]
   });
   alert.present();
+}
+showOptions(product) {
+  let actionSheet = this.actionSheetCtrl.create({
+    title: 'What do you want to do?',
+    buttons: [
+      {
+        text: 'Buy',
+        role: 'destructive',
+        handler: () => {
+            this.navCtrl.push(EditProductPage, {
+              key: product.$key,
+              date: product.date,
+              type: product.type,
+              name: product.name,
+              quantity: product.quantity,
+              unit: product.unit,
+              price: product.price,
+              supplier: product.supplier
+            });
+          }
+        }
+      ,{
+        text: 'Sell',
+        handler: () => {
+          this.navCtrl.push(ReturnGoodsPage, {
+            key: product.$key,
+            date: product.date,
+            name: product.name,
+            quantity: product.quantity,
+            unit: product.unit,
+            price: product.price,
+            supplier: product.supplier
+          });        }
+      },{
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }
+    ]
+  });
+  actionSheet.present();
 }
 }

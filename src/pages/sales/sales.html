@@ -6,11 +6,6 @@
     <ion-title>
       Sales
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only on-click="addSale()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page9">
@@ -25,7 +20,7 @@
       <!-- <p>Supplier: {{sale.supplier}}</p> -->
 
       <h3 item-end>
-        Total Price: Ksh. {{sale.quantity*sale.price}}
+        Total Price: Ksh. {{sale.total}}
       </h3>
     </ion-item>
       <ion-item-options side="right">

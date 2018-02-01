@@ -16,7 +16,8 @@
 <ion-content padding id="page2">
   <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter by date"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let product of productList" class="item item-trns text-center">
+    <ion-item-sliding *ngFor="let product of productList" class="item item-trns text-center"
+    (click)="showOptions(product)">
       <ion-item>
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>
