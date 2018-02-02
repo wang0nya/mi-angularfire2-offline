@@ -31,7 +31,7 @@ export class GoodsReturnedPage {
     // searchbar
     this.productRef = firebase.database().ref(`/userProfile/${this.userId}/purchases`);
 
-    this.productRef.on('value', productList => {
+    this.productRef.orderByChild("gr").equalTo("true").on('value', productList => {
       let products = [];
       productList.forEach( product => {
         products.push(product.val());

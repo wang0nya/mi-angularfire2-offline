@@ -31,7 +31,7 @@ export class ReportsPage {
       // searchbar
       this.productRef = firebase.database().ref(`/userProfile/${this.userId}/sales`);
 
-      this.productRef.on('value', productList => {
+      this.productRef.orderByChild("gr").equalTo("true").on('value', productList => {
         let products = [];
         productList.forEach( product => {
           products.push(product.val());
