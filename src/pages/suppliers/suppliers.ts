@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
-import {
+import { NavController, AlertController,
+  ActionSheetController } from 'ionic-angular';import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
 
@@ -24,7 +24,7 @@ export class SuppliersPage {
     constructor(private afoDatabase: AngularFireOfflineDatabase,
        public afAuth: AngularFireAuth, public navCtrl: NavController,
      public alertCtrl: AlertController,private emailComposer: EmailComposer,
-   private callNumber: CallNumber) {
+   private callNumber: CallNumber, public actionSheetCtrl: ActionSheetController) {
          afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
       this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
@@ -104,5 +104,66 @@ this.emailComposer.open(email);
         this.callNumber.callNumber(supplier.phone, true)
         .then(() => console.log('Launched dialer!'))
         .catch(() => console.log('Error launching dialer'));
+}
+showOptions(supplier) {
+  let actionSheet = this.actionSheetCtrl.create({
+    title: supplier.name,
+    buttons: [
+      {
+        text: 'Edit',
+        handler: () => {
+          this.navCtrl.push(RegisterSupplierPage, {
+            key: supplier.$key,
+            name: supplier.name,
+            address: supplier.address,
+            phone: supplier.phone,
+            email: supplier.email
+
+          });
+          }
+        }
+       ,{
+         text: 'Email Supplier',
+         handler: () => {
+           this.send(supplier);
+         }
+      }
+      ,{
+        text: 'Call Supplier',
+        handler: () => {
+          this.launchDialer(supplier);
+        }
+     }
+     // ,{
+     //    text: 'Edit',
+     //    handler: () => {
+     //      this.navCtrl.push(AddStockPage, {
+     //        key: product.$key,
+     //        date: product.date,
+     //        type: product.type,
+     //        name: product.name,
+     //        // quantity: product.quantity,
+     //        unit: product.unit,
+     //        price: product.price,
+     //        supplier: product.supplier
+     //      });
+     //    }
+     //  }
+     ,{
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => {
+          this.presentConfirm(supplier.$key);
+        }
+      },{
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }
+    ]
+  });
+  actionSheet.present();
 }
 }

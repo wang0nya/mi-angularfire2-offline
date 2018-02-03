@@ -12,8 +12,7 @@
   <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter by gr#"></ion-searchbar>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let product of productList" class="item item-trns text-center">
-      <ion-item >
+    <ion-item *ngFor="let product of productList" class="item item-trns text-center">
       <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
       <p>Date: {{product.date}}</p>
       <p>Quantity: {{product.quantity}} {{product.unit}}</p>
@@ -25,7 +24,7 @@
         Ksh. {{product.quantity*product.price}}
       </h3>
     </ion-item>
-      <ion-item-options side="right">
+      <!-- <ion-item-options side="right">
               <button ion-button color="primary" clear (click)="editProduct(product)">
                 <ion-icon name="create"></ion-icon>
               </button>
@@ -34,7 +33,7 @@
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>
-          </ion-item-sliding>
+          </ion-item-sliding> -->
         </ion-list>
 
 </ion-content>

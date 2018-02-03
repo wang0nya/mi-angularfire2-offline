@@ -10,8 +10,8 @@
 </ion-header>
 <ion-content padding id="page4">
   <ion-list>
-    <ion-item-sliding *ngFor="let purchase of purchases | async" class="item item-trns text-center">
-      <ion-item>
+    <ion-item *ngFor="let purchase of purchases | async" class="item item-trns text-center"
+    (click)="showOptions(purchase, purchase.$key)">
       <strong><h2>{{ purchase.name }}</h2></strong>
       <p>Date: {{purchase.date}}</p>
       <p>Quantity: {{purchase.quantity}} {{purchase.unit}}</p>
@@ -23,7 +23,7 @@
         Ksh. {{purchase.total}}
       </h3>
     </ion-item>
-      <ion-item-options side="right">
+      <!-- <ion-item-options side="right">
               <button ion-button color="primary" clear (click)="editProduct(purchase)">
                 <ion-icon name="create"></ion-icon>
               </button>
@@ -32,6 +32,6 @@
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>
-          </ion-item-sliding>
+          </ion-item-sliding> -->
         </ion-list>
 </ion-content>

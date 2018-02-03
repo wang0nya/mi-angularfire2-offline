@@ -23,7 +23,7 @@ export class ReturnGoodsPage {
   quantity: '',
   unit: '',
   price: '',
-  supplier: '',
+  // supplier: '',
   greturn: '',
   grn: '',
   gr: '',
@@ -44,13 +44,13 @@ export class ReturnGoodsPage {
     this.product.quantity = this.params.get('quantity');
     this.product.unit = this.params.get('unit');
     this.product.price = this.params.get('price');
-    this.product.supplier = this.params.get('supplier');
+    // this.product.supplier = this.params.get('supplier');
     this.product.greturn = this.params.get('greturn');
     this.product.grn = this.params.get('grn');
     this.product.gr = this.params.get('gr');
   });
   }
-  addSale(id,date,name,quantity,unit,price,supplier,greturn,grn,gr,total) {
+  addSale(id,date,name,quantity,unit,price,greturn,grn,gr,total) {
     if(id) {
       this.sales.update(id, {
         date: date,
@@ -58,7 +58,7 @@ export class ReturnGoodsPage {
         quantity: quantity,
         unit: unit,
         price: price,
-        supplier: supplier,
+        // supplier: supplier,
         greturn: greturn,
         grn: grn,
         gr: gr,
@@ -87,7 +87,7 @@ export class ReturnGoodsPage {
       quantity: quantity,
       unit: unit,
       price: price,
-      supplier: supplier,
+      // supplier: supplier,
       greturn: '0',
       grn: '0',
       gr: 'false',

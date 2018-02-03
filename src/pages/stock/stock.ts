@@ -11,7 +11,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
 import { EditProductPage } from '../edit-product/edit-product';
-import { ReturnGoodsPage } from '../return-goods/return-goods';
 
 @Component({
   selector: 'page-stock',
@@ -19,9 +18,7 @@ import { ReturnGoodsPage } from '../return-goods/return-goods';
 })
 export class StockPage {
   userId: any;
-  public productList:Array<any>;
-  public loadedProductList:Array<any>;
-  public productRef:firebase.database.Reference;
+
     public products: AfoListObservable<any[]>;
     constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
       public alertCtrl: AlertController, public afAuth: AngularFireAuth,
@@ -29,71 +26,14 @@ export class StockPage {
         afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
       this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
-
-      // searchbar
-      this.productRef = firebase.database().ref(`/userProfile/${this.userId}/products`);
-
-      this.productRef.on('value', productList => {
-        let products = [];
-        productList.forEach( product => {
-          products.push(product.val());
-          return false;
-        });
-
-        this.productList = products;
-        this.loadedProductList = products;
-      });
-      // searchbar end
     });
-    }
-    initializeItems(){
-      this.productList = this.loadedProductList;
-    }
-    getItems(searchbar) {
-      // Reset items back to all of the items
-      this.initializeItems();
-
-      // set q to the value of the searchbar
-      var q = searchbar.srcElement.value;
-
-
-      // if the value is an empty string don't filter the items
-      if (!q) {
-        return;
-      }
-
-      this.productList = this.productList.filter((v) => {
-        if(v.date && q) {
-          if (v.date.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-            return true;
-          }
-          return false;
-        }
-      });
-
-      console.log(q, this.productList.length);
-
-    }
+}
     addProductPage() {
     this.navCtrl.push(AddStockPage);
   }
 
   filter(){
     this.navCtrl.push(ReportsPage);
-  }
-
-  editProduct(product){
-    console.log(product);
-    this.navCtrl.push(AddStockPage, {
-      key: product.$key,
-      date: product.date,
-      type: product.type,
-      name: product.name,
-      // quantity: product.quantity,
-      unit: product.unit,
-      price: product.price,
-      supplier: product.supplier
-    });
   }
 
   presentConfirm(key: string) {
@@ -128,14 +68,13 @@ export class StockPage {
 }
 showOptions(product) {
   let actionSheet = this.actionSheetCtrl.create({
-    title: 'What do you want to do?',
+    title: product.name,
     buttons: [
       {
         text: 'Buy',
-        role: 'destructive',
         handler: () => {
             this.navCtrl.push(EditProductPage, {
-              key: product.$key,
+              // key: product.$key,
               date: product.date,
               type: product.type,
               name: product.name,
@@ -145,19 +84,25 @@ showOptions(product) {
               supplier: product.supplier
             });
           }
-        }
-      ,{
-        text: 'Sell',
+        },{
+        text: 'Edit',
         handler: () => {
-          this.navCtrl.push(ReturnGoodsPage, {
+          this.navCtrl.push(AddStockPage, {
             key: product.$key,
             date: product.date,
+            type: product.type,
             name: product.name,
-            quantity: product.quantity,
             unit: product.unit,
             price: product.price,
             supplier: product.supplier
-          });        }
+          });
+        }
+      },{
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => {
+          this.presentConfirm(product.$key);
+        }
       },{
         text: 'Cancel',
         role: 'cancel',
@@ -168,5 +113,8 @@ showOptions(product) {
     ]
   });
   actionSheet.present();
+}
+removeProduct(productId) {
+  this.products.remove(productId);
 }
 }

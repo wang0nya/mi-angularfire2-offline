@@ -19,7 +19,6 @@ public suppliers: AfoListObservable<any[]>;
 product={id:'',
 date: '',
 name: '',
-// quantity: '',
 unit: '',
 price: '',
 supplier: '',
@@ -37,7 +36,6 @@ gr: ''};
     this.product.id = this.params.get('key');
     this.product.date = this.params.get('date');
     this.product.name = this.params.get('name');
-    // this.product.quantity = this.params.get('quantity');
     this.product.unit = this.params.get('unit');
     this.product.price = this.params.get('price');
     this.product.supplier = this.params.get('supplier');
@@ -53,7 +51,6 @@ addProduct(id,date,name,unit,price,supplier,greturn,grn,gr) {
     this.products.update(id, {
       date: date,
       name: name,
-      // quantity: quantity,
       unit: unit,
       price: price,
       supplier: supplier,
@@ -81,7 +78,6 @@ addProduct(id,date,name,unit,price,supplier,greturn,grn,gr) {
   this.products.push({
     date: date,
     name: name,
-    // quantity: quantity,
     unit: unit,
     price: price,
     supplier: supplier,

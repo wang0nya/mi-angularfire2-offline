@@ -10,8 +10,8 @@
 </ion-header>
 <ion-content padding id="page9">
   <ion-list>
-    <ion-item-sliding *ngFor="let sale of sales | async" class="item item-trns text-center">
-      <ion-item>
+    <ion-item *ngFor="let sale of sales | async" class="item item-trns text-center"
+    (click)="showOptions(sale, sale.$key)">
       <strong><h2>{{ sale.name }}</h2></strong>
       <p>Date: {{sale.date}}</p>
       <p>Quantity: {{sale.quantity}} {{sale.unit}}</p>
@@ -23,7 +23,7 @@
         Total Price: Ksh. {{sale.total}}
       </h3>
     </ion-item>
-      <ion-item-options side="right">
+      <!-- <ion-item-options side="right">
               <button ion-button color="primary" clear (click)="editProduct(sale)">
                 <ion-icon name="create"></ion-icon>
               </button>
@@ -32,7 +32,7 @@
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>
-          </ion-item-sliding>
+          </ion-item-sliding> -->
         </ion-list>
 </ion-content>
 

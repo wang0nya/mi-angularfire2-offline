@@ -17,8 +17,8 @@
   <!-- <button ion-button (click)="browse()">Browse Suppliers
   </button> -->
   <ion-list>
-    <ion-item-sliding *ngFor="let supplier of suppliers | async" class="item item-trns text-center">
-      <ion-item>
+      <ion-item *ngFor="let supplier of suppliers | async" class="item item-trns text-center"
+      (click)="showOptions(supplier, supplier.$key)">
       <strong><h2>{{ supplier.name }}</h2></strong>
       <p>Address: {{supplier.address}}</p>
       <!-- <p></p> -->
@@ -26,7 +26,7 @@
       <p>Email: {{supplier.email}}</p>
 
     </ion-item>
-      <ion-item-options side="right">
+      <!-- <ion-item-options side="right">
               <button ion-button color="primary" clear (click)="editSupplier(supplier)">
                 <ion-icon name="create"></ion-icon>
               </button>
@@ -40,6 +40,6 @@
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-item-options>
-          </ion-item-sliding>
+          </ion-item-sliding> -->
         </ion-list>
 </ion-content>

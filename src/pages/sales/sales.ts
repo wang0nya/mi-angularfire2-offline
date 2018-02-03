@@ -67,6 +67,69 @@ export class SalesPage {
   });
   alert.present();
 }
+showOptions(sale) {
+  let actionSheet = this.actionSheetCtrl.create({
+    title: sale.name,
+    buttons: [
+      // {
+      //   text: 'Buy',
+      //   handler: () => {
+      //       this.navCtrl.push(EditProductPage, {
+      //         key: product.$key,
+      //         date: product.date,
+      //         type: product.type,
+      //         name: product.name,
+      //         quantity: product.quantity,
+      //         unit: product.unit,
+      //         price: product.price,
+      //         supplier: product.supplier
+      //       });
+      //     }
+      //   }
+      // ,{
+      //   text: 'Sell',
+      //   handler: () => {
+      //     this.navCtrl.push(ReturnGoodsPage, {
+      //       key: product.$key,
+      //       date: product.date,
+      //       name: product.name,
+      //       quantity: product.quantity,
+      //       unit: product.unit,
+      //       price: product.price,
+      //       supplier: product.supplier
+      //     });
+      //   }
+      // }
+      {
+        text: 'Edit',
+        handler: () => {
+          this.navCtrl.push(ReturnGoodsPage, {
+            key: sale.$key,
+            date: sale.date,
+            name: sale.name,
+            quantity: sale.quantity,
+            unit: sale.unit,
+            price: sale.price
+            // supplier: sale.supplier
+          });
+        }
+      },{
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => {
+          this.presentConfirm(sale.$key)
+        }
+      },{
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }
+    ]
+  });
+  actionSheet.present();
+}
 addSale(){
   this.navCtrl.push(ReturnGoodsPage);
 }

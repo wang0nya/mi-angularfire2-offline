@@ -8,6 +8,7 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { EditProductPage } from '../edit-product/edit-product';
+import { ReturnGoodsPage } from '../return-goods/return-goods';
 
 @Component({
   selector: 'page-purchases',
@@ -76,6 +77,53 @@ export class PurchasesPage {
     ]
   });
   alert.present();
+}
+showOptions(purchase) {
+  let actionSheet = this.actionSheetCtrl.create({
+    title: purchase.name,
+    buttons: [
+  {
+        text: 'Sell',
+        handler: () => {
+          this.navCtrl.push(ReturnGoodsPage, {
+            // key: purchase.$key,
+            date: purchase.date,
+            name: purchase.name,
+            quantity: purchase.quantity,
+            unit: purchase.unit,
+            price: purchase.price,
+            supplier: purchase.supplier
+          });
+        }
+      },{
+        text: 'Edit',
+        handler: () => {
+          this.navCtrl.push(EditProductPage, {
+            key: purchase.$key,
+            date: purchase.date,
+            name: purchase.name,
+            quantity: purchase.quantity,
+            unit: purchase.unit,
+            price: purchase.price,
+            supplier: purchase.supplier
+          });
+        }
+      },{
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => {
+          this.presentConfirm(purchase.$key)
+        }
+      },{
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }
+    ]
+  });
+  actionSheet.present();
 }
 addPurchase(){
   this.navCtrl.push(EditProductPage);
