@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController,
-  ActionSheetController } from 'ionic-angular';
+  ActionSheetController, LoadingController } from 'ionic-angular';
 import { AddStockPage } from '../add-stock/add-stock';
 import {
   AfoListObservable,
@@ -17,36 +17,52 @@ export class GoodsReturnedPage {
   userId: any;
 
   public products: AfoListObservable<any[]>;
-  public productList:Array<any>;
-  public loadedProductList:Array<any>;
-  public productRef:firebase.database.Reference;
+  public grOutList:Array<any>;
+  public grInList:Array<any>;
+  public loadedGrOutList:Array<any>;
+  public loadedGrInList:Array<any>;
+  public grOutRef:firebase.database.Reference;
+  public grInRef:firebase.database.Reference;
 
     constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
     public alertCtrl: AlertController, public afAuth: AngularFireAuth,
-  public actionSheetCtrl: ActionSheetController) {
+  public actionSheetCtrl: ActionSheetController, public loadingCtrl: LoadingController) {
       afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
     // searchbar
-    this.productRef = firebase.database().ref(`/userProfile/${this.userId}/purchases`);
+    this.grOutRef = firebase.database().ref(`/userProfile/${this.userId}/purchases`);
+    this.grInRef = firebase.database().ref(`/userProfile/${this.userId}/sales`);
 
-    this.productRef.orderByChild("gr").equalTo("true").on('value', productList => {
+    this.grOutRef.orderByChild("gr").equalTo("true").on('value', grOutList => {
       let products = [];
-      productList.forEach( product => {
+      grOutList.forEach( product => {
         products.push(product.val());
         return false;
       });
 
-      this.productList = products;
-      this.loadedProductList = products;
+      this.grOutList = products;
+      this.loadedGrOutList = products;
+    });
+
+    this.grInRef.orderByChild("gr").equalTo("true").on('value', grInList => {
+      let products = [];
+      grInList.forEach( product => {
+        products.push(product.val());
+        return false;
+      });
+
+      this.grInList = products;
+      this.loadedGrInList = products;
     });
     // searchbar end
 
   });
   }
   initializeItems(){
-    this.productList = this.loadedProductList;
+    this.grOutList = this.loadedGrOutList;
+    this.grInList = this.loadedGrInList;
   }
   getItems(searchbar) {
     // Reset items back to all of the items
@@ -61,7 +77,7 @@ export class GoodsReturnedPage {
       return;
     }
 
-    this.productList = this.productList.filter((v) => {
+    this.grOutList = this.grOutList.filter((v) => {
       if(v.grn && q) {
         if (v.grn.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
@@ -70,10 +86,24 @@ export class GoodsReturnedPage {
       }
     });
 
-    console.log(q, this.productList.length);
+    this.grInList = this.grInList.filter((v) => {
+      if(v.grn && q) {
+        if (v.grn.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+
+    console.log(q, this.grOutList.length);
+    console.log(q, this.grInList.length);
 
   }
-  removeProduct(key: string) {
-    this.products.remove(key);
+  ionViewDidLoad() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 3000
+    });
+    loader.present();
   }
 }
