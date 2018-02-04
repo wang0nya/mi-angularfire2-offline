@@ -4,22 +4,14 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Stock
+      Search Your Stocks
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only on-click="addProductPage()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-      <button ion-button icon-only on-click="search()">
-        <ion-icon name="search"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page2">
+  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="type name or date"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let product of products | async" class="item item-trns text-center"
-    (click)="showOptions(product, product.$key)">
+    <ion-item *ngFor="let product of productList" class="item item-trns text-center">
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>
       <p>Price per unit: {{product.price}}</p>

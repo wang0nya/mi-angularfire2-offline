@@ -9,6 +9,7 @@ import {
 import { AngularFireAuth } from 'angularfire2/auth';
 import { EditProductPage } from '../edit-product/edit-product';
 import { ReturnGoodsPage } from '../return-goods/return-goods';
+import { PurchaseSearchPage } from '../purchase-search/purchase-search';
 
 @Component({
   selector: 'page-purchases',
@@ -34,6 +35,9 @@ export class PurchasesPage {
     // });
 
   });
+  }
+  search(){
+    this.navCtrl.push(PurchaseSearchPage);
   }
   editProduct(purchase){
     console.log(purchase);

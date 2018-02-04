@@ -7,6 +7,7 @@ import {
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SaleSearchPage } from '../sale-search/sale-search';
 
 @Component({
   selector: 'page-sales',
@@ -24,6 +25,9 @@ export class SalesPage {
     this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
 
   });
+  }
+  search(){
+    this.navCtrl.push(SaleSearchPage);
   }
   editProduct(sale){
     console.log(sale);

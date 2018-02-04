@@ -8,9 +8,10 @@ import {
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from 'firebase';
 
 import { EditProductPage } from '../edit-product/edit-product';
+
+import { StockSearchPage } from '../stock-search/stock-search';
 
 @Component({
   selector: 'page-stock',
@@ -32,8 +33,8 @@ export class StockPage {
     this.navCtrl.push(AddStockPage);
   }
 
-  filter(){
-    this.navCtrl.push(ReportsPage);
+  search(){
+    this.navCtrl.push(StockSearchPage);
   }
 
   presentConfirm(key: string) {

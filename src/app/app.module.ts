@@ -30,6 +30,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import {BrowseSuppliersPage} from '../pages/browse-suppliers/browse-suppliers'
 import { environment } from '../environments/environment';
+import { StockSearchPage } from '../pages/stock-search/stock-search';
+import { PurchaseSearchPage } from '../pages/purchase-search/purchase-search';
+import { SaleSearchPage } from '../pages/sale-search/sale-search';
 
 import { CallNumber } from '@ionic-native/call-number';
 
@@ -53,7 +56,10 @@ import { FCM } from '@ionic-native/fcm';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage,
-    BrowseSuppliersPage
+    BrowseSuppliersPage,
+    StockSearchPage,
+    PurchaseSearchPage,
+    SaleSearchPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -80,7 +86,10 @@ import { FCM } from '@ionic-native/fcm';
     EditProductPage,
     ReturnGoodsPage,
     RegisterSupplierPage,
-    BrowseSuppliersPage
+    BrowseSuppliersPage,
+    StockSearchPage,
+    PurchaseSearchPage,
+    SaleSearchPage
   ],
   providers: [
     StatusBar,
