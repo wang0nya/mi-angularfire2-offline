@@ -15,7 +15,7 @@ import { SaleSearchPage } from '../sale-search/sale-search';
 })
 export class SalesPage {
   userId: any;
-
+priceTotal: any;
   public sales: AfoListObservable<any[]>;
   constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
     public alertCtrl: AlertController, public afAuth: AngularFireAuth,
@@ -24,6 +24,13 @@ export class SalesPage {
     if (user) { this.userId = user.uid }
     this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
 
+//find total sum
+this.afoDatabase.list(`/userProfile/${this.userId}/sales`).subscribe((sales) => {
+    this.priceTotal = 0;
+    sales.forEach((sale) => {
+        this.priceTotal += sale.total;
+    })
+})
   });
   }
   search(){
