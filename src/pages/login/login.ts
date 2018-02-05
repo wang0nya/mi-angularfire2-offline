@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, Loading, LoadingController, Alert, AlertController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage} from '../home/home';
@@ -12,9 +12,9 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
+public loading: Loading;
   constructor(public navCtrl: NavController,
-    loadingController:LoadingController,
+  public loadingCtrl: LoadingController,
   public angularFireAuth: AngularFireAuth,
 private alertCtrl: AlertController,private toast: Toast) {
   }
@@ -27,25 +27,30 @@ private alertCtrl: AlertController,private toast: Toast) {
         if(user.emailVerified) {
 
           // Redirect the user here
-          this.navCtrl.push(HomePage);
-          console.log('Welcome!');
+          this.loading.dismiss().then(() => {
           this.toast.show(`Welcome!`, '5000', 'center').subscribe(
             toast => {
             console.log(toast);
-          });
-        } else {
-          // Tell the user to have a look at its mailbox
-          // catch(e => {
-          //   console.log(e);
-          //   this.toast.show(e, '5000', 'center').subscribe(
-          //     toast => {
-          //       console.log(toast);
-          //     }
-          //   );
-          // });
-        }
-      });
+            });
+          this.navCtrl.setRoot(HomePage);
 
+          })
+        }
+      })
+      .catch(error => {
+        this.loading.dismiss().then(() => {
+          const alert: Alert = this.alertCtrl.create({ message: error.message,
+          buttons: [{ text: 'Ok', role: 'cancel' }]
+          });
+          alert.present();
+          })
+        });
+
+      this.loading = this.loadingCtrl.create({
+        content: "Logging in...",
+        // duration: 3000
+      });
+      this.loading.present();
   }
 
   goToSignup(params){

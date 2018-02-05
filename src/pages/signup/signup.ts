@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPageModule } from 'ionic-angular';
+import { NavController, IonicPageModule,Alert, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { Toast } from '@ionic-native/toast';
@@ -14,7 +14,8 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController,
   public angularFireAuth: AngularFireAuth,
-private toast: Toast, public formBuilder: FormBuilder) {
+private toast: Toast, public formBuilder: FormBuilder,
+private alertCtrl: AlertController) {
   this.addUserForm = formBuilder.group({
 userEmail: ['', Validators.compose([Validators.required,
   Validators.pattern('[A-Za-z0-9_@.]*'),
@@ -28,14 +29,12 @@ Validators.minLength(8)])],
     .then((res) => {
       this.sendEmailVerification()
     })
-    // .catch(e => {
-    //         console.log(e);
-    //         this.toast.show(e, '5000', 'center').subscribe(
-    //           toast => {
-    //             console.log(toast);
-    //           }
-    //         );
-    //       });
+    .catch(error => {
+        const alert: Alert = this.alertCtrl.create({ message: error.message,
+        buttons: [{ text: 'Ok', role: 'cancel' }]
+        });
+        alert.present();
+      });
   }
   sendEmailVerification() {
     this.angularFireAuth.authState.subscribe(user => {
