@@ -38,6 +38,8 @@ import { CallNumber } from '@ionic-native/call-number';
 
 import { FCM } from '@ionic-native/fcm';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -66,7 +68,9 @@ import { FCM } from '@ionic-native/fcm';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireOfflineModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ChartsModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -9,6 +9,19 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page5">
-  <div id="container" style="display: block;" *ngFor="let sale of sales | async"></div>
-
+  <div class="row">
+      <div class="col-md-6">
+        <div style="display: block;">
+        <canvas baseChart width="300" height="400"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
 </ion-content>
