@@ -20,7 +20,8 @@ product={id:'',
 date: '',
 name: '',
 unit: '',
-price: '',
+bprice: '',
+sprice: '',
 supplier: '',
 greturn: '',
 grn: '',
@@ -37,7 +38,8 @@ gr: ''};
     this.product.date = this.params.get('date');
     this.product.name = this.params.get('name');
     this.product.unit = this.params.get('unit');
-    this.product.price = this.params.get('price');
+    this.product.bprice = this.params.get('bprice');
+    this.product.sprice = this.params.get('sprice');
     this.product.supplier = this.params.get('supplier');
     this.product.greturn = this.params.get('greturn');
     this.product.grn = this.params.get('grn');
@@ -46,13 +48,14 @@ gr: ''};
   });
   }
 
-addProduct(id,date,name,unit,price,supplier,greturn,grn,gr) {
+addProduct(id,date,name,unit,bprice,sprice,supplier,greturn,grn,gr) {
   if(id) {
     this.products.update(id, {
       date: date,
       name: name,
       unit: unit,
-      price: price,
+      bprice: bprice,
+      sprice: sprice,
       supplier: supplier,
       greturn: greturn,
       grn: grn,
@@ -79,7 +82,8 @@ addProduct(id,date,name,unit,price,supplier,greturn,grn,gr) {
     date: date,
     name: name,
     unit: unit,
-    price: price,
+    bprice: bprice,
+    sprice: sprice,
     supplier: supplier,
     greturn: '0',
     grn: '0',

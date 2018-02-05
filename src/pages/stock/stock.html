@@ -22,7 +22,9 @@
     (click)="showOptions(product, product.$key)">
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>
-      <p>Price per unit: {{product.price}}</p>
+      <p>Buying Price per unit: {{product.bprice}}</p>
+      <p>Selling Price per unit: {{product.sprice}}</p>
+      <p>Profit per unit: {{product.sprice-product.bprice}}</p>
       <p>Supplier: {{product.supplier}}</p>
     </ion-item>
   </ion-list>

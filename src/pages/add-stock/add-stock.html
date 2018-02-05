@@ -24,8 +24,12 @@
     <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="product.unit" required="" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Price per unit</ion-label>
-    <ion-input type="number" placeholder="Unit Price" [(ngModel)]="product.price" required="" ></ion-input>
+    <ion-label>Buying Price/unit</ion-label>
+    <ion-input type="number" placeholder="Buying Price" [(ngModel)]="product.bprice" required="" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Selling Price/unit</ion-label>
+    <ion-input type="number" placeholder="Selling Price" [(ngModel)]="product.sprice" required="" ></ion-input>
   </ion-item>
     <ion-item >
       <ion-label>Supplier</ion-label>
@@ -51,7 +55,7 @@
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,
-    product.unit,product.price,product.supplier,product.greturn,product.grn,product.gr)">
+    product.unit,product.bprice,product.sprice,product.supplier,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>
