@@ -13,19 +13,19 @@
   <input type="hidden" [(ngModel)]="supplier.id" />
 
     <ion-item>
-      <ion-label>Supplier Name</ion-label>
+      <ion-label floating>Supplier Name</ion-label>
       <ion-input type="text" placeholder="Supplier Name" [(ngModel)]="supplier.name" required="" ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Address</ion-label>
+      <ion-label floating>Address</ion-label>
       <ion-input type="text" placeholder="Address" [(ngModel)]="supplier.address" required="" ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Phone #</ion-label>
+      <ion-label floating>Phone #</ion-label>
       <ion-input type="number" placeholder="Phone #" [(ngModel)]="supplier.phone" required="" ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Email</ion-label>
+      <ion-label floating>Email</ion-label>
       <ion-input type="text" placeholder="Email" [(ngModel)]="supplier.email" required="" ></ion-input>
     </ion-item>
     <button id="registerSupplier-button7" ion-button clear color="balanced" block large (click)="addSupplier(supplier.id, supplier.name, supplier.address, supplier.phone, supplier.email)">
