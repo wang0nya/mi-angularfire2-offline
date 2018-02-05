@@ -22,7 +22,8 @@ export class ReturnGoodsPage {
   name: '',
   quantity: '',
   unit: '',
-  price: '',
+  bprice: '',
+  sprice: '',
   // supplier: '',
   greturn: '',
   grn: '',
@@ -43,26 +44,28 @@ export class ReturnGoodsPage {
     this.product.name = this.params.get('name');
     this.product.quantity = this.params.get('quantity');
     this.product.unit = this.params.get('unit');
-    this.product.price = this.params.get('price');
+    this.product.bprice = this.params.get('bprice');
+    this.product.sprice = this.params.get('sprice');
     // this.product.supplier = this.params.get('supplier');
     this.product.greturn = this.params.get('greturn');
     this.product.grn = this.params.get('grn');
     this.product.gr = this.params.get('gr');
   });
   }
-  addSale(id,date,name,quantity,unit,price,greturn,grn,gr,total) {
+  addSale(id,date,name,quantity,unit,bprice,sprice,greturn,grn,gr,total) {
     if(id) {
       this.sales.update(id, {
         date: date,
         name: name,
         quantity: quantity,
         unit: unit,
-        price: price,
+        bprice: bprice,
+        sprice: sprice,
         // supplier: supplier,
         greturn: greturn,
         grn: grn,
         gr: gr,
-        total: (quantity*price),
+        total: (quantity*sprice),
 
       }).then( newSale => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -86,12 +89,13 @@ export class ReturnGoodsPage {
       name: name,
       quantity: quantity,
       unit: unit,
-      price: price,
+      bprice: bprice,
+      sprice: sprice,
       // supplier: supplier,
       greturn: '0',
       grn: '0',
       gr: 'false',
-      total: (quantity*price),
+      total: (quantity*sprice),
 
     }).then( newSale => {
               this.toast.show('Data saved', '5000', 'center').subscribe(

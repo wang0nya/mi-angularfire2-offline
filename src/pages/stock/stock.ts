@@ -81,7 +81,8 @@ showOptions(product) {
               name: product.name,
               quantity: product.quantity,
               unit: product.unit,
-              price: product.price,
+              bprice: product.bprice,
+              sprice: product.sprice,
               supplier: product.supplier
             });
           }
@@ -94,7 +95,8 @@ showOptions(product) {
             type: product.type,
             name: product.name,
             unit: product.unit,
-            price: product.price,
+            bprice: product.bprice,
+            sprice: product.sprice,
             supplier: product.supplier
           });
         }

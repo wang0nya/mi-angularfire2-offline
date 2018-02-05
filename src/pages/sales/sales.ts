@@ -44,7 +44,8 @@ this.afoDatabase.list(`/userProfile/${this.userId}/sales`).subscribe((sales) => 
       name: sale.name,
       quantity: sale.quantity,
       unit: sale.unit,
-      price: sale.price
+      bprice: sale.bprice,
+      sprice: sale.sprice
       // supplier: sale.supplier
     });
   }
@@ -120,7 +121,8 @@ showOptions(sale) {
             name: sale.name,
             quantity: sale.quantity,
             unit: sale.unit,
-            price: sale.price
+            bprice: sale.bprice,
+            sprice: sale.sprice
             // supplier: sale.supplier
           });
         }

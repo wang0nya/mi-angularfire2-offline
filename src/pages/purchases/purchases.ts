@@ -47,7 +47,8 @@ export class PurchasesPage {
       name: purchase.name,
       quantity: purchase.quantity,
       unit: purchase.unit,
-      price: purchase.price,
+      bprice: purchase.bprice,
+      sprice: purchase.sprice,
       supplier: purchase.supplier
     });
   }
@@ -95,7 +96,8 @@ showOptions(purchase) {
             name: purchase.name,
             quantity: purchase.quantity,
             unit: purchase.unit,
-            price: purchase.price,
+            bprice: purchase.bprice,
+            sprice: purchase.sprice,
             supplier: purchase.supplier
           });
         }
@@ -108,7 +110,8 @@ showOptions(purchase) {
             name: purchase.name,
             quantity: purchase.quantity,
             unit: purchase.unit,
-            price: purchase.price,
+            bprice: purchase.bprice,
+            sprice: purchase.sprice,
             supplier: purchase.supplier
           });
         }

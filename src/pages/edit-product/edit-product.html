@@ -22,8 +22,12 @@
     <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="purchase.unit" required="" disabled="true"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Price per unit</ion-label>
-    <ion-input type="number" placeholder="Unit Price" [(ngModel)]="purchase.price" required="cant be empty" disabled="true"></ion-input>
+    <ion-label floating>Buying Price/unit</ion-label>
+    <ion-input type="number" placeholder="Buying Price" [(ngModel)]="purchase.bprice" required="" disabled="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Selling Price/unit</ion-label>
+    <ion-input type="number" placeholder="Selling Price" [(ngModel)]="purchase.sprice" required="" disabled="true"></ion-input>
   </ion-item>
     <ion-item >
       <ion-label floating>Supplier</ion-label>
@@ -37,18 +41,18 @@
     </ion-item>
     <ion-item>
       <ion-label floating>Units to Buy</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="purchase.quantity" required="" ></ion-input>
+      <ion-input type="number"  [(ngModel)]="purchase.quantity" required="" ></ion-input>
     </ion-item>
     <br>
     <div class="GRN" *ngIf="purchase.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label floating>Returning</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="purchase.greturn" ></ion-input>
+      <ion-input type="number"  [(ngModel)]="purchase.greturn" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>GRN</ion-label>
-        <ion-input type="number" placeholder="5433543" [(ngModel)]="purchase.grn" ></ion-input>
+        <ion-input type="number"  [(ngModel)]="purchase.grn" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-label floating>GR Status</ion-label>
@@ -60,7 +64,7 @@
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addPurchase(purchase.id,purchase.date,purchase.name,purchase.quantity,
-    purchase.unit,purchase.price,purchase.supplier,purchase.greturn,purchase.grn,purchase.gr)">
+    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.greturn,purchase.grn,purchase.gr)">
       <span *ngIf="purchase.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!purchase.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

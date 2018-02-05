@@ -19,11 +19,15 @@
   </ion-item>
     <ion-item>
     <ion-label floating>Unit of Measure</ion-label>
-    <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="product.unit" required="" disabled="true"></ion-input>
+    <ion-input type="text" [(ngModel)]="product.unit" required="" disabled="true"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Price per unit</ion-label>
-    <ion-input type="number" placeholder="Unit Price" [(ngModel)]="product.price" required="" disabled="true"></ion-input>
+    <ion-label floating>Buying Price/unit</ion-label>
+    <ion-input type="number"  [(ngModel)]="product.bprice" required="" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Selling Price/unit</ion-label>
+    <ion-input type="number"  [(ngModel)]="product.sprice" required="" ></ion-input>
   </ion-item>
     <!-- <ion-item >
       <ion-label floating>Supplier</ion-label>
@@ -37,18 +41,18 @@
     </ion-item>
       <ion-item>
         <ion-label floating>Units to Sell</ion-label>
-        <ion-input type="number" placeholder="e.g 100" [(ngModel)]="product.quantity" required="" ></ion-input>
+        <ion-input type="number"  [(ngModel)]="product.quantity" required="" ></ion-input>
       </ion-item>
     <br>
     <div class="GRN" *ngIf="product.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label floating>Returning</ion-label>
-      <ion-input type="number" placeholder="e.g 100" [(ngModel)]="product.greturn" [required]="false" ></ion-input>
+      <ion-input type="number" [(ngModel)]="product.greturn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>GRN</ion-label>
-        <ion-input type="number" placeholder="5433543" [(ngModel)]="product.grn" [required]="false" ></ion-input>
+        <ion-input type="number" [(ngModel)]="product.grn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-label floating>GR Status</ion-label>
@@ -59,7 +63,7 @@
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.date,product.name,product.quantity,
-    product.unit,product.price,product.greturn,product.grn,product.gr)">
+    product.unit,product.bprice,product.sprice,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>
