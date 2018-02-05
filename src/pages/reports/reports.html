@@ -9,6 +9,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page5">
-  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="filter"></ion-searchbar>
+  <div id="container" style="display: block;" *ngFor="let sale of sales | async"></div>
 
 </ion-content>

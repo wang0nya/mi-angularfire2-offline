@@ -51,6 +51,7 @@
     "express": "4.16.2",
     "firebase": "^3.9.0",
     "gulp": "^3.9.1",
+    "highcharts": "^6.0.5",
     "instantsearch.js": "^2.4.1",
     "ionic-angular": "3.3.0",
     "ionic-plugin-keyboard": "^2.2.1",
