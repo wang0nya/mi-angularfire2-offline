@@ -15,11 +15,13 @@ export class AddStockPage {
 userId: any;
 public products: AfoListObservable<any[]>;
 public suppliers: AfoListObservable<any[]>;
+// public quantitysold: number = 0;
 
 product={id:'',
 date: '',
 name: '',
 unit: '',
+quantitysold: '',
 bprice: '',
 sprice: '',
 supplier: '',
@@ -38,6 +40,7 @@ gr: ''};
     this.product.date = this.params.get('date');
     this.product.name = this.params.get('name');
     this.product.unit = this.params.get('unit');
+    this.product.quantitysold = this.params.get('quantitysold');
     this.product.bprice = this.params.get('bprice');
     this.product.sprice = this.params.get('sprice');
     this.product.supplier = this.params.get('supplier');
@@ -48,12 +51,13 @@ gr: ''};
   });
   }
 
-addProduct(id,date,name,unit,bprice,sprice,supplier,greturn,grn,gr) {
+addProduct(id,date,name,unit,quantitysold,bprice,sprice,supplier,greturn,grn,gr) {
   if(id) {
     this.products.update(id, {
       date: date,
       name: name,
       unit: unit,
+      quantitysold: '0',
       bprice: bprice,
       sprice: sprice,
       supplier: supplier,
@@ -82,6 +86,7 @@ addProduct(id,date,name,unit,bprice,sprice,supplier,greturn,grn,gr) {
     date: date,
     name: name,
     unit: unit,
+    quantitysold: '0',
     bprice: bprice,
     sprice: sprice,
     supplier: supplier,

@@ -80,6 +80,7 @@ showOptions(product) {
               type: product.type,
               name: product.name,
               quantity: product.quantity,
+              quantitysold: product.quantitysold,
               unit: product.unit,
               bprice: product.bprice,
               sprice: product.sprice,
