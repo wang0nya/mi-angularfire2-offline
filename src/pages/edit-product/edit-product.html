@@ -36,10 +36,6 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label floating>Units Sold</ion-label>
-      <ion-input type="number"  [(ngModel)]="purchase.quantitysold" required="" disabled="true"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label floating>Date</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="purchase.date" required=""></ion-datetime>
     </ion-item>
@@ -47,7 +43,6 @@
       <ion-label floating>Units to Buy</ion-label>
       <ion-input type="number"  [(ngModel)]="purchase.quantity" required="" ></ion-input>
     </ion-item>
-
     <br>
     <div class="GRN" *ngIf="purchase.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
@@ -60,7 +55,7 @@
         <ion-input type="number"  [(ngModel)]="purchase.grn" ></ion-input>
       </ion-item>
       <ion-item >
-        <ion-label>GR Status</ion-label>
+        <ion-label floating>GR Status</ion-label>
         <ion-select [(ngModel)]="purchase.gr" interface="popover">
           <ion-option value="true">true</ion-option>
           <ion-option value="false">false</ion-option>
@@ -69,7 +64,7 @@
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addPurchase(purchase.id,purchase.date,purchase.name,purchase.quantity,
-    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.quantitysold,purchase.greturn,purchase.grn,purchase.gr)">
+    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.greturn,purchase.grn,purchase.gr)">
       <span *ngIf="purchase.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!purchase.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

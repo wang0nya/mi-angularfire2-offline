@@ -10,69 +10,60 @@
 </ion-header>
 <ion-content padding id="page13">
   <img src="assets/img/oqLzzWYmSOWOFa66UxpI_boxes.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;" />
-  <input type="hidden" [(ngModel)]="purchase.id" />
+  <input type="hidden" [(ngModel)]="product.id" />
+    <ion-item>
+    <ion-label floating>Product</ion-label>
+    <ion-select [(ngModel)]="product.name" required="" disabled="true">
+      <ion-option value="{{product.name}}" *ngFor="let product of products | async">{{product.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+    <ion-item>
+    <ion-label floating>Unit of Measure</ion-label>
+    <ion-input type="text" [(ngModel)]="product.unit" required="" disabled="true"></ion-input>
+  </ion-item>
   <ion-item>
-  <ion-label floating>Product</ion-label>
-  <ion-select [(ngModel)]="purchase.name" required="" disabled="true">
-    <ion-option value="{{product.name}}" *ngFor="let product of products | async">{{product.name}}</ion-option>
-  </ion-select>
-</ion-item>
-<ion-item>
-  <ion-label floating>Unit of Measure</ion-label>
-  <ion-input type="text" placeholder="eg. kg, g, bags" [(ngModel)]="purchase.unit" required="" disabled="true"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-label floating>Buying Price/unit</ion-label>
-  <ion-input type="number" placeholder="Buying Price" [(ngModel)]="purchase.bprice" required="" disabled="true"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-label floating>Selling Price/unit</ion-label>
-  <ion-input type="number" placeholder="Selling Price" [(ngModel)]="purchase.sprice" required="" disabled="true"></ion-input>
-</ion-item>
+    <ion-label floating>Buying Price/unit</ion-label>
+    <ion-input type="number"  [(ngModel)]="product.bprice" required="" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Selling Price/unit</ion-label>
+    <ion-input type="number"  [(ngModel)]="product.sprice" required="" ></ion-input>
+  </ion-item>
     <!-- <ion-item >
       <ion-label floating>Supplier</ion-label>
-      <ion-select [(ngModel)]="purchase.supplier" required="" disabled="true">
+      <ion-select [(ngModel)]="product.supplier" required="" disabled="true">
         <ion-option value="{{ supplier.name }} " *ngFor="let supplier of suppliers | async" >{{ supplier.name }}</ion-option>
       </ion-select>
     </ion-item> -->
     <ion-item>
       <ion-label floating>Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="purchase.date" required=""></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.date" required=""></ion-datetime>
     </ion-item>
       <ion-item>
-        <ion-label floating>Units available to Sell</ion-label>
-        <ion-input type="number"  [(ngModel)]="purchase.quantity" required="" disabled="true"></ion-input>
-      </ion-item>
-      <ion-item>
         <ion-label floating>Units to Sell</ion-label>
-        <ion-input type="number"  [(ngModel)]="purchase.quantitysold" required="" ></ion-input>
+        <ion-input type="number"  [(ngModel)]="product.quantity" required="" ></ion-input>
       </ion-item>
-      <ion-item >
-        <ion-label>Confirm Sale</ion-label>
-        <ion-toggle [(ngModel)]="purchase.sale">
-        </ion-toggle>
-      </ion-item>
-    <!-- <br>
-    <div class="GRN" *ngIf="purchase.id">
+    <br>
+    <div class="GRN" *ngIf="product.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label floating>Returning</ion-label>
-      <ion-input type="number" [(ngModel)]="purchase.greturn" [required]="false" ></ion-input>
+      <ion-input type="number" [(ngModel)]="product.greturn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>GRN</ion-label>
-        <ion-input type="number" [(ngModel)]="purchase.grn" [required]="false" ></ion-input>
+        <ion-input type="number" [(ngModel)]="product.grn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item >
-        <ion-label>GR Status</ion-label>
-        <ion-select [(ngModel)]="purchase.gr" interface="popover">
+        <ion-label floating>GR Status</ion-label>
+        <ion-select [(ngModel)]="product.gr" interface="popover">
           <ion-option value="true">true</ion-option>
           <ion-option value="false">false</ion-option>
         </ion-select>      </ion-item>
-    </div> -->
+    </div>
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(purchase.id,purchase.date,purchase.name,purchase.quantity,
-    purchase.quantitysold,purchase.unit,purchase.bprice,purchase.sprice,purchase.sale)">
-      <ion-icon name="add-circle"></ion-icon>
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.date,product.name,product.quantity,
+    product.unit,product.bprice,product.sprice,product.greturn,product.grn,product.gr)">
+      <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

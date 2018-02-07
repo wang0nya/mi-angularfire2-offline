@@ -16,7 +16,6 @@ export class EditProductPage {
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
   public products: AfoListObservable<any[]>;
-  public sales: AfoListObservable<any[]>;
 
   purchase={id:'',
   date: '',
@@ -26,13 +25,9 @@ export class EditProductPage {
   bprice: '',
   sprice: '',
   supplier: '',
-  quantitysold: '',
-  sale: '',
-
   greturn: '',
   grn: '',
   gr: '',
-  actualquantity: '',
 total: ''};
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
@@ -42,7 +37,6 @@ total: ''};
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
     this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
-    this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
 
     this.purchase.id = this.params.get('key');
     this.purchase.date = this.params.get('date');
@@ -52,15 +46,12 @@ total: ''};
     this.purchase.bprice = this.params.get('bprice');
     this.purchase.sprice = this.params.get('sprice');
     this.purchase.supplier = this.params.get('supplier');
-    this.purchase.quantitysold = this.params.get('quantitysold');
-    this.purchase.sale = this.params.get('sale');
-
     this.purchase.greturn = this.params.get('greturn');
     this.purchase.grn = this.params.get('grn');
     this.purchase.gr = this.params.get('gr');
   });
   }
-  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,quantitysold,sale,greturn,grn,gr,actualquantity,total) {
+  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,greturn,grn,gr,total) {
     if(id) {
       this.purchases.update(id, {
         date: date,
@@ -70,13 +61,10 @@ total: ''};
         bprice: bprice,
         sprice: sprice,
         supplier: supplier,
-        quantitysold: quantitysold,
-        sale: sale,
         greturn: greturn,
         grn: grn,
         gr: gr,
-        actualquantity: (quantity-quantitysold),
-        total: (actualquantity*bprice),
+        total: (quantity*bprice),
 
       }).then( newPurchase => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -103,12 +91,9 @@ total: ''};
       bprice: bprice,
       sprice: sprice,
       supplier: supplier,
-      quantitysold: quantitysold,
-      sale: '',
       greturn: '0',
       grn: '0',
       gr: 'false',
-      actualquantity: (quantity-quantitysold),
       total: (quantity*bprice),
 
     }).then( newPurchase => {

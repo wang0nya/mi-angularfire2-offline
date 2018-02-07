@@ -23,8 +23,6 @@
     <ion-label floating>Unit of Measure</ion-label>
     <ion-input type="text"  [(ngModel)]="product.unit" required="" ></ion-input>
   </ion-item>
-  <input type="hidden" [(ngModel)]="product.quantitysold" />
-
   <ion-item>
     <ion-label floating>Buying Price/unit</ion-label>
     <ion-input type="number"  [(ngModel)]="product.bprice" required="" ></ion-input>
@@ -51,13 +49,13 @@
         <ion-input type="number"  [(ngModel)]="product.grn" required="" ></ion-input>
       </ion-item>
       <ion-item >
-        <ion-label>GR Status</ion-label>
+        <ion-label floating>GR Status</ion-label>
         <ion-toggle [(ngModel)]="product.gr" color="secondary"></ion-toggle>
       </ion-item>
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,
-    product.unit,product.quantitysold,product.bprice,product.sprice,product.supplier,product.greturn,product.grn,product.gr)">
+    product.unit,product.bprice,product.sprice,product.supplier,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

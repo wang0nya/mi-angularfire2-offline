@@ -91,12 +91,10 @@ showOptions(purchase) {
         text: 'Sell',
         handler: () => {
           this.navCtrl.push(ReturnGoodsPage, {
-            key: purchase.$key,
+            // key: purchase.$key,
             date: purchase.date,
             name: purchase.name,
-            actualquantity: purchase.actualquantity,
             quantity: purchase.quantity,
-            quantitysold: purchase.quantitysold,
             unit: purchase.unit,
             bprice: purchase.bprice,
             sprice: purchase.sprice,
@@ -110,9 +108,7 @@ showOptions(purchase) {
             key: purchase.$key,
             date: purchase.date,
             name: purchase.name,
-            actualquantity: purchase.actualquantity,
             quantity: purchase.quantity,
-            quantitysold: purchase.quantitysold,
             unit: purchase.unit,
             bprice: purchase.bprice,
             sprice: purchase.sprice,
