@@ -22,10 +22,8 @@ name: '',
 unit: '',
 bprice: '',
 sprice: '',
-supplier: '',
-greturn: '',
-grn: '',
-gr: ''};
+supplier: ''
+};
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth, public navCtrl: NavController,
    public params: NavParams,private toast: Toast) {
@@ -41,14 +39,11 @@ gr: ''};
     this.product.bprice = this.params.get('bprice');
     this.product.sprice = this.params.get('sprice');
     this.product.supplier = this.params.get('supplier');
-    this.product.greturn = this.params.get('greturn');
-    this.product.grn = this.params.get('grn');
-    this.product.gr = this.params.get('gr');
 
   });
   }
 
-addProduct(id,date,name,unit,bprice,sprice,supplier,greturn,grn,gr) {
+addProduct(id,date,name,unit,bprice,sprice,supplier) {
   if(id) {
     this.products.update(id, {
       date: date,
@@ -57,9 +52,6 @@ addProduct(id,date,name,unit,bprice,sprice,supplier,greturn,grn,gr) {
       bprice: bprice,
       sprice: sprice,
       supplier: supplier,
-      greturn: greturn,
-      grn: grn,
-      gr: gr,
 
     }).then( newProduct => {
           this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -85,9 +77,6 @@ addProduct(id,date,name,unit,bprice,sprice,supplier,greturn,grn,gr) {
     bprice: bprice,
     sprice: sprice,
     supplier: supplier,
-    greturn: '0',
-    grn: '0',
-    gr: 'false',
 
   }).then( newProduct => {
             this.toast.show('Data saved', '5000', 'center').subscribe(

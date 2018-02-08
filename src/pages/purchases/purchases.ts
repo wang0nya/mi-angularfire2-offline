@@ -10,6 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { EditProductPage } from '../edit-product/edit-product';
 import { ReturnGoodsPage } from '../return-goods/return-goods';
 import { PurchaseSearchPage } from '../purchase-search/purchase-search';
+import { AddQPage } from '../add-q/add-q';
 
 @Component({
   selector: 'page-purchases',
@@ -87,7 +88,25 @@ showOptions(purchase) {
   let actionSheet = this.actionSheetCtrl.create({
     title: purchase.name,
     buttons: [
-  {
+      {
+        text: 'Add Stock',
+        handler: () => {
+            this.navCtrl.push(AddQPage, {
+              key: purchase.$key,
+              date: purchase.date,
+              type: purchase.type,
+              name: purchase.name,
+              actualq: purchase.actualq,
+              unit: purchase.unit,
+              bprice: purchase.bprice,
+              sprice: purchase.sprice,
+              supplier: purchase.supplier
+              // greturn: '0',
+              // grn: '0',
+              // gr: 'false',
+            });
+          }
+        },{
         text: 'Sell',
         handler: () => {
           this.navCtrl.push(ReturnGoodsPage, {
