@@ -31,8 +31,8 @@ export class AddQPage {
   sprice: '',
   supplier: '',
   addq: '',
-  actualq: '',
-  total: ''};
+  actualq: ''
+  };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
    public params: NavParams,private toast: Toast) {
@@ -55,7 +55,7 @@ export class AddQPage {
 
   });
   }
-  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq,actualq,total) {
+  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq,actualq) {
     if(id) {
       this.purchases.update(id, {
         date: date,
@@ -67,7 +67,6 @@ export class AddQPage {
         supplier: supplier,
         addq: addq,
         actualq: quantity-(-addq),
-        total: (actualq*bprice),
 
       }).then( newPurchase => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -96,7 +95,6 @@ export class AddQPage {
       supplier: supplier,
       addq: addq,
       actualq: quantity-(-addq),
-      total: (actualq*bprice),
 
     }).then( newPurchase => {
               this.toast.show('Data saved', '5000', 'center').subscribe(
