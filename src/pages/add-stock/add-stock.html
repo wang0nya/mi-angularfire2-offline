@@ -37,7 +37,7 @@
         <ion-option value="{{ supplier.name }} " *ngFor="let supplier of suppliers | async" >{{ supplier.name }}</ion-option>
       </ion-select>
     </ion-item>
-    <!-- <br>
+    <br>
     <div class="GRN" *ngIf="product.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
@@ -50,15 +50,12 @@
       </ion-item>
       <ion-item >
         <ion-label floating>GR Status</ion-label>
-        <ion-select [(ngModel)]="product.gr" interface="popover">
-          <ion-option value="true">true</ion-option>
-          <ion-option value="false">false</ion-option>
-        </ion-select>
+        <ion-toggle [(ngModel)]="product.gr" color="secondary"></ion-toggle>
       </ion-item>
-    </div> -->
+    </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,
-    product.unit,product.bprice,product.sprice,product.supplier)">
+    product.unit,product.bprice,product.sprice,product.supplier,product.greturn,product.grn,product.gr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>
