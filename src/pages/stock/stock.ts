@@ -9,7 +9,7 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { EditProductPage } from '../edit-product/edit-product';
+import { AddPPage } from '../add-p/add-p';
 
 import { StockSearchPage } from '../stock-search/stock-search';
 
@@ -74,8 +74,8 @@ showOptions(product) {
       {
         text: 'Buy',
         handler: () => {
-            this.navCtrl.push(EditProductPage, {
-              // key: product.$key,
+            this.navCtrl.push(AddPPage, {
+              key: product.$key,
               date: product.date,
               type: product.type,
               name: product.name,
@@ -83,7 +83,10 @@ showOptions(product) {
               unit: product.unit,
               bprice: product.bprice,
               sprice: product.sprice,
-              supplier: product.supplier
+              supplier: product.supplier,
+              greturn: '0',
+              grn: '0',
+              gr: 'false',
             });
           }
         },{
@@ -97,7 +100,10 @@ showOptions(product) {
             unit: product.unit,
             bprice: product.bprice,
             sprice: product.sprice,
-            supplier: product.supplier
+            supplier: product.supplier,
+            greturn: '0',
+            grn: '0',
+            gr: 'false',
           });
         }
       },{
