@@ -24,10 +24,12 @@ export class ReturnGoodsPage {
   unit: '',
   bprice: '',
   sprice: '',
+
   // supplier: '',
   greturn: '',
   grn: '',
   gr: '',
+  profit:'',
   total: ''
 };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
@@ -52,7 +54,7 @@ export class ReturnGoodsPage {
     this.product.gr = this.params.get('gr');
   });
   }
-  addSale(id,date,name,quantity,unit,bprice,sprice,greturn,grn,gr,total) {
+  addSale(id,date,name,quantity,unit,bprice,sprice,greturn,grn,gr,profit,total) {
     if(id) {
       this.sales.update(id, {
         date: date,
@@ -61,10 +63,12 @@ export class ReturnGoodsPage {
         unit: unit,
         bprice: bprice,
         sprice: sprice,
+
         // supplier: supplier,
         greturn: greturn,
         grn: grn,
         gr: gr,
+        profit: (sprice-bprice)*quantity,
         total: (quantity*sprice),
 
       }).then( newSale => {
@@ -91,10 +95,12 @@ export class ReturnGoodsPage {
       unit: unit,
       bprice: bprice,
       sprice: sprice,
+
       // supplier: supplier,
       greturn: '0',
       grn: '0',
       gr: 'false',
+      profit: (sprice-bprice)*quantity,
       total: (quantity*sprice),
 
     }).then( newSale => {
