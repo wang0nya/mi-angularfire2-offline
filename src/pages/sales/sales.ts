@@ -8,6 +8,7 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SaleSearchPage } from '../sale-search/sale-search';
+import { RemoveQPage } from '../remove-q/remove-q';
 
 @Component({
   selector: 'page-sales',
@@ -50,52 +51,52 @@ this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purcha
   search(){
     this.navCtrl.push(SaleSearchPage);
   }
-  editProduct(sale){
-    console.log(sale);
+  editProduct(purchase){
+    console.log(purchase);
     this.navCtrl.push(ReturnGoodsPage, {
-      key: sale.$key,
-      date: sale.date,
-      name: sale.name,
-      quantity: sale.quantity,
-      unit: sale.unit,
-      bprice: sale.bprice,
-      sprice: sale.sprice
+      key: purchase.$key,
+      date: purchase.date,
+      name: purchase.name,
+      quantity: purchase.quantity,
+      unit: purchase.unit,
+      bprice: purchase.bprice,
+      sprice: purchase.sprice
       // supplier: sale.supplier
     });
   }
-  presentConfirm(key: string) {
-  let alert = this.alertCtrl.create({
-    title: 'Confirm delete',
-    message: 'Are you sure?',
-    cssClass: 'alertcss',
-
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      },
-      {
-        text: 'Delete',
-        cssClass: 'buttoncss',
-
-        handler: () => {
-
-            this.sales.remove(key);
-
-          console.log('Buy clicked');
-        }
-      }
-    ]
-  });
-  alert.present();
-}
-showOptions(sale) {
+//   presentConfirm(key: string) {
+//   let alert = this.alertCtrl.create({
+//     title: 'Confirm delete',
+//     message: 'Are you sure?',
+//     cssClass: 'alertcss',
+//
+//     buttons: [
+//       {
+//         text: 'Cancel',
+//         role: 'cancel',
+//
+//         handler: () => {
+//           console.log('Cancel clicked');
+//         }
+//       },
+//       {
+//         text: 'Delete',
+//         cssClass: 'buttoncss',
+//
+//         handler: () => {
+//
+//             this.purchases.remove(key);
+//
+//           console.log('Buy clicked');
+//         }
+//       }
+//     ]
+//   });
+//   alert.present();
+// }
+showOptions(purchase) {
   let actionSheet = this.actionSheetCtrl.create({
-    title: sale.name,
+    title: purchase.name,
     buttons: [
       // {
       //   text: 'Buy',
@@ -130,21 +131,37 @@ showOptions(sale) {
         text: 'Edit',
         handler: () => {
           this.navCtrl.push(ReturnGoodsPage, {
-            key: sale.$key,
-            date: sale.date,
-            name: sale.name,
-            quantity: sale.quantity,
-            unit: sale.unit,
-            bprice: sale.bprice,
-            sprice: sale.sprice
-            // supplier: sale.supplier
+            key: purchase.$key,
+            date: purchase.date,
+            name: purchase.name,
+            quantity: purchase.quantity,
+            unit: purchase.unit,
+            bprice: purchase.bprice,
+            sprice: purchase.sprice
+            // supplier: purchase.supplier
           });
         }
       },{
         text: 'Delete',
         role: 'destructive',
         handler: () => {
-          this.presentConfirm(sale.$key)
+          this.navCtrl.push(RemoveQPage, {
+            key: purchase.$key,
+            date: purchase.date,
+            name: purchase.name,
+            quantity: purchase.quantity,
+            unit: purchase.unit,
+            bprice: purchase.bprice,
+            sprice: purchase.sprice,
+            salegreturn: '0',
+            salegrn: '',
+            salegr: '',
+            salequantity: '0',
+            profit: '0',
+            saletotal:'0',
+            sale: ''
+            // supplier: sale.supplier
+          });
         }
       },{
         text: 'Cancel',

@@ -16,7 +16,7 @@
 <ion-content padding id="page9">
   <ion-list>
     <ion-item *ngFor="let purchase of sales | async" class="item item-trns text-center"
-    (click)="showOptions(sale, sale.$key)">
+    (click)="showOptions(purchase, purchase.$key)">
       <strong><h2>{{ purchase.name }}</h2></strong>
       <p>Date: {{purchase.saledate}}</p>
       <p>Quantity sold: {{purchase.salequantity}}</p>

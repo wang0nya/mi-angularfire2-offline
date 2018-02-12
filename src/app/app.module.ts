@@ -35,6 +35,7 @@ import { PurchaseSearchPage } from '../pages/purchase-search/purchase-search';
 import { SaleSearchPage } from '../pages/sale-search/sale-search';
 import { AddPPage } from '../pages/add-p/add-p';
 import { AddQPage } from '../pages/add-q/add-q';
+import { RemoveQPage } from '../pages/remove-q/remove-q';
 
 import { CallNumber } from '@ionic-native/call-number';
 
@@ -65,7 +66,8 @@ import { ChartsModule } from 'ng2-charts';
     PurchaseSearchPage,
     SaleSearchPage,
     AddPPage,
-    AddQPage
+    AddQPage,
+    RemoveQPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -99,7 +101,8 @@ import { ChartsModule } from 'ng2-charts';
     PurchaseSearchPage,
     SaleSearchPage,
     AddPPage,
-    AddQPage
+    AddQPage,
+    RemoveQPage
   ],
   providers: [
     StatusBar,

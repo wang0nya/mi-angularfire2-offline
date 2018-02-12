@@ -62,7 +62,7 @@ export class BrowseSuppliersPage {
         unit: unit,
         bprice: bprice,
         sprice: sprice,
-        sale: sale,
+        sale: true,
         profit: (sprice-bprice)*salequantity,
         saletotal: (salequantity*sprice),
 
@@ -90,7 +90,7 @@ export class BrowseSuppliersPage {
       unit: unit,
       bprice: bprice,
       sprice: sprice,
-      sale: sale,
+      sale: true,
       salegreturn: '0',
       salegrn: '0',
       salegr: 'false',
