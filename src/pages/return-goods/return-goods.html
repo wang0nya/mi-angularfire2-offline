@@ -37,33 +37,33 @@
     </ion-item> -->
     <ion-item>
       <ion-label floating>Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.date" required=""></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.saledate" required=""></ion-datetime>
     </ion-item>
       <ion-item>
         <ion-label floating>Units to Sell</ion-label>
-        <ion-input type="number"  [(ngModel)]="product.quantity" required="" ></ion-input>
+        <ion-input type="number"  [(ngModel)]="product.salequantity" required="" ></ion-input>
       </ion-item>
     <br>
     <div class="GRN" *ngIf="product.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
       <ion-item>
       <ion-label floating>Returning</ion-label>
-      <ion-input type="number" [(ngModel)]="product.greturn" [required]="false" ></ion-input>
+      <ion-input type="number" [(ngModel)]="product.salegreturn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>GRN</ion-label>
-        <ion-input type="number" [(ngModel)]="product.grn" [required]="false" ></ion-input>
+        <ion-input type="number" [(ngModel)]="product.salegrn" [required]="false" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-label floating>GR Status</ion-label>
-        <ion-select [(ngModel)]="product.gr" interface="popover">
+        <ion-select [(ngModel)]="product.salegr" interface="popover">
           <ion-option value="true">true</ion-option>
           <ion-option value="false">false</ion-option>
         </ion-select>      </ion-item>
     </div>
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.date,product.name,product.quantity,
-    product.unit,product.bprice,product.sprice,product.greturn,product.grn,product.gr)">
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
+    product.unit,product.bprice,product.sprice,product.salegreturn,product.salegrn,product.salegr)">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

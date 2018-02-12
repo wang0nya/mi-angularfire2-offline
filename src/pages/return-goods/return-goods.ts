@@ -13,7 +13,7 @@ import { Toast } from '@ionic-native/toast';
 })
 export class ReturnGoodsPage {
   userId: any;
-  public sales: AfoListObservable<any[]>;
+  public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
   public products: AfoListObservable<any[]>;
 
@@ -37,7 +37,7 @@ export class ReturnGoodsPage {
    public params: NavParams,private toast: Toast) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
-    this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
+    this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
     this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
@@ -54,22 +54,22 @@ export class ReturnGoodsPage {
     this.product.gr = this.params.get('gr');
   });
   }
-  addSale(id,date,name,quantity,unit,bprice,sprice,greturn,grn,gr,profit,total) {
+  addSale(id,saledate,name,salequantity,unit,bprice,sprice,salegreturn,salegrn,salegr,profit,saletotal) {
     if(id) {
-      this.sales.update(id, {
-        date: date,
+      this.purchases.update(id, {
+        saledate: saledate,
         name: name,
-        quantity: quantity,
+        salequantity: salequantity,
         unit: unit,
         bprice: bprice,
         sprice: sprice,
 
         // supplier: supplier,
-        greturn: greturn,
-        grn: grn,
-        gr: gr,
-        profit: (sprice-bprice)*quantity,
-        total: (quantity*sprice),
+        salegreturn: salegreturn,
+        salegrn: salegrn,
+        salegr: salegr,
+        profit: (sprice-bprice)*salequantity,
+        saletotal: (salequantity*sprice),
 
       }).then( newSale => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -88,20 +88,20 @@ export class ReturnGoodsPage {
           });
 
     } else {
-    this.sales.push({
-      date: date,
+      this.purchases.push({
+      saledate: saledate,
       name: name,
-      quantity: quantity,
+      salequantity: salequantity,
       unit: unit,
       bprice: bprice,
       sprice: sprice,
 
       // supplier: supplier,
-      greturn: '0',
-      grn: '0',
-      gr: 'false',
-      profit: (sprice-bprice)*quantity,
-      total: (quantity*sprice),
+      salegreturn: '0',
+      salegrn: '0',
+      salegr: 'false',
+      profit: (sprice-bprice)*salequantity,
+      saletotal: (salequantity*sprice),
 
     }).then( newSale => {
               this.toast.show('Data saved', '5000', 'center').subscribe(

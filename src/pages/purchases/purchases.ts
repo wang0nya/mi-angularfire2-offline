@@ -8,7 +8,7 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { EditProductPage } from '../edit-product/edit-product';
-import { ReturnGoodsPage } from '../return-goods/return-goods';
+import { BrowseSuppliersPage } from '../browse-suppliers/browse-suppliers';
 import { PurchaseSearchPage } from '../purchase-search/purchase-search';
 import { AddQPage } from '../add-q/add-q';
 
@@ -109,8 +109,8 @@ showOptions(purchase) {
         },{
         text: 'Sell',
         handler: () => {
-          this.navCtrl.push(ReturnGoodsPage, {
-            // key: purchase.$key,
+          this.navCtrl.push(BrowseSuppliersPage, {
+            key: purchase.$key,
             date: purchase.date,
             name: purchase.name,
             quantity: purchase.quantity,

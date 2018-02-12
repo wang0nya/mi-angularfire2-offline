@@ -23,21 +23,26 @@ profitTotal: any;
   public actionSheetCtrl: ActionSheetController) {
       afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
-    this.sales = afoDatabase.list(`/userProfile/${this.userId}/sales`);
+    this.sales = this.afoDatabase.list(`/userProfile/${this.userId}/purchases`, {
+       query: {
+         orderByChild: 'sale',
+         equalTo: true
+       }
+   });
 
 //find total sum
-this.afoDatabase.list(`/userProfile/${this.userId}/sales`).subscribe((sales) => {
+this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
     this.priceTotal = 0;
-    sales.forEach((sale) => {
-        this.priceTotal += sale.total;
+    purchases.forEach((purchase) => {
+        this.priceTotal += purchase.saletotal;
     })
 })
 
 //find total profit
-this.afoDatabase.list(`/userProfile/${this.userId}/sales`).subscribe((sales) => {
+this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
     this.profitTotal = 0;
-    sales.forEach((sale) => {
-        this.profitTotal += sale.profit;
+    purchases.forEach((purchase) => {
+        this.profitTotal += purchase.profit;
     })
 })
   });
