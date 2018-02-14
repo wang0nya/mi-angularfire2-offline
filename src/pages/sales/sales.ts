@@ -112,7 +112,9 @@ showOptions(purchase) {
               bprice: purchase.bprice,
               sprice: purchase.sprice,
               supplier: purchase.supplier,
-              salequantity: purchase.salequantity
+              salequantity: purchase.salequantity,
+              profit: purchase.profit,
+              saletotal: purchase.saletotal,
               // greturn: '0',
               // grn: '0',
               // gr: 'false',

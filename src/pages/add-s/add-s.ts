@@ -33,7 +33,7 @@ export class AddSPage {
   adds: '',
   sale: '',
   profit:'',
-  total: ''
+  saletotal: ''
 };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public  navCtrl: NavController,
@@ -44,15 +44,17 @@ export class AddSPage {
     this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
-    this.product.id = this.params.get('key');
-    this.product.saledate = this.params.get('saledate');
-    this.product.name = this.params.get('name');
-    this.product.salequantity = this.params.get('salequantity');
-    this.product.unit = this.params.get('unit');
-    this.product.bprice = this.params.get('bprice');
-    this.product.sprice = this.params.get('sprice');
-    this.product.adds = this.params.get('adds');
-  });
+        this.product.id = this.params.get('key');
+        this.product.saledate = this.params.get('saledate');
+        this.product.name = this.params.get('name');
+        this.product.salequantity = this.params.get('salequantity');
+        this.product.unit = this.params.get('unit');
+        this.product.bprice = this.params.get('bprice');
+        this.product.sprice = this.params.get('sprice');
+        this.product.adds = this.params.get('adds');
+        this.product.profit = this.params.get('profit');
+        this.product.saletotal = this.params.get('saletotal');
+    });
   }
   addSale(id,saledate,name,salequantity,unit,bprice,sprice,adds,sale,profit,saletotal) {
     if(id) {
@@ -63,10 +65,10 @@ export class AddSPage {
         unit: unit,
         bprice: bprice,
         sprice: sprice,
-        sale: true,
-        profit: (sprice-bprice)*salequantity,
-        saletotal: (salequantity*sprice),
         adds: adds,
+        sale: true,
+        profit: (sprice-bprice)*(salequantity-(-adds)),
+        saletotal: ((salequantity-(-adds))*sprice),
 
       }).then( newSale => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -83,38 +85,6 @@ export class AddSPage {
               }
             );
           });
-
-    } else {
-      this.purchases.push({
-      saledate: saledate,
-      name: name,
-      salequantity: salequantity-(-adds),
-      unit: unit,
-      bprice: bprice,
-      sprice: sprice,
-      sale: true,
-      salegreturn: '0',
-      salegrn: '0',
-      salegr: 'false',
-      profit: (sprice-bprice)*salequantity,
-      saletotal: (salequantity*sprice),
-      adds: adds,
-
-    }).then( newSale => {
-              this.toast.show('Data saved', '5000', 'center').subscribe(
-                toast => {
-                  this.navCtrl.pop();
-                }
-              );
-            })
-            .catch(e => {
-              console.log(e);
-              this.toast.show(e, '5000', 'center').subscribe(
-                toast => {
-                  console.log(toast);
-                }
-              );
-            });
       }
     }
   }
