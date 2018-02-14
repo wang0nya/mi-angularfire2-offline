@@ -11,12 +11,13 @@
 <ion-content padding id="page13">
   <img src="assets/img/empty.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;" />
   <input type="hidden" [(ngModel)]="product.id" />
-  <ion-item>
+  <!-- <ion-item>
   <ion-label floating>Product</ion-label>
-  <ion-select [(ngModel)]="product.name" required="" disabled="true">
+  <ion-select [(ngModel)]="product.name" required="">
     <ion-option value="{{product.name}}" *ngFor="let product of products | async">{{product.name}}</ion-option>
   </ion-select>
-</ion-item>
+</ion-item> -->
+<br>
       <ion-item>
           <ion-label>Confirm Delete</ion-label>
           <ion-toggle [(ngModel)]="product.sale" color="danger"></ion-toggle>

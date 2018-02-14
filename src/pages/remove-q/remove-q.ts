@@ -24,6 +24,7 @@ export class RemoveQPage {
   userId: any;
   public purchases: AfoListObservable<any[]>;
   product={id:'',
+  name: '',
   salegreturn:'',
   salegrn:'',
   salegr:'',
@@ -41,6 +42,7 @@ export class RemoveQPage {
     if (user) { this.userId = user.uid }
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
     this.product.id = this.params.get('key');
+    this.product.name = this.params.get('name');
     this.product.salegreturn = this.params.get('salegreturn');
     this.product.salegrn = this.params.get('salegrn');
     this.product.salegr = this.params.get('salegr');

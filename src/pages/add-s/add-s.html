@@ -39,9 +39,9 @@
         <ion-label floating>Units Sold</ion-label>
         <ion-input type="number"  [(ngModel)]="product.salequantity" required="" disabled="true"></ion-input>
       </ion-item>
-      <ion-item *ngFor="let purchase of purchases | async" class="item item-trns text-center">
+      <!-- <ion-item *ngFor="let purchase of purchases | async" class="item item-trns text-center">
       <strong><h2 style="margin-top:0px;color:red;">Quantity remaining in stock: {{purchase.actualq-purchase.salequantity}}</h2></strong>
-      </ion-item>
+      </ion-item> -->
       <ion-item>
         <ion-label floating>Date</ion-label>
         <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.saledate" required="" ></ion-datetime>
