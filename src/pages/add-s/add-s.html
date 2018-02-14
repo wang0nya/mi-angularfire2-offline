@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Add Sale
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page13">
+  <img src="assets/img/oqLzzWYmSOWOFa66UxpI_boxes.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;" />
+  <input type="hidden" [(ngModel)]="product.id" />
+    <ion-item>
+    <ion-label floating>Product</ion-label>
+    <ion-select [(ngModel)]="product.name" required="" disabled="true">
+      <ion-option value="{{product.name}}" *ngFor="let product of products | async">{{product.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+    <ion-item>
+    <ion-label floating>Unit of Measure</ion-label>
+    <ion-input type="text" [(ngModel)]="product.unit" required="" disabled="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Buying Price/unit</ion-label>
+    <ion-input type="number"  [(ngModel)]="product.bprice" required="" disabled="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Selling Price/unit</ion-label>
+    <ion-input type="number"  [(ngModel)]="product.sprice" required="" disabled="true"></ion-input>
+  </ion-item>
+    <!-- <ion-item >
+      <ion-label floating>Supplier</ion-label>
+      <ion-select [(ngModel)]="product.supplier" required="" disabled="true">
+        <ion-option value="{{ supplier.name }} " *ngFor="let supplier of suppliers | async" >{{ supplier.name }}</ion-option>
+      </ion-select>
+    </ion-item> -->
+      <ion-item>
+        <ion-label floating>Units Sold</ion-label>
+        <ion-input type="number"  [(ngModel)]="product.salequantity" required="" disabled="true"></ion-input>
+      </ion-item>
+      <ion-item *ngFor="let purchase of purchases | async" class="item item-trns text-center">
+      <strong><h2 style="margin-top:0px;color:red;">Quantity remaining in stock: {{purchase.actualq-purchase.salequantity}}</h2></strong>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.saledate" required="" ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Add</ion-label>
+        <ion-input type="number"  [(ngModel)]="product.adds" required=""></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Confirm Sale</ion-label>
+          <ion-toggle [(ngModel)]="product.sale"></ion-toggle>
+        </ion-item>
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
+    product.unit,product.bprice,product.sprice,product.adds,product.sale)">
+<ion-icon name="add-circle"></ion-icon>
+    </button>
+</ion-content>

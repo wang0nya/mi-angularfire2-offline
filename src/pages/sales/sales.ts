@@ -9,6 +9,7 @@ import {
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SaleSearchPage } from '../sale-search/sale-search';
 import { RemoveQPage } from '../remove-q/remove-q';
+import { AddSPage } from '../add-s/add-s';
 
 @Component({
   selector: 'page-sales',
@@ -98,36 +99,26 @@ showOptions(purchase) {
   let actionSheet = this.actionSheetCtrl.create({
     title: purchase.name,
     buttons: [
-      // {
-      //   text: 'Buy',
-      //   handler: () => {
-      //       this.navCtrl.push(EditProductPage, {
-      //         key: product.$key,
-      //         date: product.date,
-      //         type: product.type,
-      //         name: product.name,
-      //         quantity: product.quantity,
-      //         unit: product.unit,
-      //         price: product.price,
-      //         supplier: product.supplier
-      //       });
-      //     }
-      //   }
-      // ,{
-      //   text: 'Sell',
-      //   handler: () => {
-      //     this.navCtrl.push(ReturnGoodsPage, {
-      //       key: product.$key,
-      //       date: product.date,
-      //       name: product.name,
-      //       quantity: product.quantity,
-      //       unit: product.unit,
-      //       price: product.price,
-      //       supplier: product.supplier
-      //     });
-      //   }
-      // }
       {
+        text: 'Add Sale',
+        handler: () => {
+            this.navCtrl.push(AddSPage, {
+              key: purchase.$key,
+              saledate: purchase.saledate,
+              type: purchase.type,
+              name: purchase.name,
+              actualq: purchase.actualq,
+              unit: purchase.unit,
+              bprice: purchase.bprice,
+              sprice: purchase.sprice,
+              supplier: purchase.supplier,
+              salequantity: purchase.salequantity
+              // greturn: '0',
+              // grn: '0',
+              // gr: 'false',
+            });
+          }
+        },{
         text: 'Edit',
         handler: () => {
           this.navCtrl.push(ReturnGoodsPage, {

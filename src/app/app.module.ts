@@ -19,6 +19,7 @@ import { ReturnGoodsPage } from '../pages/return-goods/return-goods';
 import { RegisterSupplierPage } from '../pages/register-supplier/register-supplier';
 import { Toast } from '@ionic-native/toast';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { AddSPage } from '../pages/add-s/add-s';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -67,7 +68,8 @@ import { ChartsModule } from 'ng2-charts';
     SaleSearchPage,
     AddPPage,
     AddQPage,
-    RemoveQPage
+    RemoveQPage,
+    AddSPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -102,7 +104,8 @@ import { ChartsModule } from 'ng2-charts';
     SaleSearchPage,
     AddPPage,
     AddQPage,
-    RemoveQPage
+    RemoveQPage,
+    AddSPage
   ],
   providers: [
     StatusBar,
