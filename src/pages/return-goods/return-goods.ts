@@ -3,15 +3,18 @@ import { NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
+import { Validator } from  '../../validators/validator';
 
 @Component({
   selector: 'page-return-goods',
   templateUrl: 'return-goods.html'
 })
 export class ReturnGoodsPage {
+  slideOneForm: FormGroup;
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
@@ -26,15 +29,16 @@ export class ReturnGoodsPage {
   sprice: '',
 
   // supplier: '',
-  greturn: '',
-  grn: '',
-  gr: '',
+  salegreturn: '',
+  salegrn: '',
+  salegr: '',
   profit:'',
   total: ''
 };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
-   public params: NavParams,private toast: Toast) {
+   public params: NavParams,private toast: Toast
+ , public formBuilder: FormBuilder) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
@@ -49,9 +53,13 @@ export class ReturnGoodsPage {
     this.product.bprice = this.params.get('bprice');
     this.product.sprice = this.params.get('sprice');
     // this.product.supplier = this.params.get('supplier');
-    this.product.greturn = this.params.get('greturn');
-    this.product.grn = this.params.get('grn');
-    this.product.gr = this.params.get('gr');
+    this.product.salegreturn = this.params.get('salegreturn');
+    this.product.salegrn = this.params.get('salegrn');
+    this.product.salegr = this.params.get('salegr');
+
+    this.slideOneForm = formBuilder.group({
+        buyP: ['', Validator.isValid]
+    });
   });
   }
   addSale(id,saledate,name,salequantity,unit,bprice,sprice,salegreturn,salegrn,salegr,profit,saletotal) {

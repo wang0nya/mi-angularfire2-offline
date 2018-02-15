@@ -46,16 +46,21 @@
         <ion-label floating>Date</ion-label>
         <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.saledate" required="" ></ion-datetime>
       </ion-item>
+      <div [formGroup]="slideOneForm">
       <ion-item>
         <ion-label floating>Add</ion-label>
-        <ion-input type="number"  [(ngModel)]="product.adds" required=""></ion-input>
+        <ion-input type="number"  [(ngModel)]="product.adds" required="" formControlName="buyP"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty || submitAttempt)">
+                <p>Please enter a valid value.</p>
+            </ion-item>
+    </div>
       <ion-item>
           <ion-label>Confirm Sale</ion-label>
           <ion-toggle [(ngModel)]="product.sale"></ion-toggle>
         </ion-item>
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
-    product.unit,product.bprice,product.sprice,product.adds,product.sale)">
+    product.unit,product.bprice,product.sprice,product.adds,product.sale)" [disabled]="!slideOneForm.valid">
 <ion-icon name="add-circle"></ion-icon>
     </button>
 </ion-content>

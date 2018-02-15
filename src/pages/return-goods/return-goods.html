@@ -11,6 +11,7 @@
 <ion-content padding id="page13">
   <img src="assets/img/oqLzzWYmSOWOFa66UxpI_boxes.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;" />
   <input type="hidden" [(ngModel)]="product.id" />
+  <br>
     <ion-item>
     <ion-label floating>Product</ion-label>
     <ion-select [(ngModel)]="product.name" required="" disabled="true">
@@ -23,11 +24,11 @@
   </ion-item>
   <ion-item>
     <ion-label floating>Buying Price/unit</ion-label>
-    <ion-input type="number"  [(ngModel)]="product.bprice" required="" ></ion-input>
+    <ion-input type="number"  [(ngModel)]="product.bprice" required="" disabled="true"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Selling Price/unit</ion-label>
-    <ion-input type="number"  [(ngModel)]="product.sprice" required="" ></ion-input>
+    <ion-input type="number"  [(ngModel)]="product.sprice" required="" disabled="true"></ion-input>
   </ion-item>
     <!-- <ion-item >
       <ion-label floating>Supplier</ion-label>
@@ -39,10 +40,15 @@
       <ion-label floating>Date</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.saledate" required=""></ion-datetime>
     </ion-item>
+    <div [formGroup]="slideOneForm">
       <ion-item>
         <ion-label floating>Units to Sell</ion-label>
-        <ion-input type="number"  [(ngModel)]="product.salequantity" required="" ></ion-input>
+        <ion-input type="number"  [(ngModel)]="product.salequantity" required="" formControlName="buyP"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty)">
+                <p>Please enter a valid value.</p>
+            </ion-item>
+      </div>
     <br>
     <div class="GRN" *ngIf="product.id">
       <ion-item-divider color="light">Returning Goods</ion-item-divider>
@@ -63,7 +69,7 @@
     </div>
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
-    product.unit,product.bprice,product.sprice,product.salegreturn,product.salegrn,product.salegr)">
+    product.unit,product.bprice,product.sprice,product.salegreturn,product.salegrn,product.salegr)" [disabled]="!slideOneForm.valid">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

@@ -3,9 +3,11 @@ import { NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
+import { Validator } from  '../../validators/validator';
 /**
  * Generated class for the AddPPage page.
  *
@@ -17,6 +19,7 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'add-p.html',
 })
 export class AddPPage {
+  slideOneForm: FormGroup;
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
@@ -35,7 +38,8 @@ export class AddPPage {
   };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
-   public params: NavParams,private toast: Toast) {
+   public params: NavParams,private toast: Toast
+ , public formBuilder: FormBuilder) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
@@ -52,6 +56,10 @@ export class AddPPage {
     this.purchase.supplier = this.params.get('supplier');
     this.purchase.addq = this.params.get('addq');
     this.purchase.actualq = this.params.get('actualq');
+
+    this.slideOneForm = formBuilder.group({
+        buyP: ['', Validator.isValid]
+    });
 
   });
   }

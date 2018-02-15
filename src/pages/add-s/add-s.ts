@@ -3,9 +3,11 @@ import { NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
+import { Validator } from  '../../validators/validator';
 
 /**
  * Generated class for the AddSPage page.
@@ -18,6 +20,7 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'add-s.html',
 })
 export class AddSPage {
+  slideOneForm: FormGroup;
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
@@ -37,7 +40,8 @@ export class AddSPage {
 };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public  navCtrl: NavController,
-   public params: NavParams,private toast: Toast) {
+   public params: NavParams,private toast: Toast
+ , public formBuilder: FormBuilder) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
@@ -54,6 +58,10 @@ export class AddSPage {
         this.product.adds = this.params.get('adds');
         this.product.profit = this.params.get('profit');
         this.product.saletotal = this.params.get('saletotal');
+
+        this.slideOneForm = formBuilder.group({
+            buyP: ['', Validator.isValid]
+        });
     });
   }
   addSale(id,saledate,name,salequantity,unit,bprice,sprice,adds,sale,profit,saletotal) {

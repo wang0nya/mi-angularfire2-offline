@@ -130,7 +130,10 @@ showOptions(purchase) {
             quantity: purchase.quantity,
             unit: purchase.unit,
             bprice: purchase.bprice,
-            sprice: purchase.sprice
+            sprice: purchase.sprice,
+            salegreturn: 0,
+            salegrn: 0,
+            salegr: false
             // supplier: purchase.supplier
           });
         }

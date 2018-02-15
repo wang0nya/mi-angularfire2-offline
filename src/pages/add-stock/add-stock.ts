@@ -3,15 +3,18 @@ import { NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
+import { Validator } from  '../../validators/validator';
 
 @Component({
   selector: 'page-add-stock',
   templateUrl: 'add-stock.html'
 })
 export class AddStockPage {
+  slideOneForm: FormGroup;
 userId: any;
 public products: AfoListObservable<any[]>;
 public suppliers: AfoListObservable<any[]>;
@@ -26,7 +29,8 @@ supplier: ''
 };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth, public navCtrl: NavController,
-   public params: NavParams,private toast: Toast) {
+   public params: NavParams,private toast: Toast
+ , public formBuilder: FormBuilder) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
@@ -40,6 +44,10 @@ supplier: ''
     this.product.sprice = this.params.get('sprice');
     this.product.supplier = this.params.get('supplier');
 
+    this.slideOneForm = formBuilder.group({
+      unit: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        buyP: ['', Validator.isValid]
+    });
   });
   }
 

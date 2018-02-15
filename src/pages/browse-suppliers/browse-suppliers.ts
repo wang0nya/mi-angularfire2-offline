@@ -3,9 +3,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
+import { Validator } from  '../../validators/validator';
 
 /**
  * Generated class for the BrowseSuppliersPage page.
@@ -19,6 +21,8 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'browse-suppliers.html',
 })
 export class BrowseSuppliersPage {
+  slideOneForm: FormGroup;
+
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
@@ -37,7 +41,8 @@ export class BrowseSuppliersPage {
 };
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
-   public params: NavParams,private toast: Toast) {
+   public params: NavParams,private toast: Toast
+ , public formBuilder: FormBuilder) {
        afAuth.authState.subscribe( user => {
     if (user) { this.userId = user.uid }
     this.purchases = afoDatabase.list(`/userProfile/${this.userId}/purchases`);
@@ -51,6 +56,11 @@ export class BrowseSuppliersPage {
     this.product.unit = this.params.get('unit');
     this.product.bprice = this.params.get('bprice');
     this.product.sprice = this.params.get('sprice');
+
+    this.slideOneForm = formBuilder.group({
+      unit: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        buyP: ['', Validator.isValid]
+    });
   });
   }
   addSale(id,saledate,name,salequantity,unit,bprice,sprice,sale,profit,saletotal) {

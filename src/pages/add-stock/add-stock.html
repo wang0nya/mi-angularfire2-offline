@@ -19,18 +19,33 @@
       <ion-label floating>Product Name</ion-label>
       <ion-input type="text"  [(ngModel)]="product.name" required="" ></ion-input>
     </ion-item>
+    <div [formGroup]="slideOneForm">
     <ion-item>
     <ion-label floating>Unit of Measure</ion-label>
-    <ion-input type="text"  [(ngModel)]="product.unit" required="" ></ion-input>
+    <ion-input type="text"  [(ngModel)]="product.unit" required="" formControlName="unit"></ion-input>
   </ion-item>
+<ion-item *ngIf="!slideOneForm.controls.unit.valid  && (slideOneForm.controls.unit.dirty)">
+          <p>Please enter a valid value.</p>
+      </ion-item>
+</div>
+<div [formGroup]="slideOneForm">
   <ion-item>
     <ion-label floating>Buying Price/unit</ion-label>
-    <ion-input type="number"  [(ngModel)]="product.bprice" required="" ></ion-input>
+    <ion-input type="number"  [(ngModel)]="product.bprice" required="" formControlName="buyP"></ion-input>
   </ion-item>
+  <ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty)">
+            <p>Please enter a valid value.</p>
+        </ion-item>
+  </div>
+  <div [formGroup]="slideOneForm">
   <ion-item>
     <ion-label floating>Selling Price/unit</ion-label>
-    <ion-input type="number"  [(ngModel)]="product.sprice" required="" ></ion-input>
+    <ion-input type="number"  [(ngModel)]="product.sprice" required="" formControlName="buyP"></ion-input>
   </ion-item>
+  <ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty)">
+            <p>Please enter a valid value.</p>
+        </ion-item>
+  </div>
     <ion-item >
       <ion-label floating>Supplier</ion-label>
       <ion-select [(ngModel)]="product.supplier" required="" >
@@ -58,7 +73,7 @@
     </div> -->
 
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,
-    product.unit,product.bprice,product.sprice,product.supplier)">
+    product.unit,product.bprice,product.sprice,product.supplier)" [disabled]="!slideOneForm.valid">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
 </ion-content>

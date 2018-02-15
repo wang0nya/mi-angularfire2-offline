@@ -41,15 +41,19 @@
     </ion-item>
     <ion-item>
       <ion-label floating>Units Available</ion-label>
-      <ion-input type="number"  [(ngModel)]="purchase.actualq" required="" disabled="true"></ion-input>
+      <ion-input type="number"  [(ngModel)]="purchase.actualq" required="" disabled="true" ></ion-input>
     </ion-item>
+    <div [formGroup]="slideOneForm">
     <ion-item>
       <ion-label floating>Add</ion-label>
-      <ion-input type="number"  [(ngModel)]="purchase.addq" required=""></ion-input>
+      <ion-input type="number"  [(ngModel)]="purchase.addq" required="" formControlName="buyP"></ion-input>
     </ion-item>
-
+    <ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty || submitAttempt)">
+              <p>Please enter a valid value.</p>
+          </ion-item>
+    </div>
     <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addPurchase(purchase.id,purchase.date,purchase.name,purchase.actualq,
-    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.addq)">
+    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.addq)" [disabled]="!slideOneForm.valid">
       <ion-icon name="add-circle"></ion-icon>
     </button>
 </ion-content>
