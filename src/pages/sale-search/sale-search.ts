@@ -31,8 +31,8 @@ export class SaleSearchPage {
       this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
       // searchbar
-      this.productRef = firebase.database().ref(`/userProfile/${this.userId}/sales`);
-      this.productRef.on('value', productList => {
+      this.productRef = firebase.database().ref(`/userProfile/${this.userId}/purchases`);
+      this.productRef.orderByChild("salegr").equalTo("true").on('value', productList => {
               let products = [];
               productList.forEach( product => {
                 products.push(product.val());
