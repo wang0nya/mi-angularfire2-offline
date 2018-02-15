@@ -87,8 +87,8 @@ export class GoodsReturnedPage {
     });
 
     this.grInList = this.grInList.filter((v) => {
-      if(v.grn && q) {
-        if (v.grn.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+      if(v.salegrn && q) {
+        if (v.salegrn.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
         }
         return false;
