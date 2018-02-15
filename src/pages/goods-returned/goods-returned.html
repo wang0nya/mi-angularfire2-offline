@@ -16,24 +16,18 @@
     <ion-item *ngFor="let product of grOutList" class="item item-trns text-center">
       <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
       <p>Date: {{product.date}}</p>
-      <p>Quantity: {{product.quantity}} {{product.unit}}</p>
+      <p>Returned: {{product.greturn}}</p>
       <!-- <p></p> -->
-      <p>Buying Price per unit: {{product.bprice}}</p>
-      <p>Selling Price per unit: {{product.sprice}}</p>
+
       <p>Supplier: {{product.supplier}}</p>
 
-      <h3 item-end>
-        Ksh. {{product.btotal}}
-      </h3>
     </ion-item>
     <ion-item-divider >Sales Returned</ion-item-divider>
     <ion-item *ngFor="let product of grInList" class="item item-trns text-center">
       <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
       <p>Date: {{product.date}}</p>
-      <p>Quantity: {{product.quantity}} {{product.unit}}</p>
+      <p>Returned: {{product.salegreturn}}</p>
       <!-- <p></p> -->
-      <p>Buying Price per unit: {{product.bprice}}</p>
-      <p>Selling Price per unit: {{product.sprice}}</p>
       <p>Supplier: {{product.supplier}}</p>
 
       <h3 item-end>

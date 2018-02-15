@@ -76,6 +76,8 @@ export class AddPPage {
         addq: '0',
         actualq: quantity,
         salequantity: 0,
+        salegreturn: 0,
+        greturn: 0,
 
       }).then( newPurchase => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -105,6 +107,8 @@ export class AddPPage {
       addq: '0',
       actualq: quantity,
       salequantity: 0,
+      salegreturn: 0,
+      greturn: 0,
 
     }).then( newPurchase => {
               this.toast.show('Data saved', '5000', 'center').subscribe(

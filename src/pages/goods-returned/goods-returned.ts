@@ -33,7 +33,7 @@ export class GoodsReturnedPage {
 
     // searchbar
     this.grOutRef = firebase.database().ref(`/userProfile/${this.userId}/purchases`);
-    this.grInRef = firebase.database().ref(`/userProfile/${this.userId}/sales`);
+    this.grInRef = firebase.database().ref(`/userProfile/${this.userId}/purchases`);
 
     this.grOutRef.orderByChild("gr").equalTo("true").on('value', grOutList => {
       let products = [];
@@ -46,7 +46,7 @@ export class GoodsReturnedPage {
       this.loadedGrOutList = products;
     });
 
-    this.grInRef.orderByChild("gr").equalTo("true").on('value', grInList => {
+    this.grInRef.orderByChild("salegr").equalTo("true").on('value', grInList => {
       let products = [];
       grInList.forEach( product => {
         products.push(product.val());
