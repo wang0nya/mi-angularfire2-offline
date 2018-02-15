@@ -18,33 +18,18 @@
       <ion-option value="{{product.name}}" *ngFor="let product of products | async">{{product.name}}</ion-option>
     </ion-select>
   </ion-item>
-  <div [formGroup]="slideOneForm">
   <ion-item>
   <ion-label floating>Unit of Measure</ion-label>
-  <ion-input type="text"  [(ngModel)]="product.unit" required="" formControlName="unit"></ion-input>
+  <ion-input type="text"  [(ngModel)]="product.unit" required="" disabled="true"></ion-input>
 </ion-item>
-<ion-item *ngIf="!slideOneForm.controls.unit.valid  && (slideOneForm.controls.unit.dirty)">
-        <p>Please enter a valid value.</p>
-    </ion-item>
-</div>
-<div [formGroup]="slideOneForm">
 <ion-item>
   <ion-label floating>Buying Price/unit</ion-label>
-  <ion-input type="number"  [(ngModel)]="product.bprice" required="" formControlName="buyP"></ion-input>
+  <ion-input type="number"  [(ngModel)]="product.bprice" required="" disabled="true"></ion-input>
 </ion-item>
-<ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty)">
-          <p>Please enter a valid value.</p>
-      </ion-item>
-</div>
-<div [formGroup]="slideOneForm">
 <ion-item>
   <ion-label floating>Selling Price/unit</ion-label>
-  <ion-input type="number"  [(ngModel)]="product.sprice" required="" formControlName="buyP"></ion-input>
+  <ion-input type="number"  [(ngModel)]="product.sprice" required="" disabled="true"></ion-input>
 </ion-item>
-<ion-item *ngIf="!slideOneForm.controls.buyP.valid  && (slideOneForm.controls.buyP.dirty)">
-          <p>Please enter a valid value.</p>
-      </ion-item>
-</div>
     <!-- <ion-item >
       <ion-label floating>Supplier</ion-label>
       <ion-select [(ngModel)]="product.supplier" required="" disabled="true">

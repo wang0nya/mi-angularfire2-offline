@@ -125,9 +125,9 @@ showOptions(purchase) {
         handler: () => {
           this.navCtrl.push(ReturnGoodsPage, {
             key: purchase.$key,
-            date: purchase.date,
+            saledate: purchase.saledate,
             name: purchase.name,
-            quantity: purchase.quantity,
+            salequantity: purchase.salequantity,
             unit: purchase.unit,
             bprice: purchase.bprice,
             sprice: purchase.sprice,

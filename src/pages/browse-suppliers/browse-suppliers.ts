@@ -58,7 +58,6 @@ export class BrowseSuppliersPage {
     this.product.sprice = this.params.get('sprice');
 
     this.slideOneForm = formBuilder.group({
-      unit: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
         buyP: ['', Validator.isValid]
     });
   });

@@ -21,9 +21,9 @@ export class ReturnGoodsPage {
   public products: AfoListObservable<any[]>;
 
   product={id:'',
-  date: '',
+  saledate: '',
   name: '',
-  quantity: '',
+  salequantity: '',
   unit: '',
   bprice: '',
   sprice: '',
@@ -46,9 +46,9 @@ export class ReturnGoodsPage {
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
     this.product.id = this.params.get('key');
-    this.product.date = this.params.get('date');
+    this.product.saledate = this.params.get('saledate');
     this.product.name = this.params.get('name');
-    this.product.quantity = this.params.get('quantity');
+    this.product.salequantity = this.params.get('salequantity');
     this.product.unit = this.params.get('unit');
     this.product.bprice = this.params.get('bprice');
     this.product.sprice = this.params.get('sprice');
