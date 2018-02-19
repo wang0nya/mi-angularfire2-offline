@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController,
   ActionSheetController } from 'ionic-angular';
-import { AddStockPage } from '../add-stock/add-stock';
-import { EditProductPage } from '../edit-product/edit-product'
 import {
-  AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';

@@ -77,7 +77,8 @@ import { ChartsModule } from 'ng2-charts';
     AngularFireOfflineModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ChartsModule
+    ChartsModule,
+    AngularFireAuthModule
 
   ],
   bootstrap: [IonicApp],

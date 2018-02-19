@@ -19,9 +19,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { FCM } from '@ionic-native/fcm';
 
-import * as firebase from 'firebase';
-import { environment } from '../environments/environment';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -83,6 +80,6 @@ this.fcm.onTokenRefresh().subscribe(token => {
     this.navCtrl.setRoot(SuppliersPage);
   }goToHelp(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(HelpPage);
   }
 }

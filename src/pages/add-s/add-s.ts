@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
-  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+  import { FormBuilder, FormGroup} from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
