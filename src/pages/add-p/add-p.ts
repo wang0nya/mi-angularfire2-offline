@@ -73,11 +73,13 @@ export class AddPPage {
         bprice: bprice,
         sprice: sprice,
         supplier: supplier,
-        addq: '0',
+        addq: 0,
         actualq: quantity,
         salequantity: 0,
         salegreturn: 0,
         greturn: 0,
+        saletotal: 0,
+        profit: 0,
 
       }).then( newPurchase => {
             this.toast.show('Data updated', '5000', 'center').subscribe(
@@ -95,36 +97,6 @@ export class AddPPage {
             );
           });
 
-    } else {
-    this.purchases.push({
-      date: date,
-      name: name,
-      quantity: quantity,
-      unit: unit,
-      bprice: bprice,
-      sprice: sprice,
-      supplier: supplier,
-      addq: '0',
-      actualq: quantity,
-      salequantity: 0,
-      salegreturn: 0,
-      greturn: 0,
-
-    }).then( newPurchase => {
-              this.toast.show('Data saved', '5000', 'center').subscribe(
-                toast => {
-                  this.navCtrl.pop();
-                }
-              );
-            })
-            .catch(e => {
-              console.log(e);
-              this.toast.show(e, '5000', 'center').subscribe(
-                toast => {
-                  console.log(toast);
-                }
-              );
-            });
-      }
     }
   }
+}
