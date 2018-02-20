@@ -6,13 +6,23 @@
     <ion-title>
       Reports
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="downloadCSV()">
-          <ion-icon name="download"></ion-icon>
-        </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page5">
-
+  <ion-list>
+    <ion-item (click)="stocksCSV()">
+      <ion-avatar item-start>
+        <img src="assets/img/zjzNX4fRILM5VrtcT4HQ_boxes.png">
+      </ion-avatar>
+      <h2>Stocks Report</h2>
+      <p>Reports on stocks data.</p>
+    </ion-item>
+    <ion-item (click)="transactionsCSV()">
+      <ion-avatar item-start>
+        <img src="assets/img/trans.png">
+      </ion-avatar>
+      <h2>Transactions Report</h2>
+      <p>Reports on transactions data.</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
