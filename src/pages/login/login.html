@@ -10,13 +10,13 @@
 
     <ion-list id="login-list2">
       <ion-item id="login-input1" class=" text-center">
-        <ion-label floating style="margin-top:0px;color:white;">
+        <ion-label floating >
           Email
         </ion-label>
         <ion-input type="email" [(ngModel)]="email"  placeholder=""></ion-input>
       </ion-item>
       <ion-item id="login-input2" class=" text-center" >
-        <ion-label floating style="margin-top:0px;color:white;">
+        <ion-label floating >
           Password
         </ion-label>
         <ion-input type="password" [(ngModel)]="password"  placeholder=""></ion-input>
@@ -25,15 +25,15 @@
     <div class="spacer" style="height:15px; text-align:center" id="login-spacer1"></div>
     <ion-row>
     <ion-col style="text-align:center">
-    <button  ion-button round outline color="light" (click)="login(email, password)">
+    <button  ion-button round outline color="primary" (click)="login(email, password)">
       Log in
     </button>
   </ion-col>
   </ion-row>
-    <button  ion-button clear color="light" block on-click="goToResetPassword()">
+    <button  ion-button clear color="primary" block on-click="goToResetPassword()">
       Forgot Password
     </button>
-    <button  ion-button clear color="light" block on-click="goToSignup()">
+    <button  ion-button clear color="primary" block on-click="goToSignup()">
       Or create an account
     </button>
 

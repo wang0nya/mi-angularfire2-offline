@@ -11,35 +11,35 @@ userPass<ion-header>
   <ion-list>
 
       <ion-item id="signup-input4" class=" text-center">
-        <ion-label floating floating style="margin-top:0px;color:white;">
+        <ion-label floating floating >
           Email
         </ion-label>
         <ion-input type="email" placeholder="" [(ngModel)]="email"
         formControlName="userEmail"
         [class.invalid]="!addUserForm.controls.userEmail.valid && addUserForm.controls.userEmail.dirty"
-        name="email">    <p style="margin-top:0px;color:white;">
+        name="email">    <p>
         Can't contain numbers    </p></ion-input>
       </ion-item>
       <ion-item id="signup-input5" class=" text-center">
-        <ion-label floating floating style="margin-top:0px;color:white;">
+        <ion-label floating floating >
           Password
         </ion-label>
         <ion-input type="password" placeholder="" [(ngModel)]="password"
         formControlName="userPass"
         [class.invalid]="!addUserForm.controls.userPass.valid && addUserForm.controls.userPass.dirty"
-        name="pass"><p style="margin-top:0px;color:white;">
+        name="pass"><p>
         Too short   </p></ion-input>
       </ion-item>
     </ion-list>
     <ion-row>
     <ion-col style="text-align:center">
-    <button  ion-button round outline [disabled]="!addUserForm.valid"
+    <button  ion-button round outline color="primary" [disabled]="!addUserForm.valid"
     type="submit">
       Sign up
     </button>
   </ion-col>
   </ion-row>
-  <button  ion-button clear color="positive" block on-click="goToLogin()">
+  <button  ion-button clear color="primary" block on-click="goToLogin()">
     Log In
   </button>
 </form>
