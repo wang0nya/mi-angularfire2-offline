@@ -22,7 +22,7 @@ import { Validator } from  '../../validators/validator';
 })
 export class BrowseSuppliersPage {
   slideOneForm: FormGroup;
-
+  stockInHand: any;
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
@@ -35,6 +35,7 @@ export class BrowseSuppliersPage {
   unit: '',
   bprice: '',
   sprice: '',
+  actualq: '',
   sale: '',
   profit:'',
   total: ''
@@ -56,14 +57,24 @@ export class BrowseSuppliersPage {
     this.product.unit = this.params.get('unit');
     this.product.bprice = this.params.get('bprice');
     this.product.sprice = this.params.get('sprice');
+    this.product.actualq = this.params.get('actualq');
+
+    //find stockInHand
+    this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
+        this.stockInHand = 0;
+        purchases.forEach((purchase) => {
+            this.stockInHand = purchase.actualq-purchase.salequantity;
+        })
+    })
 
     this.slideOneForm = formBuilder.group({
         buyP: ['', Validator.isValid]
     });
   });
   }
-  addSale(id,saledate,name,salequantity,unit,bprice,sprice,sale,profit,saletotal) {
-    if(id) {
+  addSale(id,saledate,name,salequantity,unit,bprice,sprice,actualq,sale,profit,saletotal) {
+    if(id && salequantity<=this.stockInHand) {
+      console.log('this.stockInHand');
       this.purchases.update(id, {
         saledate: saledate,
         name: name,
@@ -76,7 +87,7 @@ export class BrowseSuppliersPage {
         saletotal: (salequantity*sprice),
 
       }).then( newSale => {
-            this.toast.show('Data updated', '5000', 'center').subscribe(
+            this.toast.show('Product Sold', '5000', 'center').subscribe(
               toast => {
                 this.navCtrl.pop();
               }
@@ -92,35 +103,11 @@ export class BrowseSuppliersPage {
           });
 
     } else {
-      this.purchases.push({
-      saledate: saledate,
-      name: name,
-      salequantity: salequantity,
-      unit: unit,
-      bprice: bprice,
-      sprice: sprice,
-      sale: true,
-      salegreturn: '0',
-      salegrn: '0',
-      salegr: 'false',
-      profit: (sprice-bprice)*salequantity,
-      saletotal: (salequantity*sprice),
-
-    }).then( newSale => {
-              this.toast.show('Data saved', '5000', 'center').subscribe(
-                toast => {
-                  this.navCtrl.pop();
-                }
-              );
-            })
-            .catch(e => {
-              console.log(e);
-              this.toast.show(e, '5000', 'center').subscribe(
-                toast => {
-                  console.log(toast);
-                }
-              );
-            });
+      this.toast.show('You don\'t have enough in stock to make this sale', '5000', 'center').subscribe(
+        toast => {
+          this.navCtrl.pop();
+        }
+      );
       }
     }
   }

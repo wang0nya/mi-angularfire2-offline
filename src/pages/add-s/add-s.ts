@@ -21,6 +21,7 @@ import { Validator } from  '../../validators/validator';
 })
 export class AddSPage {
   slideOneForm: FormGroup;
+  stockInHand: any;
   userId: any;
   public purchases: AfoListObservable<any[]>;
   public suppliers: AfoListObservable<any[]>;
@@ -59,13 +60,21 @@ export class AddSPage {
         this.product.profit = this.params.get('profit');
         this.product.saletotal = this.params.get('saletotal');
 
+        //find stockInHand
+        this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
+            this.stockInHand = 0;
+            purchases.forEach((purchase) => {
+                this.stockInHand = purchase.actualq-purchase.salequantity;
+            })
+        })
+
         this.slideOneForm = formBuilder.group({
             buyP: ['', Validator.isValid]
         });
     });
   }
   addSale(id,saledate,name,salequantity,unit,bprice,sprice,adds,sale,profit,saletotal) {
-    if(id) {
+    if(id && adds<=this.stockInHand) {
       this.purchases.update(id, {
         saledate: saledate,
         name: name,
@@ -79,7 +88,7 @@ export class AddSPage {
         saletotal: ((salequantity-(-adds))*sprice),
 
       }).then( newSale => {
-            this.toast.show('Data updated', '5000', 'center').subscribe(
+            this.toast.show('Sale added', '5000', 'center').subscribe(
               toast => {
                 this.navCtrl.pop();
               }
@@ -93,6 +102,12 @@ export class AddSPage {
               }
             );
           });
-      }
+      } else {
+        this.toast.show('You don\'t have enough in stock to add this sale', '5000', 'center').subscribe(
+          toast => {
+            this.navCtrl.pop();
+          }
+        );
+        }
     }
   }
