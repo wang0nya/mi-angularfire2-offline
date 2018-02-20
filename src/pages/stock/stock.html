@@ -18,7 +18,7 @@
 </ion-header>
 <ion-content padding id="page2">
   <ion-list>
-    <ion-item *ngFor="let product of products | async" class="item item-trns text-center"
+    <ion-item *ngFor="let product of products | async" class=" text-center"
     (click)="showOptions(product, product.$key)">
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>

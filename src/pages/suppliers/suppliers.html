@@ -17,7 +17,7 @@
   <!-- <button ion-button (click)="browse()">Browse Suppliers
   </button> -->
   <ion-list>
-      <ion-item *ngFor="let supplier of suppliers | async" class="item item-trns text-center"
+      <ion-item *ngFor="let supplier of suppliers | async" class=" text-center"
       (click)="showOptions(supplier, supplier.$key)">
       <strong><h2>{{ supplier.name }}</h2></strong>
       <p>Address: {{supplier.address}}</p>

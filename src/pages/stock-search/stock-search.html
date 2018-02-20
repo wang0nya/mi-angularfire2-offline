@@ -9,9 +9,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page2">
-  <ion-searchbar (ionInput)="getItems($event)" class="item item-trns text-center" placeholder="type name or date"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)" class=" text-center" placeholder="type name or date"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let product of productList" class="item item-trns text-center">
+    <ion-item *ngFor="let product of productList" class=" text-center">
       <strong><h2>{{ product.name }}</h2></strong>
       <p>Date: {{product.date}}</p>
       <p>Price per unit: {{product.price}}</p>
