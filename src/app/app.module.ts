@@ -43,6 +43,8 @@ import { CallNumber } from '@ionic-native/call-number';
 import { FCM } from '@ionic-native/fcm';
 
 import { ChartsModule } from 'ng2-charts';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 @NgModule({
   declarations: [
@@ -117,6 +119,8 @@ import { ChartsModule } from 'ng2-charts';
     LoadingController,
     CallNumber,
     FCM,
+    File,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
