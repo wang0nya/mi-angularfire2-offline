@@ -18,8 +18,12 @@
       <p>Price per unit: {{product.sprice}}</p>
       <p>Supplier: {{product.supplier}}</p>
     </ion-item>
-    <button ion-button (click)="salesCSV()">
+    <ion-row>
+    <ion-col style="text-align:center">
+    <button ion-button round outline (click)="salesCSV()">
       Export
     </button>
+  </ion-col>
+  </ion-row>
   </ion-list>
 </ion-content>
