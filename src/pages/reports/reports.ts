@@ -8,7 +8,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import * as papa from 'papaparse';
 import { File } from '@ionic-native/file';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { Toast } from '@ionic-native/toast';
 
 @Component({
@@ -25,7 +24,7 @@ headerRow: any;
 
     constructor(public navCtrl: NavController,private afoDatabase: AngularFireOfflineDatabase,
       public alertCtrl: AlertController, public afAuth: AngularFireAuth,
-    public actionSheetCtrl: ActionSheetController,private file: File,private transfer: FileTransfer
+    public actionSheetCtrl: ActionSheetController,private file: File
   ,private toast: Toast) {
         afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid }
