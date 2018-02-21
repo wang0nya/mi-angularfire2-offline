@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {
   AfoListObservable,AfoObjectObservable,
   AngularFireOfflineDatabase} from 'angularfire2-offline/database';
@@ -29,7 +29,7 @@ export class ProfilePage {
   imgsource: any;
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
-   public params: NavParams,private toast: Toast, public zone: NgZone) {
+   public params: NavParams,private toast: Toast, public zone: NgZone, public loadingCtrl: LoadingController) {
    afAuth.authState.subscribe( user => {
 if (user) { this.userId = user.uid }
 this.profile = afoDatabase.list(`/userProfile/${this.userId}/profile`);
@@ -41,8 +41,11 @@ this.imageRef = this.storageRef.child(`${this.userId}/pp.jpg`);
 
   ionViewDidLoad() {
     this.display();
-    console.log('ionViewDidLoad ProfilePage');
-  }
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 5000
+    });
+    loader.present();  }
   edit(details){
     this.navCtrl.push(UprofilePage);
   }
