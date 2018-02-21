@@ -6,6 +6,7 @@ import { GoodsReturnedPage } from '../goods-returned/goods-returned';
 import { SalesPage } from '../sales/sales';
 import { PurchasesPage } from '../purchases/purchases';
 import { SuppliersPage } from '../suppliers/suppliers';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'page-home',
@@ -33,5 +34,8 @@ export class HomePage {
   }goToSuppliers(params){
     if (!params) params = {};
     this.navCtrl.push(SuppliersPage);
+  }
+  profileD(){
+    this.navCtrl.push(ProfilePage);
   }
 }

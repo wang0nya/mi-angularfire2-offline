@@ -20,6 +20,8 @@
     "@angular/http": "4.1.2",
     "@angular/platform-browser": "4.1.2",
     "@angular/platform-browser-dynamic": "4.0.2",
+    "@firebase/auth-types": "^0.1.1",
+    "@firebase/database-types": "^0.1.1",
     "@ionic-native/call-number": "^4.5.3",
     "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "3.10.2",

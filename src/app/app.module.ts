@@ -20,6 +20,8 @@ import { RegisterSupplierPage } from '../pages/register-supplier/register-suppli
 import { Toast } from '@ionic-native/toast';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { AddSPage } from '../pages/add-s/add-s';
+import { ProfilePage } from '../pages/profile/profile';
+import { UprofilePage } from '../pages/uprofile/uprofile';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -71,7 +73,9 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     AddPPage,
     AddQPage,
     RemoveQPage,
-    AddSPage
+    AddSPage,
+    ProfilePage,
+    UprofilePage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -108,7 +112,9 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     AddPPage,
     AddQPage,
     RemoveQPage,
-    AddSPage
+    AddSPage,
+    ProfilePage,
+    UprofilePage
   ],
   providers: [
     StatusBar,
