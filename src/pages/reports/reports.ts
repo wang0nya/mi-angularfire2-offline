@@ -21,6 +21,7 @@ export class ReportsPage {
 userId: any;
 stocks: any;
 transactions: any;
+public purchases: AfoListObservable<any[]>;
 public stocksRef:firebase.database.Reference;
 public transactionsRef:firebase.database.Reference;
 headerRow: any;
@@ -127,14 +128,16 @@ headerRow: any;
     }
 
     ionViewDidLoad() {
+    this.purchases =  this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
+          purchases.forEach((purchase) => {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
 
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: [purchase.name],
             datasets: [{
                 label: '# of Sales',
-                data: [12, 19, 3, 5, 2, 3],
+                data: [purchase.salequantity],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -165,6 +168,8 @@ headerRow: any;
         }
 
     });
+  })
+})
   }
 }
 export const snapshotToArray = snapshot => {
