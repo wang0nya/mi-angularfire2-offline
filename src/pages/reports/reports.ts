@@ -21,7 +21,6 @@ export class ReportsPage {
 userId: any;
 stocks: any;
 transactions: any;
-public purchases: AfoListObservable<any[]>;
 public stocksRef:firebase.database.Reference;
 public transactionsRef:firebase.database.Reference;
 headerRow: any;
@@ -128,7 +127,7 @@ headerRow: any;
     }
 
     ionViewDidLoad() {
-    this.purchases =  this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
+      this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
           purchases.forEach((purchase) => {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
 
