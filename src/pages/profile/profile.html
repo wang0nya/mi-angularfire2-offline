@@ -16,15 +16,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-<ion-list-header> Personal Info for: {{(mail | async)?.email}}
-  </ion-list-header>
 <ion-item *ngFor="let profile of profile | async">
-  <strong><h2>{{ profile.name }}</h2></strong>
+  <img src="{{imgsource}}" />
+<br>
+  <strong><h1>{{ profile.name }}</h1></strong>
+  <p>Your email: {{(mail | async)?.email}}</p>
   <p>Your business name: {{profile.business}}</p>
   <p>Your business address: {{profile.address}}</p>
   <p>Area of operation: {{profile.area}}</p>
 </ion-item>
-</ion-list>
-
 </ion-content>

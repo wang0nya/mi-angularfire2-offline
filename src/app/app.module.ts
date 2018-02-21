@@ -22,6 +22,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AddSPage } from '../pages/add-s/add-s';
 import { ProfilePage } from '../pages/profile/profile';
 import { UprofilePage } from '../pages/uprofile/uprofile';
+import { Camera } from '@ionic-native/camera';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -127,6 +128,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     FCM,
     File,
     FileTransfer,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })

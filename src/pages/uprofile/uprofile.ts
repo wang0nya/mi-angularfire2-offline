@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {
   AfoListObservable,AfoObjectObservable,
@@ -6,6 +6,8 @@ import {
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import firebase from 'firebase';
 /**
  * Generated class for the UprofilePage page.
  *
@@ -18,28 +20,22 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'uprofile.html',
 })
 export class UprofilePage {
+  captureDataUrl: string;
+  @Input('useURI') useURI: Boolean = true;
   userId: any;
   public profile: AfoListObservable<any[]>;
   public mail: AfoObjectObservable<any[]>;
-  details={id:'',
-  name: '',
-  business: '',
-  address: '',
-  area:''};
+  storageRef: any;
+  imageRef: any;
   constructor(private afoDatabase: AngularFireOfflineDatabase,
      public afAuth: AngularFireAuth,public navCtrl: NavController,
-   public params: NavParams,private toast: Toast) {
+   public params: NavParams,private toast: Toast,private camera: Camera) {
    afAuth.authState.subscribe( user => {
 if (user) { this.userId = user.uid }
 this.profile = afoDatabase.list(`/userProfile/${this.userId}/profile`);
 this.mail = afoDatabase.object(`/userProfile/${this.userId}`);
-
-this.details.id = this.params.get('key');
-this.details.name = this.params.get('name');
-this.details.business = this.params.get('business');
-this.details.address = this.params.get('address');
-this.details.area = this.params.get('area');
-
+this.storageRef = firebase.storage().ref();
+this.imageRef = this.storageRef.child(`${this.userId}/pp.jpg`);
 
 });
   }
@@ -69,5 +65,33 @@ this.details.area = this.params.get('area');
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
+  getPicture(sourceType){
+      const cameraOptions: CameraOptions = {
+        quality: 50,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        sourceType: sourceType
+      };
+
+      this.camera.getPicture(cameraOptions)
+       .then((captureDataUrl) => {
+         this.captureDataUrl = 'data:image/jpeg;base64,' + captureDataUrl;
+      }, (err) => {
+          console.log(err);
+      });
+    }
+
+  upload() {
+      this.imageRef.putString(this.captureDataUrl, firebase.storage.StringFormat.DATA_URL)
+        .then((snapshot)=> {
+          // Do something here when the data is succesfully uploaded!
+          this.toast.show('Photo Uploaded', '5000', 'center').subscribe(
+            toast => {
+              this.navCtrl.pop();
+            }
+          );
+      });
+    }
 
 }
