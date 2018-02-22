@@ -16,9 +16,14 @@ import { Chart } from 'chart.js';
 })
 export class ReportsPage {
   @ViewChild('barCanvas') barCanvas;
-
+@ViewChild('doughnutCanvas') doughnutCanvas;
+@ViewChild('lineCanvas') lineCanvas;
     barChart: any;
+    doughnutChart: any;
+   lineChart: any;
 userId: any;
+priceTotal: any;
+profitTotal: any;
 stocks: any;
 transactions: any;
 public stocksRef:firebase.database.Reference;
@@ -128,45 +133,40 @@ headerRow: any;
 
     ionViewDidLoad() {
       this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
-          purchases.forEach((purchase) => {
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
+        this.priceTotal = 0;
+        this.profitTotal = 0;
 
-        type: 'bar',
-        data: {
-            labels: [purchase.name],
-            datasets: [{
-                label: '# of Sales',
-                data: [purchase.salequantity],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
+          purchases.forEach((purchase) => {
+            this.priceTotal += purchase.saletotal;
+            this.profitTotal += purchase.profit;
+
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+
+            type: 'doughnut',
+            data: {
+              labels: ['Total Sales', 'Total Profit'],
+              datasets: [{
+                  data: [this.priceTotal,this.profitTotal],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ]
                 }]
             }
-        }
 
-    });
+        });
   })
 })
   }
