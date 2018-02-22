@@ -11,6 +11,7 @@ import { SalesPage } from '../pages/sales/sales';
 import { PurchasesPage } from '../pages/purchases/purchases';
 import { SuppliersPage } from '../pages/suppliers/suppliers';
 import { HelpPage } from '../pages/help/help';
+import { CalcPage } from '../pages/calc/calc';
 
 
 import { LoginPage } from '../pages/login/login';
@@ -78,6 +79,9 @@ this.fcm.onTokenRefresh().subscribe(token => {
   }goToSuppliers(params){
     if (!params) params = {};
     this.navCtrl.setRoot(SuppliersPage);
+  }goToCalc(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(CalcPage);
   }goToHelp(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HelpPage);

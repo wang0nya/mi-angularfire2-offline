@@ -23,6 +23,7 @@ import { AddSPage } from '../pages/add-s/add-s';
 import { ProfilePage } from '../pages/profile/profile';
 import { UprofilePage } from '../pages/uprofile/uprofile';
 import { Camera } from '@ionic-native/camera';
+import { CalcPage } from '../pages/calc/calc';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -77,7 +78,8 @@ import { Network } from '@ionic-native/network';
     RemoveQPage,
     AddSPage,
     ProfilePage,
-    UprofilePage
+    UprofilePage,
+    CalcPage
       ],
   imports: [
     AngularFireDatabaseModule,
@@ -116,7 +118,8 @@ import { Network } from '@ionic-native/network';
     RemoveQPage,
     AddSPage,
     ProfilePage,
-    UprofilePage
+    UprofilePage,
+    CalcPage
   ],
   providers: [
     StatusBar,
