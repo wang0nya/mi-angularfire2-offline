@@ -21,7 +21,7 @@ export class EditProductPage {
   public products: AfoListObservable<any[]>;
 
   purchase={id:'',
-  date: '',
+  _date: '',
   name: '',
   quantity: '',
   unit: '',
@@ -43,7 +43,7 @@ total: ''};
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
     this.purchase.id = this.params.get('key');
-    this.purchase.date = this.params.get('date');
+    this.purchase._date = this.params.get('_date');
     this.purchase.name = this.params.get('name');
     this.purchase.quantity = this.params.get('quantity');
     this.purchase.unit = this.params.get('unit');
@@ -59,10 +59,10 @@ total: ''};
     });
   });
   }
-  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,greturn,grn,gr,total) {
+  addPurchase(id,_date,name,quantity,unit,bprice,sprice,supplier,greturn,grn,gr,total) {
     if(id) {
       this.purchases.update(id, {
-        date: date,
+        _date: _date,
         name: name,
         quantity: quantity,
         unit: unit,
@@ -92,7 +92,7 @@ total: ''};
 
     } else {
     this.purchases.push({
-      date: date,
+      _date: _date,
       name: name,
       quantity: quantity,
       unit: unit,

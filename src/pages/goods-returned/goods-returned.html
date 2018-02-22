@@ -15,7 +15,7 @@
     <ion-item-divider >Purchases Returned</ion-item-divider>
     <ion-item *ngFor="let product of grOutList" class=" text-center">
       <strong><p>{{ product.name }} #{{product.grn}}</p></strong>
-      <p>Date: {{product.date}}</p>
+      <p>Date: {{product._date}}</p>
       <p>Returned: {{product.greturn}}</p>
       <!-- <p></p> -->
 
