@@ -28,7 +28,9 @@
       <ion-label floating>Email</ion-label>
       <ion-input type="text" placeholder="Email" [(ngModel)]="supplier.email" required="" ></ion-input>
     </ion-item>
-    <button id="registerSupplier-button7" ion-button clear color="balanced" block large (click)="addSupplier(supplier.id, supplier.name, supplier.address, supplier.phone, supplier.email)">
-      <span *ngIf="supplier.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!supplier.id"><ion-icon name="add-circle"></ion-icon></span>
+    <ion-fab bottom center>
+    <button id="registerSupplier-button7" ion-fab color="secondary"(click)="addSupplier(supplier.id, supplier.name, supplier.address, supplier.phone, supplier.email)">
+      <span *ngIf="supplier.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!supplier.id"><ion-icon name="add"></ion-icon></span>
     </button>
+    </ion-fab>
 </ion-content>

@@ -48,8 +48,10 @@
                 <p>Please enter a valid value.</p>
             </ion-item>
     </div>
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addPurchase(purchase.id,purchase._date,purchase.name,purchase.quantity,
+    <ion-fab bottom center>
+    <button id="addStock-button6" ion-fab color="secondary" (click)="addPurchase(purchase.id,purchase._date,purchase.name,purchase.quantity,
     purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier)" [disabled]="!slideOneForm.valid">
-      <ion-icon name="add-circle"></ion-icon>
+      <ion-icon name="add"></ion-icon>
     </button>
+    </ion-fab>
 </ion-content>

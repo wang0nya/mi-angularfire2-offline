@@ -67,9 +67,10 @@
           <ion-option value="false">false</ion-option>
         </ion-select>      </ion-item>
     </div>
-
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
+<ion-fab bottom center>
+    <button id="addStock-button6" ion-fab color="secondary"(click)="addSale(product.id,product.saledate,product.name,product.salequantity,
     product.unit,product.bprice,product.sprice,product.salegreturn,product.salegrn,product.salegr)" [disabled]="!slideOneForm.valid">
-      <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
+      <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add"></ion-icon></span>
     </button>
+    </ion-fab>
 </ion-content>

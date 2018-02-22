@@ -6,11 +6,6 @@
     <ion-title>
       Suppliers
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="register()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page3">
@@ -42,4 +37,9 @@
             </ion-item-options>
           </ion-item-sliding> -->
         </ion-list>
+        <ion-fab bottom right>
+          <button ion-fab icon-only color="secondary" (click)="register()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-fab>
 </ion-content>

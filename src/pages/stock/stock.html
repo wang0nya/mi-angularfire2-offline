@@ -7,9 +7,6 @@
       Stock
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only on-click="addProductPage()">
-        <ion-icon name="add"></ion-icon>
-      </button>
       <button ion-button icon-only on-click="search()">
         <ion-icon name="search"></ion-icon>
       </button>
@@ -28,4 +25,9 @@
       <p>Supplier: {{product.supplier}}</p>
     </ion-item>
   </ion-list>
+<ion-fab bottom right >
+  <button ion-fab icon-only color="secondary" on-click="addProductPage()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  </ion-fab>
 </ion-content>

@@ -59,8 +59,10 @@
           <ion-label>Confirm Sale</ion-label>
           <ion-toggle [(ngModel)]="product.sale"></ion-toggle>
         </ion-item>
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
+        <ion-fab bottom center>
+    <button id="addStock-button6" ion-fab color="secondary" (click)="addSale(product.id,product.saledate,product.name,product.salequantity,
     product.unit,product.bprice,product.sprice,product.adds,product.sale)" [disabled]="!slideOneForm.valid">
-<ion-icon name="add-circle"></ion-icon>
+<ion-icon name="add"></ion-icon>
     </button>
+    </ion-fab>
 </ion-content>
