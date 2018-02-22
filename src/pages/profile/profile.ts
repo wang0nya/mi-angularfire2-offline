@@ -68,7 +68,7 @@ this.imageRef = this.storageRef.child(`${this.userId}/pp.jpg`);
      })
   })
 }
-logoutUser(): Promise<void> {
+logoutUser(){
   return this.afAuth.auth.signOut();
 }
   }
