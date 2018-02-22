@@ -63,21 +63,21 @@ export class AddQPage {
     });
   });
   }
-  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq,actualq) {
+  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq) {
     if(id) {
       this.purchases.update(id, {
         date: date,
         name: name,
-        quantity: quantity,
+        quantity: quantity-(-addq),
         unit: unit,
         bprice: bprice,
         sprice: sprice,
         supplier: supplier,
         addq: addq,
-        actualq: quantity-(-addq),
+        total: ((quantity-(-addq))*bprice),
 
       }).then( newPurchase => {
-            this.toast.show('Data updated', '5000', 'center').subscribe(
+            this.toast.show('Stock added', '5000', 'center').subscribe(
               toast => {
                 this.navCtrl.pop();
               }
@@ -92,33 +92,6 @@ export class AddQPage {
             );
           });
 
-    } else {
-    this.purchases.push({
-      date: date,
-      name: name,
-      quantity: quantity,
-      unit: unit,
-      bprice: bprice,
-      sprice: sprice,
-      supplier: supplier,
-      addq: addq,
-      actualq: quantity-(-addq),
-
-    }).then( newPurchase => {
-              this.toast.show('Data saved', '5000', 'center').subscribe(
-                toast => {
-                  this.navCtrl.pop();
-                }
-              );
-            })
-            .catch(e => {
-              console.log(e);
-              this.toast.show(e, '5000', 'center').subscribe(
-                toast => {
-                  console.log(toast);
-                }
-              );
-            });
-      }
     }
   }
+}

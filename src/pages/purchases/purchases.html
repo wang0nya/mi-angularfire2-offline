@@ -19,14 +19,14 @@
     (click)="showOptions(purchase, purchase.$key)">
       <strong><h2>{{ purchase.name }}</h2></strong>
       <p>Date: {{purchase.date}}</p>
-      <p>Quantity: {{purchase.actualq-purchase.salequantity-purchase.greturn}}</p>
+      <p>Quantity: {{purchase.quantity-purchase.salequantity-purchase.greturn}}</p>
       <p>Sold: {{purchase.salequantity-purchase.salegreturn}}</p>
       <!-- <p>Buying Price per unit: {{purchase.bprice}}</p>
       <p>Selling Price per unit: {{purchase.sprice}}</p> -->
       <p>Supplier: {{purchase.supplier}}</p>
 
       <h3 item-end>
-        Ksh. {{purchase.actualq*purchase.bprice}}
+        Ksh. {{purchase.total}}
       </h3>
     </ion-item>
       <!-- <ion-item-options side="right">

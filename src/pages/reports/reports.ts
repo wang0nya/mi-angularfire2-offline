@@ -24,6 +24,7 @@ export class ReportsPage {
 userId: any;
 priceTotal: any;
 profitTotal: any;
+buyTotal: any;
 stocks: any;
 transactions: any;
 public stocksRef:firebase.database.Reference;
@@ -58,7 +59,8 @@ headerRow: any;
       this.headerRow = unparsedStocks[0];
       this.headerRow = unparsedTransactions[0];
 
-       // unparsedData.splice(0, 1);
+      // unparsedStocks.splice(0, 1);
+      // unparsedTransactions.splice(0, 1);
        this.stocks = unparsedStocks;
        this.transactions = unparsedTransactions;
  }
@@ -135,18 +137,19 @@ headerRow: any;
       this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
         this.priceTotal = 0;
         this.profitTotal = 0;
+        this.buyTotal = 0;
 
           purchases.forEach((purchase) => {
             this.priceTotal += purchase.saletotal;
             this.profitTotal += purchase.profit;
-
+            this.buyTotal += purchase.total;
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
 
             type: 'doughnut',
             data: {
-              labels: ['Total Sales', 'Total Profit'],
+              labels: ['Total Sales', 'Total Purchases', 'Total Sale Profits'],
               datasets: [{
-                  data: [this.priceTotal,this.profitTotal],
+                  data: [this.priceTotal,this.buyTotal,this.profitTotal],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

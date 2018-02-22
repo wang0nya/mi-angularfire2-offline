@@ -95,7 +95,7 @@ showOptions(purchase) {
               date: purchase.date,
               type: purchase.type,
               name: purchase.name,
-              actualq: purchase.actualq,
+              quantity: purchase.quantity,
               unit: purchase.unit,
               bprice: purchase.bprice,
               sprice: purchase.sprice,

@@ -63,7 +63,7 @@ export class BrowseSuppliersPage {
     this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
         this.stockInHand = 0;
         purchases.forEach((purchase) => {
-            this.stockInHand = purchase.actualq-purchase.salequantity;
+            this.stockInHand = purchase.quantity-purchase.salequantity;
         })
     })
 
@@ -72,7 +72,7 @@ export class BrowseSuppliersPage {
     });
   });
   }
-  addSale(id,saledate,name,salequantity,unit,bprice,sprice,actualq,sale,profit,saletotal) {
+  addSale(id,saledate,name,salequantity,unit,bprice,sprice,sale,profit,saletotal) {
     if(id && salequantity<=this.stockInHand) {
       console.log('this.stockInHand');
       this.purchases.update(id, {

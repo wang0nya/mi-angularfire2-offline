@@ -64,7 +64,7 @@ export class AddSPage {
         this.afoDatabase.list(`/userProfile/${this.userId}/purchases`).subscribe((purchases) => {
             this.stockInHand = 0;
             purchases.forEach((purchase) => {
-                this.stockInHand = purchase.actualq-purchase.salequantity;
+                this.stockInHand = purchase.quantity-purchase.salequantity;
             })
         })
 

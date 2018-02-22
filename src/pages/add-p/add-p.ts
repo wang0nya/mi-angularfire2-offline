@@ -63,7 +63,7 @@ export class AddPPage {
 
   });
   }
-  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq,actualq) {
+  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq) {
     if(id) {
       this.purchases.update(id, {
         date: date,
@@ -74,15 +74,15 @@ export class AddPPage {
         sprice: sprice,
         supplier: supplier,
         addq: 0,
-        actualq: quantity,
         salequantity: 0,
         salegreturn: 0,
         greturn: 0,
         saletotal: 0,
         profit: 0,
+        total: (quantity*bprice),
 
       }).then( newPurchase => {
-            this.toast.show('Data updated', '5000', 'center').subscribe(
+            this.toast.show('Product bought', '5000', 'center').subscribe(
               toast => {
                 this.navCtrl.pop();
               }
