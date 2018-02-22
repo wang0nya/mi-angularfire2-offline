@@ -51,8 +51,4 @@ Validators.minLength(8)])],
         })
       });
   }
-  goToLogin(params){
-    if (!params) params = {};
-    this.navCtrl.push(LoginPage);
-  }
 }
