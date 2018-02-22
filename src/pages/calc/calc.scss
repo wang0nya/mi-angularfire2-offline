@@ -1,3 +1,44 @@
 page-calc {
+  .container {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
 
+          .row {
+              flex: 2;
+              flex-direction: row;
+              padding: 0px !important;
+              margin: 0px !important;
+
+              .col {
+                  flex: 1;
+                  padding: 0px !important;
+                  margin: 0px !important;
+              }
+
+              .col2 {
+                  flex: 2;
+                  padding: 0px !important;
+                  margin: 0px !important;
+              }
+          }
+
+          .myInputRow {
+              flex: 1 !important;
+
+              input {
+                  font-size: 40px;
+                  text-align: right;
+              }
+          }
+
+          button {
+              height: auto !important;
+              border-radius: 0px !important;
+              font-size: 32px;
+              font-weight: bold;
+              border-left: 1px solid #fff;
+              border-bottom: 1px solid #fff;
+          }
+      }
 }

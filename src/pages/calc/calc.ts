@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the CalcPage page.
@@ -15,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class CalcPage {
   result = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -23,15 +24,32 @@ export class CalcPage {
   }
 
   btnClicked(btn) {
-      if (btn == 'C') {
-          this.result = '';
+          if (btn == 'C') {
+              this.result = '';
+          }
+          else if (btn == '=') {
+              if (this.result == '') {
+                  return;
+              }
+
+              try {
+                  this.result = eval(this.result).toFixed(2);
+              } catch (error) {
+                  this.showAlert();
+                  this.result = '';
+              }
+          }
+          else {
+              this.result += btn;
+          }
       }
-      else if (btn == '=') {
-          this.result = eval(this.result);
+
+      showAlert() {
+          this.alertCtrl.create({
+              title: 'Malformed input',
+              subTitle: 'Ooops, please try again...',
+              buttons: ['Dismiss']
+          }).present();
       }
-      else {
-          this.result += btn;
-      }
-  }
 
 }
