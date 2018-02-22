@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Alert, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Alert, AlertController, MenuController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Toast } from '@ionic-native/toast';
 
@@ -19,7 +19,7 @@ export class ResetPasswordPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public angularFireAuth: AngularFireAuth, private toast: Toast,
-private alertCtrl: AlertController) {
+private alertCtrl: AlertController,private menu : MenuController) {
   }
 
   ionViewDidLoad() {
@@ -43,5 +43,13 @@ this.navCtrl.pop();
 
   });
 }
+ionViewDidEnter() {
+// the root left menu should be disabled on this page
+this.menu.enable(false);
+}
 
+ionViewWillLeave() {
+// enable the root left menu when leaving this page
+this.menu.enable(true);
+}
 }

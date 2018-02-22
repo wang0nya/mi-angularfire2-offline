@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Loading, LoadingController, Alert, AlertController } from 'ionic-angular';
+import { NavController, Loading, LoadingController, Alert, AlertController, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage} from '../home/home';
@@ -16,7 +16,7 @@ public loading: Loading;
   constructor(public navCtrl: NavController,
   public loadingCtrl: LoadingController,
   public angularFireAuth: AngularFireAuth,
-private alertCtrl: AlertController,private toast: Toast) {
+private alertCtrl: AlertController,private toast: Toast,private menu : MenuController) {
   }
 
 
@@ -61,4 +61,13 @@ private alertCtrl: AlertController,private toast: Toast) {
     if (!params) params = {};
     this.navCtrl.push(ResetPasswordPage);
   }
+  ionViewDidEnter() {
+// the root left menu should be disabled on this page
+this.menu.enable(false);
+}
+
+ionViewWillLeave() {
+// enable the root left menu when leaving this page
+this.menu.enable(true);
+}
 }

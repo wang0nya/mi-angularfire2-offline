@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Alert, AlertController } from 'ionic-angular';
+import { NavController, Alert, AlertController, MenuController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { Toast } from '@ionic-native/toast';
@@ -15,7 +15,7 @@ export class SignupPage {
   constructor(public navCtrl: NavController,
   public angularFireAuth: AngularFireAuth,
 private toast: Toast, public formBuilder: FormBuilder,
-private alertCtrl: AlertController) {
+private alertCtrl: AlertController,private menu : MenuController) {
   this.addUserForm = formBuilder.group({
 userEmail: ['', Validators.compose([Validators.required,
   Validators.pattern('[A-Za-z0-9_@.]*'),
@@ -51,4 +51,13 @@ Validators.minLength(8)])],
         })
       });
   }
+  ionViewDidEnter() {
+// the root left menu should be disabled on this page
+this.menu.enable(false);
+}
+
+ionViewWillLeave() {
+// enable the root left menu when leaving this page
+this.menu.enable(true);
+}
 }
