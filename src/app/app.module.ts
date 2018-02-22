@@ -48,6 +48,7 @@ import { FCM } from '@ionic-native/fcm';
 import { ChartsModule } from 'ng2-charts';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     File,
     FileTransfer,
     Camera,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
