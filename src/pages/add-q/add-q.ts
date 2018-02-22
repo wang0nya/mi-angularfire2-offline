@@ -27,7 +27,7 @@ export class AddQPage {
   public products: AfoListObservable<any[]>;
 
   purchase={id:'',
-  date: '',
+  _date: '',
   name: '',
   quantity: '',
   unit: '',
@@ -48,7 +48,7 @@ export class AddQPage {
     this.products = afoDatabase.list(`/userProfile/${this.userId}/products`);
 
     this.purchase.id = this.params.get('key');
-    this.purchase.date = this.params.get('date');
+    this.purchase._date = this.params.get('_date');
     this.purchase.name = this.params.get('name');
     this.purchase.quantity = this.params.get('quantity');
     this.purchase.unit = this.params.get('unit');
@@ -63,10 +63,10 @@ export class AddQPage {
     });
   });
   }
-  addPurchase(id,date,name,quantity,unit,bprice,sprice,supplier,addq) {
+  addPurchase(id,_date,name,quantity,unit,bprice,sprice,supplier,addq) {
     if(id) {
       this.purchases.update(id, {
-        date: date,
+        _date: _date,
         name: name,
         quantity: quantity-(-addq),
         unit: unit,

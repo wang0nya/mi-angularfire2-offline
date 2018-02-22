@@ -43,7 +43,7 @@ export class PurchasesPage {
     console.log(purchase);
     this.navCtrl.push(EditProductPage, {
       key: purchase.$key,
-      date: purchase.date,
+      _date: purchase._date,
       name: purchase.name,
       quantity: purchase.quantity,
       unit: purchase.unit,
@@ -92,7 +92,7 @@ showOptions(purchase) {
         handler: () => {
             this.navCtrl.push(AddQPage, {
               key: purchase.$key,
-              date: purchase.date,
+              _date: purchase._date,
               type: purchase.type,
               name: purchase.name,
               quantity: purchase.quantity,
@@ -110,7 +110,7 @@ showOptions(purchase) {
         handler: () => {
           this.navCtrl.push(BrowseSuppliersPage, {
             key: purchase.$key,
-            date: purchase.date,
+            _date: purchase._date,
             name: purchase.name,
             quantity: purchase.quantity,
             unit: purchase.unit,
@@ -125,7 +125,7 @@ showOptions(purchase) {
         handler: () => {
           this.navCtrl.push(EditProductPage, {
             key: purchase.$key,
-            date: purchase.date,
+            _date: purchase._date,
             name: purchase.name,
             quantity: purchase.quantity,
             unit: purchase.unit,

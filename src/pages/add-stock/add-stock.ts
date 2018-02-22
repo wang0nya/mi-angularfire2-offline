@@ -20,7 +20,7 @@ public products: AfoListObservable<any[]>;
 public suppliers: AfoListObservable<any[]>;
 
 product={id:'',
-date: '',
+_date: '',
 name: '',
 unit: '',
 bprice: '',
@@ -37,7 +37,7 @@ supplier: ''
     this.suppliers = afoDatabase.list(`/userProfile/${this.userId}/suppliers`);
 
     this.product.id = this.params.get('key');
-    this.product.date = this.params.get('date');
+    this.product._date = this.params.get('_date');
     this.product.name = this.params.get('name');
     this.product.unit = this.params.get('unit');
     this.product.bprice = this.params.get('bprice');
@@ -51,10 +51,10 @@ supplier: ''
   });
   }
 
-addProduct(id,date,name,unit,bprice,sprice,supplier) {
+addProduct(id,_date,name,unit,bprice,sprice,supplier) {
   if(id) {
     this.products.update(id, {
-      date: date,
+      _date: _date,
       name: name,
       unit: unit,
       bprice: bprice,
@@ -79,7 +79,7 @@ addProduct(id,date,name,unit,bprice,sprice,supplier) {
 
   } else {
   this.products.push({
-    date: date,
+    _date: _date,
     name: name,
     unit: unit,
     bprice: bprice,

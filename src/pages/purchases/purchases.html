@@ -18,7 +18,7 @@
     <ion-item *ngFor="let purchase of purchases | async" class=" text-center"
     (click)="showOptions(purchase, purchase.$key)">
       <strong><h2>{{ purchase.name }}</h2></strong>
-      <p>Date: {{purchase.date}}</p>
+      <p>Date: {{purchase._date}}</p>
       <p>Quantity: {{purchase.quantity-purchase.salequantity-purchase.greturn}}</p>
       <p>Sold: {{purchase.salequantity-purchase.salegreturn}}</p>
       <!-- <p>Buying Price per unit: {{purchase.bprice}}</p>

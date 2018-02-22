@@ -21,7 +21,7 @@
     <ion-item *ngFor="let product of products | async" class=" text-center"
     (click)="showOptions(product, product.$key)">
       <strong><h2>{{ product.name }}</h2></strong>
-      <p>Date: {{product.date}}</p>
+      <p>Date: {{product._date}}</p>
       <p>Buying Price per unit: {{product.bprice}}</p>
       <p>Selling Price per unit: {{product.sprice}}</p>
       <p>Profit per unit: {{product.sprice-product.bprice}}</p>

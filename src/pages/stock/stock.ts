@@ -75,7 +75,7 @@ showOptions(product) {
         handler: () => {
             this.navCtrl.push(AddPPage, {
               key: product.$key,
-              date: product.date,
+              _date: product._date,
               type: product.type,
               name: product.name,
               quantity: product.quantity,
@@ -93,7 +93,7 @@ showOptions(product) {
         handler: () => {
           this.navCtrl.push(AddStockPage, {
             key: product.$key,
-            date: product.date,
+            _date: product._date,
             type: product.type,
             name: product.name,
             unit: product.unit,

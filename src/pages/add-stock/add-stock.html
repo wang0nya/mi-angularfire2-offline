@@ -14,7 +14,7 @@
   <br>
     <ion-item>
       <ion-label floating>Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product.date" required=""></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="product._date" required=""></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating>Product Name</ion-label>
@@ -73,7 +73,7 @@
       </ion-item>
     </div> -->
 
-    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product.date,product.name,
+    <button id="addStock-button6" ion-button clear color="balanced" block large (click)="addProduct(product.id,product._date,product.name,
     product.unit,product.bprice,product.sprice,product.supplier)" [disabled]="!slideOneForm.valid">
       <span *ngIf="product.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!product.id"><ion-icon name="add-circle"></ion-icon></span>
     </button>
