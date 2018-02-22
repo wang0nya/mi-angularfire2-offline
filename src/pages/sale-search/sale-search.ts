@@ -70,8 +70,8 @@ export class SaleSearchPage {
         }
 
         this.productList = this.productList.filter((v) => {
-          if(v.date && q || v.name && q) {
-            if (v.date.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          if(v._date && q || v.name && q) {
+            if (v._date.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
               return true;
             }
             return false;
