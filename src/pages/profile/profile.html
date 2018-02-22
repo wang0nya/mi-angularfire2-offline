@@ -17,7 +17,9 @@
 
 <ion-content padding>
 <ion-item *ngFor="let profile of profile | async">
+  <ion-avatar>
   <img src="{{imgsource}}" />
+</ion-avatar>
 <br>
   <strong><h1>{{ profile.name }}</h1></strong>
   <p>Your email: {{(mail | async)?.email}}</p>

@@ -1,11 +1,13 @@
 page-profile {
   img {
-      border-radius: 50%;
+      // border-radius: 50%;
       display: block;
       margin-left: auto;
       margin-right: auto;
-        height: 50%;
-        width: 50%;
+      width:100% !important;
+      height : 100% !important;
+      max-width: 100px !important;  //any size
+      max-height: 100px !important; //any size
   }
   h1 {
     text-align: center;
