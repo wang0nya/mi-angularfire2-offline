@@ -17,14 +17,14 @@
   <input type="hidden" [(ngModel)]="profile.id" />
   <ion-row>
   <ion-col style="text-align:center">
-    <button ion-button round outline color="primary" (click)="getPicture(0)">Choose photo</button>
+    <button ion-button color="primary" (click)="getPicture(0)">Choose photo</button>
 </ion-col>
     </ion-row>
     <ion-card>
       <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
       <ion-row>
       <ion-col style="text-align:center">
-      <button ion-button round outline color="primary" (click)="upload()" *ngIf="captureDataUrl">Upload</button>
+      <button ion-button color="primary" (click)="upload()" *ngIf="captureDataUrl">Upload</button>
     </ion-col>
         </ion-row>
     </ion-card>
@@ -46,7 +46,7 @@
   </ion-item>
   <ion-row>
   <ion-col style="text-align:center">
-    <button ion-button round outline color="primary" (click)="addProfile(profile.id,profile.name,profile.business,
+    <button ion-button color="primary" (click)="addProfile(profile.id,profile.name,profile.business,
     profile.address,profile.area)">
   Submit details  </button>  </ion-col>
     </ion-row>
