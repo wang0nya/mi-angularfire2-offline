@@ -20,15 +20,10 @@
       <ion-label floating>Product Name</ion-label>
       <ion-input type="text"  [(ngModel)]="product.name" required="" ></ion-input>
     </ion-item>
-    <div [formGroup]="slideOneForm">
     <ion-item>
     <ion-label floating>Unit of Measure</ion-label>
-    <ion-input type="text"  [(ngModel)]="product.unit" required="" formControlName="unit"></ion-input>
+    <ion-input type="text"  [(ngModel)]="product.unit" required=""></ion-input>
   </ion-item>
-<ion-item *ngIf="!slideOneForm.controls.unit.valid  && (slideOneForm.controls.unit.dirty)">
-          <p>Please enter a valid value.</p>
-      </ion-item>
-</div>
 <div [formGroup]="slideOneForm">
   <ion-item>
     <ion-label floating>Buying Price/unit</ion-label>

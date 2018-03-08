@@ -31,6 +31,7 @@ export class ReturnGoodsPage {
   // supplier: '',
   salegreturn: '',
   salegrn: '',
+  salereturndate: '',
   salegr: '',
   profit:'',
   total: ''
@@ -55,6 +56,7 @@ export class ReturnGoodsPage {
     // this.product.supplier = this.params.get('supplier');
     this.product.salegreturn = this.params.get('salegreturn');
     this.product.salegrn = this.params.get('salegrn');
+    this.product.salereturndate = this.params.get('salereturndate');
     this.product.salegr = this.params.get('salegr');
 
     this.slideOneForm = formBuilder.group({
@@ -62,12 +64,12 @@ export class ReturnGoodsPage {
     });
   });
   }
-  addSale(id,saledate,name,salequantity,unit,bprice,sprice,salegreturn,salegrn,salegr,profit,saletotal) {
+  addSale(id,saledate,name,salequantity,unit,bprice,sprice,salegreturn,salegrn,salereturndate,salegr,profit,saletotal) {
     if(id) {
       this.purchases.update(id, {
         saledate: saledate,
         name: name,
-        salequantity: salequantity,
+        salequantity: salequantity-salegreturn,
         unit: unit,
         bprice: bprice,
         sprice: sprice,
@@ -75,9 +77,10 @@ export class ReturnGoodsPage {
         // supplier: supplier,
         salegreturn: salegreturn,
         salegrn: salegrn,
+        salereturndate: salereturndate,
         salegr: salegr,
-        profit: (sprice-bprice)*salequantity,
-        saletotal: (salequantity*sprice),
+        profit: (sprice-bprice)*(salequantity-salegreturn),
+        saletotal: ((salequantity-salegreturn)*sprice),
 
       }).then( newSale => {
             this.toast.show('Data updated', '5000', 'center').subscribe(

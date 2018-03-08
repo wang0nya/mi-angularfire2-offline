@@ -30,6 +30,7 @@ export class EditProductPage {
   supplier: '',
   greturn: '',
   grn: '',
+  purchasereturndate: '',
   gr: '',
 total: ''};
   constructor(private afoDatabase: AngularFireOfflineDatabase,
@@ -52,6 +53,7 @@ total: ''};
     this.purchase.supplier = this.params.get('supplier');
     this.purchase.greturn = this.params.get('greturn');
     this.purchase.grn = this.params.get('grn');
+    this.purchase.purchasereturndate = this.params.get('purchasereturndate');
     this.purchase.gr = this.params.get('gr');
 
     this.slideOneForm = formBuilder.group({
@@ -59,20 +61,21 @@ total: ''};
     });
   });
   }
-  addPurchase(id,_date,name,quantity,unit,bprice,sprice,supplier,greturn,grn,gr,total) {
+  addPurchase(id,_date,name,quantity,unit,bprice,sprice,supplier,greturn,grn,purchasereturndate,gr,total) {
     if(id) {
       this.purchases.update(id, {
         _date: _date,
         name: name,
-        quantity: quantity,
+        quantity: quantity-greturn,
         unit: unit,
         bprice: bprice,
         sprice: sprice,
         supplier: supplier,
         greturn: greturn,
         grn: grn,
+        purchasereturndate: purchasereturndate,
         gr: gr,
-        total: (quantity*bprice),
+        total: ((quantity-greturn)*bprice),
 
       }).then( newPurchase => {
             this.toast.show('Data updated', '5000', 'center').subscribe(

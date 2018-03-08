@@ -134,6 +134,7 @@ showOptions(purchase) {
             supplier: purchase.supplier,
             greturn: 0,
             grn: 0,
+            purchasereturndate: '',
             gr: false,
           });
         }

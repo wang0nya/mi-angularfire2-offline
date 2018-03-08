@@ -19,8 +19,9 @@
     (click)="showOptions(purchase, purchase.$key)">
       <strong><h2>{{ purchase.name }}</h2></strong>
       <p>Date: {{purchase.saledate}}</p>
-      <p>Quantity sold: {{purchase.salequantity-purchase.salegreturn}}</p>
-      <p>Remaining: {{purchase.quantity-purchase.salequantity-purchase.greturn}}</p>
+      <p>Quantity sold: {{purchase.salequantity}}</p>
+      <p>Unit : {{purchase.unit}}</p>
+      <p>Remaining: {{purchase.quantity-purchase.salequantity}}</p>
       <!-- <p>Buying Price/unit: {{sale.bprice}}</p>
       <p>Selling Price/unit: {{sale.sprice}}</p> -->
       <p>Profit made: {{(purchase.sprice-purchase.bprice)*purchase.salequantity}}</p>

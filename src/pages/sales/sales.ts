@@ -133,6 +133,7 @@ showOptions(purchase) {
             sprice: purchase.sprice,
             salegreturn: 0,
             salegrn: 0,
+            salereturndate: '',
             salegr: false
             // supplier: purchase.supplier
           });

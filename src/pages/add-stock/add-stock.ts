@@ -45,7 +45,6 @@ supplier: ''
     this.product.supplier = this.params.get('supplier');
 
     this.slideOneForm = formBuilder.group({
-      unit: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
         buyP: ['', Validator.isValid]
     });
   });

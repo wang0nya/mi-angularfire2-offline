@@ -63,6 +63,10 @@
         <ion-label floating>GRN</ion-label>
         <ion-input type="number"  [(ngModel)]="purchase.grn" ></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label floating>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="purchase.purchasereturndate" required=""></ion-datetime>
+      </ion-item>
       <ion-item >
         <ion-label floating>GR Status</ion-label>
         <ion-select [(ngModel)]="purchase.gr" interface="popover">
@@ -73,7 +77,7 @@
     </div>
 <ion-fab bottom center>
     <button id="addStock-button6" ion-fab color="secondary"(click)="addPurchase(purchase.id,purchase._date,purchase.name,purchase.quantity,
-    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.greturn,purchase.grn,purchase.gr)" [disabled]="!slideOneForm.valid">
+    purchase.unit,purchase.bprice,purchase.sprice,purchase.supplier,purchase.greturn,purchase.grn,purchase.purchasereturndate,purchase.gr)" [disabled]="!slideOneForm.valid">
       <span *ngIf="purchase.id"><ion-icon name="create"></ion-icon></span><span *ngIf="!purchase.id"><ion-icon name="add"></ion-icon></span>
     </button>
     </ion-fab>
