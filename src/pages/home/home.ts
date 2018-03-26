@@ -16,26 +16,33 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
   }
+
   goToStock(params){
     if (!params) params = {};
     this.navCtrl.push(StockPage);
-  }goToReports(params){
+  }
+  goToReports(params){
     if (!params) params = {};
     this.navCtrl.push(ReportsPage);
-  }goToGoodsReturned(params){
+  }
+  goToGoodsReturned(params){
     if (!params) params = {};
     this.navCtrl.push(GoodsReturnedPage);
-  }goToSales(params){
+  }
+  goToSales(params){
     if (!params) params = {};
     this.navCtrl.push(SalesPage);
-  }goToPurchases(params){
+  }
+  goToPurchases(params){
     if (!params) params = {};
     this.navCtrl.push(PurchasesPage);
-  }goToSuppliers(params){
+  }
+  goToSuppliers(params){
     if (!params) params = {};
     this.navCtrl.push(SuppliersPage);
   }
   profileD(){
     this.navCtrl.push(ProfilePage);
   }
+
 }

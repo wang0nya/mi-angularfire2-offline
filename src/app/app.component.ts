@@ -61,28 +61,36 @@ this.fcm.onTokenRefresh().subscribe(token => {
   goToHome(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);
-  }goToStock(params){
+  }
+  goToStock(params){
     if (!params) params = {};
     this.navCtrl.setRoot(StockPage);
-  }goToReports(params){
+  }
+  goToReports(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ReportsPage);
-  }goToGoodsReturned(params){
+  }
+  goToGoodsReturned(params){
     if (!params) params = {};
     this.navCtrl.setRoot(GoodsReturnedPage);
-  }goToSales(params){
+  }
+  goToSales(params){
     if (!params) params = {};
     this.navCtrl.setRoot(SalesPage);
-  }goToPurchases(params){
+  }
+  goToPurchases(params){
     if (!params) params = {};
     this.navCtrl.setRoot(PurchasesPage);
-  }goToSuppliers(params){
+  }
+  goToSuppliers(params){
     if (!params) params = {};
     this.navCtrl.setRoot(SuppliersPage);
-  }goToCalc(params){
+  }
+  goToCalc(params){
     if (!params) params = {};
     this.navCtrl.setRoot(CalcPage);
-  }goToHelp(params){
+  }
+  goToHelp(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HelpPage);
   }
